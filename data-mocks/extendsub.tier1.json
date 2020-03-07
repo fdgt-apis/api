@@ -1,0 +1,26 @@
+{
+  "@badge-info": ["subscriber/3"],
+  "badges": [
+    "subscriber/3",
+    "sub-gifter/1"
+  ],
+  "color": "<color>",
+  "display-name": "<username>",
+  "emotes": null,
+  "flags": null,
+  "id": "<messageid>",
+  "login": "<username>",
+  "mod": 0,
+  "msg-id": "extendsub",
+  "msg-param-cumulative-months": 3,
+  "msg-param-sub-benefit-end-month": "4",
+  "msg-param-sub-plan-name": "Tier 1",
+  "msg-param-sub-plan": 1000,
+  "room-id": "<channelid>",
+  "subscriber": 1,
+  "system-msg": "<username>\\sextended\\stheir\\sTier\\s1\\ssubscription\\sthrough\\sApril!",
+  "tmi-sent-ts": "<timestamp>",
+  "user-id": "<userid>",
+  "user-type": null,
+  "message": ":<host> USERNOTICE #<channel>"
+}

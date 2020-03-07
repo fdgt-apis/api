@@ -1,0 +1,23 @@
+{
+  "@badge-info": [],
+  "badges": [],
+  "color": "<color>",
+  "display-name": "<username>",
+  "emotes": null,
+  "flags": null,
+  "id": "<messageid>",
+  "login": "<username>",
+  "mod": 0,
+  "msg-id": "raid",
+  "msg-param-displayName": "<username>",
+  "msg-param-login": "<username>",
+  "msg-param-profileImageURL": "https://static-cdn.jtvnw.net/picture.jpg",
+  "msg-param-viewerCount": 10,
+  "room-id": "<channelid>",
+  "subscriber": 0,
+  "system-msg": "10\\sraiders\\sfrom\\s<username>\\shave\\sjoined!",
+  "tmi-sent-ts": "<timestamp>",
+  "user-id": "<userid>",
+  "user-type": null,
+  "message": ":<host> USERNOTICE #<channel>"
+}

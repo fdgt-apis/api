@@ -1,0 +1,29 @@
+{
+  "@badge-info": ["subscriber/0"],
+  "badges": [
+    "subscriber/0",
+    "sub-gifter/1"
+  ],
+  "color": "<color>",
+  "display-name": "<username>",
+  "emotes": null,
+  "flags": null,
+  "id": "<messageid>",
+  "login": "<username>",
+  "mod": 0,
+  "msg-id": "subgift",
+  "msg-param-months": 0,
+  "msg-param-origin-id": "da\\s39\\sa3\\see\\s5e\\s6b\\s4b\\s0d\\s32\\s55\\sbf\\sef\\s95\\s60\\s18\\s90\\saf\\sd8\\s07\\s09",
+  "msg-param-recipient-display-name": "<username2>",
+  "msg-param-recipient-id": "<userid2>",
+  "msg-param-recipient-user-name": "<username2>",
+  "msg-param-sender-count": "1",
+  "msg-param-sub-plan-name": "Tier 3",
+  "msg-param-sub-plan": 3000,
+  "room-id": "<channelid>",
+  "system-msg": "<username>\\sgifted\\sa\\sTier\\s3\\ssub\\sto\\s<username2>!\\sThey\\shave\\sgiven\\s1\\sGift\\sSub\\sin\\sthe\\schannel!",
+  "tmi-sent-ts": "<timestamp>",
+  "user-id": "<userid>",
+  "user-type": null,
+  "message": ":<host> USERNOTICE #<channel>"
+}

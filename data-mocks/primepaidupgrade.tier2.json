@@ -1,0 +1,21 @@
+{
+  "@badge-info": ["subscriber/0"],
+  "badges": ["subscriber/0"],
+  "color": "<color>",
+  "display-name": "<username>",
+  "emotes": null,
+  "flags": null,
+  "id": "<messageid>",
+  "login": "<username>",
+  "mod": 0,
+  "msg-id": "primepaidupgrade",
+  "msg-param-sub-plan": 2000,
+  "msg-param-sub-plan-name": "Tier 2",
+  "room-id": "<channelid>",
+  "subscriber": 1,
+  "tmi-sent-ts": "<timestamp>",
+  "user-id": "<userid>",
+  "user-type": null,
+  "system-msg": "<username>\\sconverted\\sfrom\\sa\\sTwitch\\sPrime\\ssub\\sto\\sa\\sTier\\s2\\ssub!",
+  "message": ":<host> USERNOTICE #<channel>"
+}

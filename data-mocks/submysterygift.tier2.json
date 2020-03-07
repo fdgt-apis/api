@@ -1,0 +1,27 @@
+{
+  "@badge-info": ["subscriber/0"],
+  "badges": [
+    "subscriber/0",
+    "sub-gifter/1"
+  ],
+  "color": "<color>",
+  "display-name": "<username>",
+  "emotes": null,
+  "flags": null,
+  "id": "<messageid>",
+  "login": "<username>",
+  "mod": 0,
+  "msg-id": "submysterygift",
+  "msg-param-mass-gift-count": 5,
+  "msg-param-origin-id": "da\\s39\\sa3\\see\\s5e\\s6b\\s4b\\s0d\\s32\\s55\\sbf\\sef\\s95\\s60\\s18\\s90\\saf\\sd8\\s07\\s09",
+  "msg-param-sender-count": 5,
+  "msg-param-sub-plan-name": "Tier 2",
+  "msg-param-sub-plan": 2000,
+  "room-id": "<channelid>",
+  "subscriber": 1,
+  "system-msg": "<username>\\sis\\sgifting\\s5\\sTier\\s2\\sSubs\\sto\\sthe\\scommunity!\\sThey've\\sgifted\\sa\\stotal\\sof\\s5\\sin\\sthe\\schannel!",
+  "tmi-sent-ts": "<timestamp>",
+  "user-id": "<userid>",
+  "user-type": null,
+  "message": ":<host> USERNOTICE #<channel>"
+}
