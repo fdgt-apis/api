@@ -3,8 +3,6 @@
   "main": "index.js",
   "version": "0.0.1",
   "scripts": {
-    "build": "next build",
-    "start": "now dev",
     "dev": "nodemon index.js"
   },
   "dependencies": {
@@ -12,7 +10,6 @@
     "ians-logger": "^0.1.1",
     "mri": "^1.1.4",
     "nodemon": "^2.0.2",
-    "now": "^17.0.4",
     "uuid": "^7.0.2",
     "ws": "^7.2.1"
   },
