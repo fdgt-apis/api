@@ -2,7 +2,7 @@
 const faker = require('faker')
 const Logger = require('ians-logger')
 const mri = require('mri')
-const uuid = require('uuid/v4')
+const { v4: uuid } = require('uuid')
 const WebSocket = require('ws')
 
 
