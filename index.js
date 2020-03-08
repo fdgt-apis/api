@@ -1,6 +1,6 @@
 // Module imports
 const faker = require('faker')
-const Logger = require('ians-logger')
+const Logger = require('ians-logger').createLoggerFromName('fdgt')
 const mri = require('mri')
 const { v4: uuid } = require('uuid')
 const WebSocket = require('ws')
