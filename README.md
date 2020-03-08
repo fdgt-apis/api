@@ -68,6 +68,10 @@ client.say('#TrezyCodes', 'submysterygift.tier3 --username alca --giftcount 10')
 
 For more information on what events are available and what parameters they support, check out the [events][events] section.
 
+## Help & Support
+
+Need some help using `fdgt`? No problem! Hop on to the [Trezy Studios Discord][discord] and we'll be happy to help! ❤️
+
 ## API
 
 ### Events
@@ -585,7 +589,7 @@ client.say('#devchatter', 'subsonly.on --channel brandonsatrom')
 
 
 
-
+[discord]: https://discord.gg/k3bth3f "Trezy Studios Discord"
 [events]: #events
 [faker]: https://github.com/Marak/Faker.js#readme "Faker.js on Github"
 [tmi.js]: https://tmijs.com/ "tmi.js website"
