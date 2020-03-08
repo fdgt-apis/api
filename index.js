@@ -1,6 +1,5 @@
 // Module imports
 const faker = require('faker')
-const Logger = require('ians-logger').createLoggerFromName('fdgt')
 const mri = require('mri')
 const { v4: uuid } = require('uuid')
 const WebSocket = require('ws')
@@ -12,6 +11,7 @@ const WebSocket = require('ws')
 // Local imports
 const Channel = require('./structures/Channel')
 const getMock = require('./helpers/getMock')
+const log = require('./helpers/log')
 const serializeTwitchObject = require('./helpers/serializeTwitchObject')
 const User = require('./structures/User')
 const UserList = require('./structures/UserList')
@@ -32,16 +32,6 @@ const server = new WebSocket.Server({ port: PORT })
 
 
 
-
-const log = (message, meta = {}, type = 'log') => {
-  Logger[type](message)
-
-  Object.entries(meta).forEach(([key, value]) => {
-    console.log(`> ${key}:`, value)
-  })
-
-  console.log('')
-}
 
 const parseMessage = (message, socketDataStore) => {
   const {
