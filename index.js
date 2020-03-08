@@ -112,6 +112,14 @@ const parseMessage = (message, socketDataStore) => {
     }
   }
 
+  if (message.startsWith('PING')) {
+    return {
+      command: 'PING',
+      response: 'PONG',
+      type: 'ping',
+    }
+  }
+
   if (message.startsWith('PONG')) {
     clearTimeout(socketDataStore.pongTimeoutID)
 
