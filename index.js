@@ -147,19 +147,31 @@ const parseMessage = (message, socketDataStore) => {
       user = channel.getRandomUser()
     }
 
-    const messageData = getMock(eventTrigger, {
-      bitsCount: 100,
+    const parameters = {
+      bitscount: 100,
       channel: channelName,
       channelid: channel.id,
       color: user.color,
+      giftcount: 5,
       host: HOST,
       message: messageBody,
       messageid: uuid(),
+      months: 3,
       timestamp: Date.now(),
       userid: user.id,
       username: user.username,
+      viewercount: 10,
       ...mri(messageBody.split(' ')),
-    })
+    }
+
+    const timeAsMoment = moment(parameters.timestamp)
+
+    parameters.endmonth = timeAsMoment.month() + parameters.months
+    parameters.endmonthname = timeAsMoment.format('MMMM')
+
+    if (!parameters.totalgiftcount) {
+      parameters.totalgiftcount = parameters.giftcount
+    }
 
     return {
       command: 'PRIVMSG',
