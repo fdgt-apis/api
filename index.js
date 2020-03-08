@@ -237,7 +237,9 @@ server.on('connection', socket => {
 
     log('Pinging client', { id }, 'info')
     socket.send('PING')
-  }, (1000 * 60 * 5))
+  }, 30000)
+  // Ping the client every 30 seconds. Otherwise, Heroku will kill the
+  // connection.
 })
 
 log(`Server started. Listening on port ${PORT}...`)
