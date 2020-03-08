@@ -4,7 +4,7 @@
 
 ## How does it work?
 
-Using `fdgt` is pretty simple. Instead of pointing to the real `tmi`, you point to to `fdgt.dev`. DONE.
+Using `fdgt` is pretty simple. Instead of pointing to the `irc-ws.chat.twitch.tv`, you point to to `tmi.fdgt.dev`. DONE.
 
 ### Wait seriously?
 
