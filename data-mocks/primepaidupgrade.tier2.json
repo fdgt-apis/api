@@ -16,6 +16,6 @@
   "tmi-sent-ts": "<timestamp>",
   "user-id": "<userid>",
   "user-type": null,
-  "system-msg": "<username>\\sconverted\\sfrom\\sa\\sTwitch\\sPrime\\ssub\\sto\\sa\\sTier\\s2\\ssub!",
+  "system-msg": "<username> converted from a Twitch Prime sub to a Tier 2 sub!",
   "message": ":<host> USERNOTICE #<channel>"
 }

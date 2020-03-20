@@ -20,7 +20,7 @@
   "msg-param-sub-plan-name": "Tier 3",
   "msg-param-sub-plan": 3000,
   "room-id": "<channelid>",
-  "system-msg": "<username>\\sgifted\\sa\\sTier\\s3\\ssub\\sto\\s<username2>!\\sThey\\shave\\sgiven\\s1\\sGift\\sSub\\sin\\sthe\\schannel!",
+  "system-msg": "<username> gifted a Tier 3 sub to <username2>! They have given 1 Gift Sub in the channel!",
   "tmi-sent-ts": "<timestamp>",
   "user-id": "<userid>",
   "user-type": null,

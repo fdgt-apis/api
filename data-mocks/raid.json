@@ -15,7 +15,7 @@
   "msg-param-viewerCount": "<viewercount>",
   "room-id": "<channelid>",
   "subscriber": 0,
-  "system-msg": "<viewercount>\\sraiders\\sfrom\\s<username>\\shave\\sjoined!",
+  "system-msg": "<viewercount> raiders from <username> have joined!",
   "tmi-sent-ts": "<timestamp>",
   "user-id": "<userid>",
   "user-type": null,

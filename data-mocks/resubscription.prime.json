@@ -22,7 +22,7 @@
   "msg-param-sub-plan": "Prime",
   "room-id": "<channelid>",
   "subscriber": 1,
-  "system-msg": "<username>\\ssubscribed\\sat\\sPrime.\\sThey've\\ssubscribed\\sfor\\s<months>\\smonths!",
+  "system-msg": "<username> subscribed at Prime. They've subscribed for <months> months!",
   "tmi-sent-ts": "<timestamp>",
   "user-id": "<userid>",
   "user-type": null,

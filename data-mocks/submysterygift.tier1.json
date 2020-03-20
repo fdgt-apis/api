@@ -18,7 +18,7 @@
   "msg-param-sub-plan": 1000,
   "room-id": "<channelid>",
   "subscriber": 1,
-  "system-msg": "<username>\\sis\\sgifting\\s<giftcount>\\sTier\\s1\\sSubs\\sto\\sthe\\scommunity!\\sThey've\\sgifted\\sa\\stotal\\sof\\s<totalgiftcount>\\sin\\sthe\\schannel!",
+  "system-msg": "<username> is gifting <giftcount> Tier 1 Subs to the community! They've gifted a total of <totalgiftcount> in the channel!",
   "tmi-sent-ts": "<timestamp>",
   "user-id": "<userid>",
   "user-type": null,

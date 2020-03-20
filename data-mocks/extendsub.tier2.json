@@ -15,7 +15,7 @@
   "msg-param-sub-plan": 2000,
   "room-id": "<channelid>",
   "subscriber": 1,
-  "system-msg": "<username>\\sextended\\stheir\\sTier\\s2\\ssubscription\\sthrough\\s<endmonthname>!",
+  "system-msg": "<username> extended their Tier 2 subscription through <endmonthname>!",
   "tmi-sent-ts": "<timestamp>",
   "user-id": "<userid>",
   "user-type": null,

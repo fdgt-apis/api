@@ -16,7 +16,7 @@
   "msg-param-sub-plan": 3000,
   "room-id": "<channelid>",
   "subscriber": 1,
-  "system-msg": "<username>\\ssubscribed\\sat\\sTier\\s3.\\sThey've\\ssubscribed\\sfor\\s<months>\\smonths!",
+  "system-msg": "<username> subscribed at Tier 3. They've subscribed for <months> months!",
   "tmi-sent-ts": "<timestamp>",
   "user-id": "<userid>",
   "user-type": null,
