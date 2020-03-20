@@ -241,12 +241,15 @@ server.on('connection', socket => {
     }
   })
 
-  setInterval(() => {
+  const intervalID = setInterval(() => {
     const { id } = socketDataStore
     socketDataStore.pongTimeoutID = setTimeout(() => {
       log('Client didn\'t PONG in time - terminating connection', { id }, 'error')
+
+      clearInterval(intervalID)
+
       socket.terminate()
-    }, 1000)
+    }, 5000)
 
     log('Pinging client', { id }, 'info')
     socket.send('PING')
