@@ -1,5 +1,5 @@
 {
-  "@badge-info": [],
+  "badge-info": [],
   "badges": [],
   "color": "<color>",
   "display-name": "<username>",
@@ -19,5 +19,5 @@
   "tmi-sent-ts": "<timestamp>",
   "user-id": "<userid>",
   "user-type": null,
-  "message": ":<host> USERNOTICE #<channel>"
+  "message": "<host> USERNOTICE #<channel>"
 }

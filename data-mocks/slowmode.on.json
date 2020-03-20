@@ -1,4 +1,4 @@
 {
-  "message": ":<host> NOTICE #<channel> :This room is now in slow mode. You can send messages every 30 seconds.",
+  "message": "<host> NOTICE #<channel> :This room is now in slow mode. You can send messages every 30 seconds.",
   "msg-id": "slow_on"
 }

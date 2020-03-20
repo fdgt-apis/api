@@ -1,5 +1,5 @@
 {
-  "@badge-info": ["subscriber/3"],
+  "badge-info": ["subscriber/3"],
   "badges": ["subscriber/3"],
   "color": "<color>",
   "display-name": "<username>",
@@ -17,5 +17,5 @@
   "tmi-sent-ts": "<timestamp>",
   "user-id": "<userid>",
   "user-type": null,
-  "message": ":<host> USERNOTICE #<channel>"
+  "message": "<host> USERNOTICE #<channel>"
 }

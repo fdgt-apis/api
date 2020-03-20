@@ -168,7 +168,7 @@ const parseMessage = (message, socketDataStore) => {
 
     return {
       command: 'PRIVMSG',
-      response: `${serializeTwitchObject(messageData.tags)} ${messageData.message}`,
+      response: messageData.renderedMessage,
       type: 'message',
     }
   }

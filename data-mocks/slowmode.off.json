@@ -1,4 +1,4 @@
 {
-  "message": ":<host> NOTICE #<channel> :This room is no longer in slow mode.",
+  "message": "<host> NOTICE #<channel> :This room is no longer in slow mode.",
   "msg-id": "slow_off"
 }

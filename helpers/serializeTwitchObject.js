@@ -4,7 +4,7 @@ const serializeTwitchObject = object => Object.entries(object).reduce((accumulat
   }
 
   return `${accumulator}${key}=${value || ''}`
-}, '')
+}, '').replace(/\s/gu, '\\\\s')
 
 
 

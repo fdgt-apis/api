@@ -1,5 +1,5 @@
 {
-  "@badge-info": ["subscriber/0"],
+  "badge-info": ["subscriber/0"],
   "badges": ["subscriber/0"],
   "color": "<color>",
   "display-name": "<username>",
@@ -17,5 +17,5 @@
   "user-id": "<userid>",
   "user-type": null,
   "system-msg": "<username> converted from a Twitch Prime sub to a Tier 2 sub!",
-  "message": ":<host> USERNOTICE #<channel>"
+  "message": "<host> USERNOTICE #<channel>"
 }
