@@ -1,0 +1,29 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "trezy",
+      "name": "Trezy",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/442980?v=4",
+      "profile": "http://trezy.com",
+      "contributions": [
+        "code",
+        "business",
+        "doc",
+        "example",
+        "infra",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "fdgt",
+  "projectOwner": "trezy-studios",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
