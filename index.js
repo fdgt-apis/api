@@ -1,7 +1,8 @@
 // Module imports
-const faker = require('faker')
-const mri = require('mri')
 const { v4: uuid } = require('uuid')
+const faker = require('faker')
+const moment = require('moment')
+const mri = require('mri')
 const WebSocket = require('ws')
 
 
