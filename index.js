@@ -164,6 +164,8 @@ const parseMessage = (message, socketDataStore) => {
       parameters.totalgiftcount = parameters.giftcount
     }
 
+    const messageData = getMock(eventTrigger, parameters)
+
     return {
       command: 'PRIVMSG',
       response: `${serializeTwitchObject(messageData.tags)} ${messageData.message}`,
