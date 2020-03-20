@@ -19,15 +19,21 @@ const getMock = (type, data = {}) => {
     const response = {}
     let message = null
 
-    const renderedTemplate= Object.entries(dataTemplate).reduce((accumulator, [key, value]) => {
-      if (typeof value === 'string') {
-        accumulator[key] = value.replace(/(?:<(\w+)>)/gu, (match, replacementKey) => {
-          if (data[replacementKey]) {
-            return data[replacementKey]
-          }
+    const renderedTemplate = Object.entries(dataTemplate).reduce((accumulator, [key, value]) => {
+      if (Array.isArray(value)) {
+        value = value.join(',')
+      }
 
-          return match
-        })
+      if (typeof value === 'string') {
+        accumulator[key] = value
+          .replace(/(?:<(\w+)>)/gu, (match, replacementKey) => {
+            if (data[replacementKey]) {
+              return data[replacementKey]
+            }
+
+            return match
+          })
+          .replace(/\s/gu, '\\s')
       } else if (data[key]) {
         accumulator[key] = data[key]
       }
