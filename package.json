@@ -9,7 +9,7 @@
   "dependencies": {
     "faker": "^4.1.0",
     "ians-logger": "^0.1.1",
-    "moment": "^2.24.0",
+    "moment": "^2.25.3",
     "mri": "^1.1.5",
     "nodemon": "^2.0.3",
     "uuid": "^8.0.0",
