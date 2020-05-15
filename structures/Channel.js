@@ -6,13 +6,13 @@ const { v4: uuid } = require('uuid')
 
 
 // Local imports
+const renderTemplate = require('../helpers/renderTemplate')
+const serializeTwitchObject = require('../helpers/serializeTwitchObject')
 const UserList = require('./UserList')
 
 
 
 
-
-// anonsubgift
 
 class Channel extends UserList {
   /***************************************************************************\
@@ -31,7 +31,15 @@ class Channel extends UserList {
     Public Methods
   \***************************************************************************/
 
-  connect = () => {
+  addUser = this.add
+
+  connect = options => {
+    const { user } = options
+
+    if (user) {
+      this.addUser(user)
+    }
+
     this.isConnected = true
   }
 
@@ -39,7 +47,9 @@ class Channel extends UserList {
     super(options)
 
     if (options.name) {
-      options.name = options.name.toLowerCase()
+      options.name = options.name
+        .replace(/^#/u, '')
+        .toLowerCase()
     }
 
     this.options = options
@@ -51,6 +61,44 @@ class Channel extends UserList {
     this.isConnected = false
   }
 
+  getRandomUser = this.getRandom
+
+  removeUser = this.remove
+
+  sendMessage = options => {
+    const {
+      args = {},
+      user = this.connection.fdgtUser,
+    } = options
+
+    const template = {
+      'badge-info': [],
+      badges: [],
+      color: '<color>',
+      'display-name': '<username>',
+      emotes: null,
+      flags: null,
+      id: uuid(),
+      mod: 0,
+      'room-id': '<channelid>',
+      subscriber: 0,
+      'tmi-sent-ts': '<timestamp>',
+      turbo: 0,
+      'user-id': '<userid>',
+      'user-type': null,
+      message: '<username>!<username>@<username>.<host> PRIVMSG #<channel> :<message>'
+    }
+
+    const response = renderTemplate({
+      args,
+      channel: this,
+      template,
+      user,
+    })
+
+    this.connection.send(`@${serializeTwitchObject(response.tags)} :${response.message}`)
+  }
+
 
 
 
@@ -58,6 +106,14 @@ class Channel extends UserList {
   /***************************************************************************\
     Getters
   \***************************************************************************/
+
+  get connection () {
+    return this.options.connection
+  }
+
+  get hashName () {
+    return `#${this.options.name}`
+  }
 
   get name () {
     return this.options.name

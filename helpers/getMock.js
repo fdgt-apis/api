@@ -7,6 +7,7 @@ const path = require('path')
 
 
 // Local imports
+const renderTemplate = require('./renderTemplate')
 const serializeTwitchObject = require('./serializeTwitchObject')
 
 
@@ -20,51 +21,24 @@ const mocksPath = path.resolve(__dirname, '..', 'data-mocks')
 
 
 
-const getMock = (type, data = {}) => {
-  const response = {}
+module.exports = options => {
+  const {
+    args,
+    channel,
+    command,
+    user,
+  } = options
 
   try {
-    const dataTemplate = require(path.resolve(mocksPath, type))
-    let message = null
+    const response = renderTemplate({
+      args,
+      channel,
+      template: require(path.resolve(mocksPath, command)),
+      user,
+    })
 
-    const renderedTemplate = Object.entries(dataTemplate).reduce((accumulator, [key, value]) => {
-      if (Array.isArray(value)) {
-        value = value.join(',')
-      }
-
-      if (typeof value === 'string') {
-        accumulator[key] = value.replace(/(?:<(\w+)>)/gu, (match, replacementKey) => {
-          if (data[replacementKey]) {
-            return data[replacementKey]
-          }
-
-          return match
-        })
-      } else if (data[key]) {
-        accumulator[key] = data[key]
-      }
-
-      return accumulator
-    }, { ...dataTemplate })
-
-    if (renderedTemplate.message) {
-      response.message = renderedTemplate.message
-      delete renderedTemplate.message
-    }
-
-    response.tags = renderedTemplate
+    return `@${serializeTwitchObject(response.tags)} :${response.message}`
   } catch (error) {
-    response.tags = {}
-    response.message = `:${data.host} USERNOTICE #${data.channel} fdgt doesn't have a data template for \`${type}\` events.`
+    return null
   }
-
-  response.renderedMessage = `@${serializeTwitchObject(response.tags)} :${response.message}`
-
-  return response
 }
-
-
-
-
-
-module.exports = getMock

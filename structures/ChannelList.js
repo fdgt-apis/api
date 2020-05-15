@@ -10,7 +10,7 @@ module.exports = class extends Collection {
     Public Methods
   \***************************************************************************/
 
-  findByUsername = username => this.findByKey('username', username)
+  findByName = name => this.findByKey('name', name.replace(/^#/u, ''))
 
 
 
@@ -20,7 +20,7 @@ module.exports = class extends Collection {
     Getters
   \***************************************************************************/
 
-  get usernames () {
-    return this.data.map(({ username }) => username)
+  get channelNames () {
+    return this.data.map(({ name }) => name)
   }
 }

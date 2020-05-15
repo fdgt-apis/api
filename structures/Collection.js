@@ -1,19 +1,9 @@
-// Module imports
-const { v4: uuid } = require('uuid')
-const tinycolor = require('tinycolor2')
-
-
-
-
-
-class User {
+module.exports = class {
   /***************************************************************************\
     Local Properties
   \***************************************************************************/
 
-  color = tinycolor.random().toHexString()
-
-  id = uuid()
+  _data = []
 
 
 
@@ -23,9 +13,15 @@ class User {
     Public Methods
   \***************************************************************************/
 
-  constructor (options) {
-    this.options = options
-  }
+  add = item => this.data.push(item)
+
+  findByID = id => this.findByKey('id')
+
+  findByKey = (key, value) => this.data.find(item => (item[key] === value))
+
+  getRandom = () => this.data[Math.floor(Math.random() * this.data.length)]
+
+  remove = item => this.data.filter(datum => datum !== item)
 
 
 
@@ -35,13 +31,15 @@ class User {
     Getters
   \***************************************************************************/
 
-  get username () {
-    return this.options.username
+  get isEmpty () {
+    return !this.data.length
+  }
+
+  get ids () {
+    return this.data.map(({ id }) => id)
+  }
+
+  get data () {
+    return this._data
   }
 }
-
-
-
-
-
-module.exports = User

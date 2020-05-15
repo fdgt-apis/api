@@ -9,9 +9,11 @@
   "dependencies": {
     "faker": "^4.1.0",
     "ians-logger": "^0.1.1",
+    "irc-message": "^3.0.2",
     "moment": "^2.25.3",
     "mri": "^1.1.5",
     "nodemon": "^2.0.3",
+    "tinycolor2": "^1.4.1",
     "uuid": "^8.0.0",
     "ws": "^7.2.5"
   },

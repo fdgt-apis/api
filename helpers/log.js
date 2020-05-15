@@ -5,7 +5,7 @@ const Logger = require('ians-logger').createLoggerFromName('fdgt')
 
 
 
-const log = (message, meta = {}, type = 'log') => {
+module.exports = (message, meta = {}, type = 'log') => {
   Logger[type](message)
 
   Object.entries(meta).forEach(([key, value]) => {
@@ -14,9 +14,3 @@ const log = (message, meta = {}, type = 'log') => {
 
   console.log('')
 }
-
-
-
-
-
-module.exports = log
