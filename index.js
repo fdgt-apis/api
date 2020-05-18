@@ -19,11 +19,12 @@ const User = require('./structures/User')
 
 // Local constants
 const {
-  PORT = 3001,
+  IRC_PORT = 6667,
+  WS_PORT = 3001,
 } = process.env
 const HOST = 'tmi.twitch.tv'
 const fdgtUser = new User({ username: 'fdgt' })
-const wsServer = new WebSocket.Server({ port: PORT })
+const wsServer = new WebSocket.Server({ port: WS_PORT })
 
 
 
@@ -41,6 +42,8 @@ wsServer.on('connection', handleConnection)
 
 const netServer = net.createServer(handleConnection)
 
-netServer.listen(6667)
+netServer.listen(IRC_PORT)
 
-log(`Server started. Listening on ports ${PORT} and 6667...`)
+log('Server started.')
+log(`Listening for WebSocket connections on port ${WS_PORT}.`)
+log(`Listening for IRC connections on port ${IRC_PORT}.`)

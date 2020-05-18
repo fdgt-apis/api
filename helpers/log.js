@@ -11,6 +11,4 @@ module.exports = (message, meta = {}, type = 'log') => {
   Object.entries(meta).forEach(([key, value]) => {
     console.log(`> ${key}:`, value)
   })
-
-  console.log('')
 }
