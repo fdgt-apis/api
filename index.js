@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // Module imports
 const { v4: uuid } = require('uuid')
 const net = require('net')

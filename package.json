@@ -3,12 +3,15 @@
 	"main": "index.js",
 	"version": "0.0.1",
 	"license": "MIT",
+	"engines": {
+		"node": "14.x"
+	},
+	"bin": {
+		"fdgt": "./index.js"
+	},
 	"scripts": {
 		"dev": "nodemon index.js",
 		"start": "node index.js"
-	},
-	"engines": {
-		"node": "14.x"
 	},
 	"dependencies": {
 		"faker": "^4.1.0",
