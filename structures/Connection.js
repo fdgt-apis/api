@@ -36,268 +36,268 @@ const HOST = 'tmi.twitch.tv'
 
 
 class Connection extends EventEmitter {
-  /***************************************************************************\
-    Local Properties
-  \***************************************************************************/
+	/***************************************************************************\
+		Local Properties
+	\***************************************************************************/
 
-  capabilities = []
+	capabilities = []
 
-  channels = new ChannelList
+	channels = new ChannelList
 
-  id = uuid()
+	id = uuid()
 
-  isAcknowledged = false
+	isAcknowledged = false
 
-  pingIntervalID = null
+	pingIntervalID = null
 
-  pongTimeoutID = null
+	pongTimeoutID = null
 
-  token = null
+	token = null
 
-  username = null
+	username = null
 
-  users = new UserList
+	users = new UserList
 
 
 
 
 
-  /***************************************************************************\
-    Private Properties
-  \***************************************************************************/
+	/***************************************************************************\
+		Private Properties
+	\***************************************************************************/
 
-  #handleMessages = rawMessages => {
-    const messages = rawMessages.toString()
-      .replace(/\r\n$/, '')
-      .split('\r\n')
-      .map(item => parseIRCMessage(item))
+	#handleMessages = rawMessages => {
+		const messages = rawMessages.toString()
+			.replace(/\r\n$/, '')
+			.split('\r\n')
+			.map(item => parseIRCMessage(item))
 
-    messages.forEach(message => {
-      let handler = null
+		messages.forEach(message => {
+			let handler = null
 
-      log('Message from client', message, 'info')
+			log('Message from client', message, 'info')
 
-      switch (message.command) {
-        case 'CAP':
-          handler = handleCAPMessage
-          break
+			switch (message.command) {
+				case 'CAP':
+					handler = handleCAPMessage
+					break
 
-        case 'JOIN':
-          handler = handleJOINMessage
-          break
+				case 'JOIN':
+					handler = handleJOINMessage
+					break
 
-        case 'NICK':
-          handler = handleNICKMessage
-          break
+				case 'NICK':
+					handler = handleNICKMessage
+					break
 
-        case 'PART':
-          handler = handlePARTMessage
-          break
+				case 'PART':
+					handler = handlePARTMessage
+					break
 
-        case 'PASS':
-          handler = handlePASSMessage
-          break
+				case 'PASS':
+					handler = handlePASSMessage
+					break
 
-        case 'PING':
-          handler = handlePINGMessage
-          break
+				case 'PING':
+					handler = handlePINGMessage
+					break
 
-        case 'PONG':
-          handler = handlePONGMessage
-          break
+				case 'PONG':
+					handler = handlePONGMessage
+					break
 
-        case 'PRIVMSG':
-          handler = handlePRIVMSGMessage
-          break
+				case 'PRIVMSG':
+					handler = handlePRIVMSGMessage
+					break
 
-        case 'USER':
-          handler = handleUSERMessage
-          break
+				case 'USER':
+					handler = handleUSERMessage
+					break
 
-        case 'QUIT':
-          handler = handleQUITMessage
-          break
+				case 'QUIT':
+					handler = handleQUITMessage
+					break
 
-        default:
-          log(`No handler for ${message.command} messages`, {}, 'error')
-          this.sendUnknownCommand(message.command)
-      }
+				default:
+					log(`No handler for ${message.command} messages`, {}, 'error')
+					this.sendUnknownCommand(message.command)
+			}
 
-      if (handler) {
-        handler(message, this)
-      }
-    })
-  }
+			if (handler) {
+				handler(message, this)
+			}
+		})
+	}
 
-  #initializeConnectionCloseHandler = () => {
-    const closeEvents = [
-      'close',
-      'end',
-      'error',
-    ]
+	#initializeConnectionCloseHandler = () => {
+		const closeEvents = [
+			'close',
+			'end',
+			'error',
+		]
 
-    closeEvents.forEach(eventType => {
-      this.socket.on(eventType, this.close)
-    })
-  }
+		closeEvents.forEach(eventType => {
+			this.socket.on(eventType, this.close)
+		})
+	}
 
-  #initializeMessageHandler = () => {
-    if (this.#isWebsocket()) {
-      this.socket.on('message', this.#handleMessages)
-    } else {
-      this.socket.on('data', this.#handleMessages)
-    }
-  }
+	#initializeMessageHandler = () => {
+		if (this.#isWebsocket()) {
+			this.socket.on('message', this.#handleMessages)
+		} else {
+			this.socket.on('data', this.#handleMessages)
+		}
+	}
 
-  #initializePing = () => {
-    // Ping the client every 30 seconds. Otherwise, Heroku will kill the
-    // connection.
-    this.pingIntervalID = setInterval(() => {
-      const { id } = this
+	#initializePing = () => {
+		// Ping the client every 30 seconds. Otherwise, Heroku will kill the
+		// connection.
+		this.pingIntervalID = setInterval(() => {
+			const { id } = this
 
-      this.pongTimeoutID = setTimeout(() => {
-        log('Client didn\'t PONG in time - terminating connection', { id }, 'error')
+			this.pongTimeoutID = setTimeout(() => {
+				log('Client didn\'t PONG in time - terminating connection', { id }, 'error')
 
-        clearInterval(this.pingIntervalID)
+				clearInterval(this.pingIntervalID)
 
-        this.close()
-      }, 5000)
+				this.close()
+			}, 5000)
 
-      log('Pinging client', { id }, 'info')
+			log('Pinging client', { id }, 'info')
 
-      this.send('PING')
-    }, 30000)
-  }
-
-  #isIRCSocket = () => (this.type === 'irc')
-
-  #isWebsocket = () => (this.type === 'websocket')
-
-
-
-
-
-  /***************************************************************************\
-    Public Properties
-  \***************************************************************************/
+			this.send('PING')
+		}, 30000)
+	}
+
+	#isIRCSocket = () => (this.type === 'irc')
+
+	#isWebsocket = () => (this.type === 'websocket')
+
+
+
+
+
+	/***************************************************************************\
+		Public Properties
+	\***************************************************************************/
 
-  addCapabilities = capabilities => {
-    this.capabilities = [
-      ...this.capabilities,
-      ...capabilities,
-    ]
-  }
+	addCapabilities = capabilities => {
+		this.capabilities = [
+			...this.capabilities,
+			...capabilities,
+		]
+	}
 
-  close = () => {
-    clearTimeout(this.pongTimeoutID)
-    clearInterval(this.pingIntervalID)
+	close = () => {
+		clearTimeout(this.pongTimeoutID)
+		clearInterval(this.pingIntervalID)
 
-    if (this.#isWebsocket()) {
-      this.socket.terminate()
-    } else {
-      this.socket.end()
-    }
+		if (this.#isWebsocket()) {
+			this.socket.terminate()
+		} else {
+			this.socket.end()
+		}
 
-    this.emit('close')
-  }
+		this.emit('close')
+	}
 
-  constructor (options) {
-    super()
+	constructor (options) {
+		super()
 
-    this.options = options
+		this.options = options
 
-    log('New client connected', { id: this.id }, 'info')
+		log('New client connected', { id: this.id }, 'info')
 
-    this.#initializeConnectionCloseHandler()
-    this.#initializeMessageHandler()
-    this.#initializePing()
-  }
+		this.#initializeConnectionCloseHandler()
+		this.#initializeMessageHandler()
+		this.#initializePing()
+	}
 
-  getChannel = (channelName, create = true) => {
-    let channel = this.channels.findByName(channelName)
+	getChannel = (channelName, create = true) => {
+		let channel = this.channels.findByName(channelName)
 
-    if (!channel && create) {
-      channel = new Channel({
-        connection: this,
-        name: channelName,
-      })
-      this.channels.add(channel)
-    }
+		if (!channel && create) {
+			channel = new Channel({
+				connection: this,
+				name: channelName,
+			})
+			this.channels.add(channel)
+		}
 
-    return channel
-  }
+		return channel
+	}
 
-  getUser = (username, create = true) => {
-    let user = this.users.findByUsername(username)
+	getUser = (username, create = true) => {
+		let user = this.users.findByUsername(username)
 
-    if (!user && create) {
-      user = new User({ username })
-      this.users.add(user)
-    }
+		if (!user && create) {
+			user = new User({ username })
+			this.users.add(user)
+		}
 
-    return user
-  }
+		return user
+	}
 
-  send = response => {
-    let messages = response
+	send = response => {
+		let messages = response
 
-    if (!Array.isArray(messages)) {
-      messages = [messages]
-    }
+		if (!Array.isArray(messages)) {
+			messages = [messages]
+		}
 
-    try {
-      messages.forEach(message => {
-        log(`Sending message to client: ${message}`)
-        if (this.#isWebsocket()) {
-          this.socket.send(message)
-        } else {
-          this.socket.write(`${message}\r\n`)
-        }
-      })
-    } catch (error) {
-      log('Failed to send response', {}, 'error')
-    }
-  }
+		try {
+			messages.forEach(message => {
+				log(`Sending message to client: ${message}`)
+				if (this.#isWebsocket()) {
+					this.socket.send(message)
+				} else {
+					this.socket.write(`${message}\r\n`)
+				}
+			})
+		} catch (error) {
+			log('Failed to send response', {}, 'error')
+		}
+	}
 
-  sendMOTD = () => {
-    this.send([
-      `:${HOST} 001 ${this.username} :Welcome, GLHF!`, // WELCOME
-      `:${HOST} 002 ${this.username} :Your host is ${HOST}`, // YOURHOST
-      `:${HOST} 003 ${this.username} :This server is rather new`, // CREATED
-      `:${HOST} 004 ${this.username} :-`, // MYINFO
-      `:${HOST} 375 ${this.username} :-`, // MOTDSTART
-      `:${HOST} 372 ${this.username} :You are in a maze of twisty passages, all alike.`, // MOTD
-      `:${HOST} 376 ${this.username} :>`, // MOTDEND
-    ])
-  }
+	sendMOTD = () => {
+		this.send([
+			`:${HOST} 001 ${this.username} :Welcome, GLHF!`, // WELCOME
+			`:${HOST} 002 ${this.username} :Your host is ${HOST}`, // YOURHOST
+			`:${HOST} 003 ${this.username} :This server is rather new`, // CREATED
+			`:${HOST} 004 ${this.username} :-`, // MYINFO
+			`:${HOST} 375 ${this.username} :-`, // MOTDSTART
+			`:${HOST} 372 ${this.username} :You are in a maze of twisty passages, all alike.`, // MOTD
+			`:${HOST} 376 ${this.username} :>`, // MOTDEND
+		])
+	}
 
-  sendPong = () => {
-    this.send('PONG')
-  }
+	sendPong = () => {
+		this.send('PONG')
+	}
 
-  sendUnknownCommand = command => {
-    this.send(`:${HOST} 421 ${this.username} ${command} :Unknown command`)
-  }
+	sendUnknownCommand = command => {
+		this.send(`:${HOST} 421 ${this.username} ${command} :Unknown command`)
+	}
 
 
 
 
 
-  /***************************************************************************\
-    Getters
-  \***************************************************************************/
+	/***************************************************************************\
+		Getters
+	\***************************************************************************/
 
-  get fdgtUser () {
-    return this.options.fdgtUser
-  }
+	get fdgtUser () {
+		return this.options.fdgtUser
+	}
 
-  get socket () {
-    return this.options.socket
-  }
+	get socket () {
+		return this.options.socket
+	}
 
-  get type () {
-    return this.options.type
-  }
+	get type () {
+		return this.options.type
+	}
 }
 
 

@@ -1,4 +1,4 @@
 {
-  "message": "<host> NOTICE #<channel> :This room is no longer in emote-only mode.",
-  "msg-id": "emote_only_off"
+	"message": "<host> NOTICE #<channel> :This room is no longer in emote-only mode.",
+	"msg-id": "emote_only_off"
 }

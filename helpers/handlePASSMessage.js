@@ -1,4 +1,4 @@
 module.exports = (message, connection) => {
-  const [token] = message.params
-  connection.token = token
+	const [token] = message.params
+	connection.token = token
 }

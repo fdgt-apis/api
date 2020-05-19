@@ -1,4 +1,4 @@
 {
-  "message": "<host> NOTICE #<channel> :This room is now in subscribers-only mode.",
-  "msg-id": "subs_on"
+	"message": "<host> NOTICE #<channel> :This room is now in subscribers-only mode.",
+	"msg-id": "subs_on"
 }

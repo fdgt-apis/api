@@ -19,8 +19,8 @@ const User = require('./structures/User')
 
 // Local constants
 const {
-  IRC_PORT = 6667,
-  WS_PORT = 3001,
+	IRC_PORT = 6667,
+	WS_PORT = 3001,
 } = process.env
 const HOST = 'tmi.twitch.tv'
 const fdgtUser = new User({ username: 'fdgt' })
@@ -31,11 +31,11 @@ const wsServer = new WebSocket.Server({ port: WS_PORT })
 
 
 const handleConnection = socket => {
-  const connection = new Connection({
-    fdgtUser,
-    socket,
-    type: socket.send ? 'websocket' : 'irc',
-  })
+	const connection = new Connection({
+		fdgtUser,
+		socket,
+		type: socket.send ? 'websocket' : 'irc',
+	})
 }
 
 wsServer.on('connection', handleConnection)

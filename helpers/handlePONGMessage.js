@@ -1,7 +1,7 @@
 module.exports = (message, connection) => {
-  const { pongTimeoutID } = connection
+	const { pongTimeoutID } = connection
 
-  if (pongTimeoutID) {
-    clearTimeout(pongTimeoutID)
-  }
+	if (pongTimeoutID) {
+		clearTimeout(pongTimeoutID)
+	}
 }

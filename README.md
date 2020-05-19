@@ -32,7 +32,7 @@ client.connect()
 ```js
 const tmi = require('tmi.js')
 const client = new tmi.Client({
-  connection: { server: 'tmi.fdgt.dev' },
+	connection: { server: 'tmi.fdgt.dev' },
 })
 
 client.connect()
@@ -606,9 +606,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="http://trezy.com"><img src="https://avatars2.githubusercontent.com/u/442980?v=4" width="100px;" alt=""/><br /><sub><b>Trezy</b></sub></a><br /><a href="https://github.com/trezy-studios/fdgt/commits?author=trezy" title="Code">💻</a> <a href="#business-trezy" title="Business development">💼</a> <a href="https://github.com/trezy-studios/fdgt/commits?author=trezy" title="Documentation">📖</a> <a href="#example-trezy" title="Examples">💡</a> <a href="#infra-trezy" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-trezy" title="Maintenance">🚧</a></td>
-  </tr>
+	<tr>
+		<td align="center"><a href="http://trezy.com"><img src="https://avatars2.githubusercontent.com/u/442980?v=4" width="100px;" alt=""/><br /><sub><b>Trezy</b></sub></a><br /><a href="https://github.com/trezy-studios/fdgt/commits?author=trezy" title="Code">💻</a> <a href="#business-trezy" title="Business development">💼</a> <a href="https://github.com/trezy-studios/fdgt/commits?author=trezy" title="Documentation">📖</a> <a href="#example-trezy" title="Examples">💡</a> <a href="#infra-trezy" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-trezy" title="Maintenance">🚧</a></td>
+	</tr>
 </table>
 
 <!-- markdownlint-enable -->

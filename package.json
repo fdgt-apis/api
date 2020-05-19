@@ -1,25 +1,25 @@
 {
-  "name": "@fdgt/api",
-  "main": "index.js",
-  "version": "0.0.1",
-  "license": "MIT",
-  "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
-  },
-  "engines": {
-    "node": "14.x"
-  },
-  "dependencies": {
+	"name": "@fdgt/api",
+	"main": "index.js",
+	"version": "0.0.1",
+	"license": "MIT",
+	"scripts": {
+		"dev": "nodemon index.js",
+		"start": "node index.js"
+	},
+	"engines": {
+		"node": "14.x"
+	},
+	"dependencies": {
 		"faker": "^4.1.0",
-    "ians-logger": "^0.1.1",
-    "irc-message": "^3.0.2",
-    "moment": "^2.25.3",
-    "mri": "^1.1.5",
-    "tinycolor2": "^1.4.1",
-    "uuid": "^8.0.0",
-    "ws": "^7.2.5"
-  },
+		"ians-logger": "^0.1.1",
+		"irc-message": "^3.0.2",
+		"moment": "^2.25.3",
+		"mri": "^1.1.5",
+		"tinycolor2": "^1.4.1",
+		"uuid": "^8.0.0",
+		"ws": "^7.2.5"
+	},
 	"devDependencies": {
 		"nodemon": "^2.0.3"
 	}

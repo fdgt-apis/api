@@ -1,3 +1,3 @@
 module.exports = (message, connection) => {
-  connection.close()
+	connection.close()
 }
