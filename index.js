@@ -22,11 +22,12 @@ const User = require('./structures/User')
 // Local constants
 const {
 	IRC_PORT = 6667,
+	PORT,
 	WS_PORT = 3001,
 } = process.env
 const HOST = 'tmi.twitch.tv'
 const fdgtUser = new User({ username: 'fdgt' })
-const wsServer = new WebSocket.Server({ port: WS_PORT })
+const wsServer = new WebSocket.Server({ port: PORT || WS_PORT })
 
 
 
