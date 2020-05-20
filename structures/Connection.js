@@ -66,6 +66,11 @@ class Connection extends EventEmitter {
 		Private Properties
 	\***************************************************************************/
 
+	#acknowledge = () => {
+		this.isAcknowledged = true
+		this.sendMOTD()
+	}
+
 	#handleMessages = rawMessages => {
 		const messages = rawMessages.toString()
 			.replace(/\r\n$/, '')
@@ -207,6 +212,8 @@ class Connection extends EventEmitter {
 		this.options = options
 
 		log('New client connected', { id: this.id }, 'info')
+
+		this.once('acknowledge', this.#acknowledge)
 
 		this.#initializeConnectionCloseHandler()
 		this.#initializeMessageHandler()

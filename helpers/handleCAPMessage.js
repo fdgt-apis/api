@@ -17,8 +17,7 @@ module.exports = (message, connection) => {
 
 	switch (subcommand) {
 		case 'END':
-			isAcknowledged = true
-			sendMOTD()
+			connection.emit('acknowledge')
 			break
 
 		case 'LIST':
