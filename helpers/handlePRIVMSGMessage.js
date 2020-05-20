@@ -14,7 +14,7 @@ const User = require('../structures/User')
 
 
 // Local constants
-const HOST = 'tmi.twitch.tv'
+const { HOST } = process.env
 
 
 

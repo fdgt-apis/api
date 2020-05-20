@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+require('dotenv').config()
+
 // Module imports
 const { v4: uuid } = require('uuid')
 const net = require('net')
@@ -25,7 +27,7 @@ const {
 	PORT,
 	WS_PORT = 3001,
 } = process.env
-const HOST = 'tmi.twitch.tv'
+const { HOST } = process.env
 const fdgtUser = new User({ username: 'fdgt' })
 const wsServer = new WebSocket.Server({ port: PORT || WS_PORT })
 
@@ -48,5 +50,5 @@ const netServer = net.createServer(handleConnection)
 netServer.listen(IRC_PORT)
 
 log('Server started.')
-log(`Listening for WebSocket connections on port ${WS_PORT}.`)
+log(`Listening for WebSocket connections on port ${PORT || WS_PORT}.`)
 log(`Listening for IRC connections on port ${IRC_PORT}.`)

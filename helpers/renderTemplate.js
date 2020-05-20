@@ -7,7 +7,7 @@ const moment = require('moment')
 
 
 // Local constants
-const HOST = 'tmi.twitch.tv'
+const { HOST } = process.env
 
 
 

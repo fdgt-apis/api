@@ -1,5 +1,6 @@
 // Local constants
 const CAPABILITIES = require('../data/CAPABILITIES')
+const { HOST } = process.env
 
 
 
@@ -22,12 +23,12 @@ module.exports = (message, connection) => {
 
 		case 'LIST':
 		case 'LS':
-			send(`CAP * LS ${CAPABILITIES.join(' ')}`)
+			send(`:${HOST} CAP * LS ${CAPABILITIES.join(' ')}`)
 			break
 
 		case 'REQ':
 			addCapabilities(args.split(' '))
-			send(`CAP * ACK ${connection.capabilities.join(' ')}`)
+			send(`:${HOST} CAP * ACK ${connection.capabilities.join(' ')}`)
 			break
 
 		default:
