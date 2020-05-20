@@ -14,5 +14,5 @@
 	"turbo": 0,
 	"user-id": "<userid>",
 	"user-type": null,
-	"message": "<username>!<username>@<username>.<host> PRIVMSG #<channel> <message>"
+	"message": "<username>!<username>@<username>.<host> PRIVMSG #<channel> :<message>"
 }
