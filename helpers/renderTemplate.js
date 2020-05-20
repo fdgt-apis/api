@@ -51,8 +51,8 @@ module.exports = options => {
 			value = value.join(',')
 		}
 
-		if (typeof value === 'string') {
-			accumulator[key] = value.replace(/(?:<(\w+)>)/gu, (match, replacementKey) => {
+		if (['string', 'number'].includes(typeof value)) {
+			accumulator[key] = String(value).replace(/(?:<(\w+)>)/gu, (match, replacementKey) => {
 				if (parameters[replacementKey] || typeof parameters[replacementKey] === 'string') {
 					return parameters[replacementKey]
 				}
