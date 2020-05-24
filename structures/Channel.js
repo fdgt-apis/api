@@ -6,9 +6,16 @@ const { v4: uuid } = require('uuid')
 
 
 // Local imports
-const renderTemplate = require('../helpers/renderTemplate')
+const renderMessage = require('../helpers/renderMessage')
 const serializeTwitchObject = require('../helpers/serializeTwitchObject')
 const UserList = require('./UserList')
+
+
+
+
+
+// Local constants
+const { HOST } = process.env
 
 
 
@@ -19,9 +26,15 @@ class Channel extends UserList {
 		Local Properties
 	\***************************************************************************/
 
+	emoteOnly = false
+
+	followersOnly = false
+
 	id = uuid()
 
 	isConnected = false
+
+	subsOnly = false
 
 
 
@@ -65,38 +78,30 @@ class Channel extends UserList {
 
 	removeUser = this.remove
 
-	sendMessage = options => {
-		const {
-			args = {},
-			user = this.connection.fdgtUser,
-		} = options
+	sendErrorMessage = error => {
+		const user = this.connection.fdgtUser
 
-		const template = {
-			'badge-info': [],
-			badges: [],
-			color: '<color>',
-			'display-name': '<username>',
-			emotes: null,
-			flags: null,
-			id: uuid(),
-			mod: 0,
-			'room-id': '<channelid>',
-			subscriber: 0,
-			'tmi-sent-ts': '<timestamp>',
-			turbo: 0,
-			'user-id': '<userid>',
-			'user-type': null,
-			message: '<username>!<username>@<username>.<host> PRIVMSG #<channel> :<message>'
-		}
-
-		const response = renderTemplate({
-			args,
+		this.connection.send(renderMessage({
 			channel: this,
-			template,
+			template: () => ({
+				'badge-info': [],
+				badges: [],
+				color: user.color,
+				'display-name': user.username,
+				emotes: null,
+				flags: null,
+				id: uuid(),
+				mod: 0,
+				'room-id': this.id,
+				subscriber: 0,
+				'tmi-sent-ts': Date.now(),
+				turbo: 0,
+				'user-id': user.id,
+				'user-type': null,
+				message: `${user.username}!${user.username}@${user.username}.${HOST} PRIVMSG #${this.name} :${error}`,
+			}),
 			user,
-		})
-
-		this.connection.send(`@${serializeTwitchObject(response.tags)} :${response.message}`)
+		}))
 	}
 
 

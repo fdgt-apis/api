@@ -6,7 +6,7 @@ const mri = require('mri')
 
 
 // Local imports
-const getMock = require('../helpers/getMock')
+const renderCommandResponse = require('../helpers/renderCommandResponse')
 const User = require('../structures/User')
 
 
@@ -43,7 +43,7 @@ module.exports = (messageData, connection) => {
 		user = new User({ username: args.username })
 	}
 
-	const response = getMock({
+	const response = renderCommandResponse({
 		args,
 		channel,
 		command,
@@ -53,10 +53,6 @@ module.exports = (messageData, connection) => {
 	if (response) {
 		send(response)
 	} else {
-		channel.sendMessage({
-			args: {
-				message: `FDGT doesn't support ${command} events.`,
-			},
-		})
+		channel.sendErrorMessage(`FDGT doesn't support the "${command}" command.`)
 	}
 }

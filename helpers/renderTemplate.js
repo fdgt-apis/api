@@ -1,6 +1,5 @@
 // Module imports
 const { v4: uuid } = require('uuid')
-const moment = require('moment')
 
 
 
@@ -14,57 +13,28 @@ const { HOST } = process.env
 
 
 module.exports = options => {
+	const messageID = uuid()
 	const {
-		args,
+		args = {},
 		channel,
 		template,
 		user,
 	} = options
 	const parameters = {
-		bitscount: 100,
 		channel: channel?.name,
 		channelid: channel?.id,
 		color: user?.color,
-		giftcount: 5,
 		host: HOST,
-		messageid: uuid(),
-		months: 3,
+		id: messageID,
+		messageid: messageID,
 		timestamp: Date.now(),
 		userid: user?.id,
 		username: user?.username,
-		viewercount: 10,
 		...args,
 	}
 	const response = {}
 
-	const timeAsMoment = moment(parameters.timestamp)
-
-	parameters.endmonth = timeAsMoment.month() + parameters.months
-	parameters.endmonthname = timeAsMoment.format('MMMM')
-
-	if (!parameters.totalgiftcount) {
-		parameters.totalgiftcount = parameters.giftcount
-	}
-
-	const renderedTemplate = Object.entries(template).reduce((accumulator, [key, value]) => {
-		if (Array.isArray(value)) {
-			value = value.join(',')
-		}
-
-		if (['string', 'number'].includes(typeof value)) {
-			accumulator[key] = String(value).replace(/(?:<(\w+)>)/gu, (match, replacementKey) => {
-				if (parameters[replacementKey] || typeof parameters[replacementKey] === 'string') {
-					return parameters[replacementKey]
-				}
-
-				return match
-			})
-		} else if (parameters[key]) {
-			accumulator[key] = parameters[key]
-		}
-
-		return accumulator
-	}, { ...template })
+	const renderedTemplate = template(parameters)
 
 	response.message = renderedTemplate.message || ''
 	response.tags = renderedTemplate

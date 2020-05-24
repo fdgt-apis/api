@@ -1,14 +1,5 @@
 // Module imports
-const fs = require('fs')
 const path = require('path')
-
-
-
-
-
-// Local imports
-const renderTemplate = require('./renderTemplate')
-const serializeTwitchObject = require('./serializeTwitchObject')
 
 
 
@@ -22,22 +13,10 @@ const mocksPath = path.resolve(__dirname, '..', 'data-mocks')
 
 
 module.exports = options => {
-	const {
-		args,
-		channel,
-		command,
-		user,
-	} = options
+	const { command } = options
 
 	try {
-		const response = renderTemplate({
-			args,
-			channel,
-			template: require(path.resolve(mocksPath, command)),
-			user,
-		})
-
-		return `@${serializeTwitchObject(response.tags)} :${response.message}`
+		return require(path.resolve(mocksPath, `${command}.js`))
 	} catch (error) {
 		return null
 	}

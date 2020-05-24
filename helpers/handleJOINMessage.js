@@ -37,7 +37,7 @@ module.exports = (message, connection) => {
 			`:${username}!${username}@${username}.${HOST} JOIN #${channel.name}`,
 			`:${username}.${HOST} 353 ${username} = #${channel.name} :${username}`,
 			`:${username}.${HOST} 366 ${username} #${channel.name} :End of /NAMES list`,
-			`@emote-only=0;followers-only=-1;r9k=0;rituals=0;room-id=${channel.id};slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #${channel.name}`,
+			`@emote-only=${Number(channel.emoteOnly)};followers-only=${Number(channel.followersOnly)};r9k=0;rituals=0;room-id=${channel.id};slow=${Number(channel.slowMode)};subs-only=${Number(channel.subsOnly)} :tmi.twitch.tv ROOMSTATE #${channel.name}`,
 		])
 	})
 }
