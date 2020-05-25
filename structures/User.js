@@ -35,6 +35,10 @@ class User {
 		Getters
 	\***************************************************************************/
 
+	get displayName () {
+		return this.options.username
+	}
+
 	get username () {
 		return this.options.username.toLowerCase()
 	}
