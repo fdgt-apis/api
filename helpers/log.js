@@ -5,10 +5,19 @@ const Logger = require('ians-logger').createLoggerFromName('fdgt')
 
 
 
-module.exports = (message, meta = {}, type = 'log') => {
-	Logger[type](message)
+// Local constants
+const { DEBUG } = process.env
 
-	Object.entries(meta).forEach(([key, value]) => {
-		console.log(`> ${key}:`, value)
-	})
+
+
+
+
+module.exports = (message, meta = {}, type = 'log') => {
+	if (DEBUG) {
+		Logger[type](message)
+
+		Object.entries(meta).forEach(([key, value]) => {
+			console.log(`> ${key}:`, value)
+		})
+	}
 }
