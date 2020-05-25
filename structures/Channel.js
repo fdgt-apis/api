@@ -46,7 +46,7 @@ class Channel extends UserList {
 
 	addUser = this.add
 
-	connect = options => {
+	connect = (options = {}) => {
 		const { user } = options
 
 		if (user) {
