@@ -1,9 +1,5 @@
 // Module imports
-const {
-	fake,
-	replace,
-	spy,
-} = require('sinon')
+const { spy } = require('sinon')
 const { expect } = require('chai')
 const { v4: uuid } = require('uuid')
 
