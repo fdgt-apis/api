@@ -15,7 +15,7 @@ module.exports = class {
 
 	add = item => this.data.push(item)
 
-	findByID = id => this.findByKey('id')
+	findByID = id => this.findByKey('id', id)
 
 	findByKey = (key, value) => this.data.find(item => (item[key] === value))
 
