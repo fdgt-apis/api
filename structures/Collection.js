@@ -15,16 +15,15 @@ module.exports = class {
 
 	add = item => this.data.push(item)
 
+	clear = item => this.data.splice(0, this.data.length)
+
 	findByID = id => this.findByKey('id', id)
 
 	findByKey = (key, value) => this.data.find(item => (item[key] === value))
 
 	getRandom = () => this.data[Math.floor(Math.random() * this.data.length)]
 
-	remove = item => {
-		const itemIndex = this.data.indexOf(item)
-		this.data.splice(itemIndex, 1)
-	}
+	remove = item => this.data.splice(this.data.indexOf(item), 1)
 
 
 
