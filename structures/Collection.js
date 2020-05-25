@@ -21,7 +21,10 @@ module.exports = class {
 
 	getRandom = () => this.data[Math.floor(Math.random() * this.data.length)]
 
-	remove = item => this.data.filter(datum => datum !== item)
+	remove = item => {
+		const itemIndex = this.data.indexOf(item)
+		this.data.splice(itemIndex, 1)
+	}
 
 
 
