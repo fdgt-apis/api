@@ -1,9 +1,5 @@
 // Module imports
-const {
-	fake,
-	replace,
-	spy,
-} = require('sinon')
+const { spy } = require('sinon')
 const { parse: parseIRCMessage } = require('irc-message')
 const { expect } = require('chai')
 const EventEmitter = require('events')
@@ -23,8 +19,16 @@ const User = require('../../structures/User')
 
 
 // Local constants
-const errorMessage = 'Error foo bar baz!'
+const testErrorMessage = 'Error foo bar baz!'
 const testChannelName = 'TestChannel'
+const ircSocket = class extends EventEmitter {
+	end = () => {}
+	write = () => {}
+}
+const wsSocket = class extends EventEmitter {
+	send = () => {}
+	terminate = () => {}
+}
 
 
 
@@ -34,26 +38,29 @@ describe('Channel', function() {
 	const fdgtUser = new User({ username: 'fdgt' })
 	const user = new User()
 	let connection = null
-	let connectionSendFake = null
-
 	let channel = null
+	let socket = null
 
 	beforeEach(() => {
-		connectionSendFake = fake()
+		socket = new wsSocket
 		connection = new Connection({
 			fdgtUser,
-			socket: new EventEmitter,
+			socket,
 		})
-		replace(connection, 'send', connectionSendFake)
 		channel = new Channel({
 			connection,
 			name: testChannelName,
 		})
 		spy(channel)
+		spy(connection)
+		spy(socket)
 	})
 
 	afterEach(() => {
+		connection.close()
 		channel = null
+		connection = null
+		socket = null
 	})
 
 	describe('before connecting', () => {
@@ -171,22 +178,23 @@ describe('Channel', function() {
 
 		describe('sendErrorMessage', () => {
 			it('should only be called once', () => {
-				channel.sendErrorMessage(errorMessage)
+				channel.sendErrorMessage(testErrorMessage)
 				expect(channel.sendErrorMessage.calledOnce).to.be.true
 			})
 
 			it('should send via the channel\'s Connection', () => {
-				channel.sendErrorMessage(errorMessage)
-				expect(connectionSendFake.callCount).to.equal(1)
+				channel.sendErrorMessage(testErrorMessage)
+				expect(socket.send.callCount).to.equal(1)
 			})
 
 			it('should send the passed message', () => {
-				channel.sendErrorMessage(errorMessage)
+				channel.sendErrorMessage(testErrorMessage)
 
-				const { params: [channelName, ...[message]] } = parseIRCMessage(connectionSendFake.firstArg)
-				expect(channel.sendErrorMessage.calledWithExactly(errorMessage)).to.be.true
+				const [rawMessage] = socket.send.getCall(0).args
+				const { params: [channelName, ...[message]] } = parseIRCMessage(rawMessage)
+
 				expect(channelName).to.be.string(`#${testChannelName.toLowerCase()}`)
-				expect(message).to.be.string(errorMessage)
+				expect(message).to.be.string(testErrorMessage)
 			})
 		})
 	})
