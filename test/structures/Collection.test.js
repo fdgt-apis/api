@@ -108,7 +108,7 @@ describe('Collection', function() {
 	describe('ids', () => {
 		it('should be a list of IDs for all items in a collection', () => {
 			fillCollection()
-			expect(collection.ids).to.include.members(randomItems.map(({ id }) => id))
+			expect(collection.ids).to.have.members(randomItems.map(({ id }) => id))
 		})
 	})
 
