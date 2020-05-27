@@ -12,7 +12,7 @@
 	"scripts": {
 		"dev": "nodemon index.js",
 		"start": "node index.js",
-		"test": "mocha --recursive"
+		"test": "mocha --require dotenv/config --recursive"
 	},
 	"dependencies": {
 		"dotenv": "^8.2.0",
