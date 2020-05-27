@@ -142,7 +142,7 @@ class Connection extends EventEmitter {
 		]
 
 		closeEvents.forEach(eventType => {
-			this.socket.on(eventType, this.close)
+			this.socket.on(eventType, () => this.close())
 		})
 	}
 
