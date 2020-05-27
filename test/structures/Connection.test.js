@@ -51,7 +51,6 @@ describe('Connection', function() {
 		connection = new Connection({
 			fdgtUser,
 			socket,
-			type: 'websocket',
 		})
 
 		spy(connection)

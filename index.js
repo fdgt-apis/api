@@ -39,7 +39,6 @@ const handleConnection = socket => {
 	const connection = new Connection({
 		fdgtUser,
 		socket,
-		type: socket.send ? 'websocket' : 'irc',
 	})
 }
 

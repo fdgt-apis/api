@@ -303,7 +303,11 @@ class Connection extends EventEmitter {
 	}
 
 	get type () {
-		return this.options.type
+		if (this.socket.send) {
+			return 'websocket'
+		}
+
+		return 'irc'
 	}
 }
 
