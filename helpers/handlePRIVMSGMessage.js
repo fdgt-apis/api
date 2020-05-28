@@ -27,15 +27,15 @@ module.exports = (messageData, connection) => {
 		send,
 		username,
 	} = connection
-	const [channelName, message] = messageData.params
+	const [channelName, ...message] = messageData.params
 
 	const channel = getChannel(channelName)
 	const {
 		_: [command, ...messageBody],
 		...args
-	} = mri(message.split(' '))
+	} = mri(message)
 
-	args.message = messageBody
+	args.message = messageBody.join(' ')
 
 	let user = getUser(username)
 
