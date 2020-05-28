@@ -1,1 +1,1 @@
-module.exports = array => Array.from(new Set(array))
+export default array => Array.from(new Set(array))

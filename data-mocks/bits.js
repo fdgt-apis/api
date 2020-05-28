@@ -1,8 +1,8 @@
-const defaults = {
+export const defaults = {
 	bitscount: 100,
 }
 
-module.exports = (args = {}) => {
+export const render = (args = {}) => {
 	const {
 		bitscount,
 		color,

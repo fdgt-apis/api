@@ -1,9 +1,9 @@
-const defaults = {
+export const defaults = {
 	prime: false,
 	tier: 1,
 }
 
-module.exports = (args = {}) => {
+export const render = (args = {}) => {
 	const {
 		channel,
 		channelid,

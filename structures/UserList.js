@@ -1,11 +1,11 @@
 // Local imports
-const Collection = require('./Collection')
+import Collection from './Collection'
 
 
 
 
 
-module.exports = class extends Collection {
+export default class extends Collection {
 	/***************************************************************************\
 		Public Methods
 	\***************************************************************************/

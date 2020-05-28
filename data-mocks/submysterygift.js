@@ -1,8 +1,8 @@
-const defaults = {
+export const defaults = {
 	giftcount: 5,
 }
 
-module.exports = (args = {}) => {
+export const render = (args = {}) => {
 	const {
 		channel,
 		channelid,

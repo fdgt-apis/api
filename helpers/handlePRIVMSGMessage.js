@@ -1,13 +1,13 @@
 // Module imports
-const mri = require('mri')
+import mri from 'mri'
 
 
 
 
 
 // Local imports
-const renderCommandResponse = require('../helpers/renderCommandResponse')
-const User = require('../structures/User')
+import renderCommandResponse from '../helpers/renderCommandResponse'
+import User from '../structures/User'
 
 
 
@@ -20,7 +20,7 @@ const { HOST } = process.env
 
 
 
-module.exports = (messageData, connection) => {
+export default (messageData, connection) => {
 	const {
 		getChannel,
 		getUser,
@@ -31,7 +31,10 @@ module.exports = (messageData, connection) => {
 
 	const channel = getChannel(channelName)
 	const {
-		_: [command, ...messageBody],
+		_: [
+			command,
+			...messageBody
+		],
 		...args
 	} = mri(message)
 

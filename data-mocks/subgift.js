@@ -1,15 +1,15 @@
 // Module imports
-const faker = require('faker')
+import faker from 'faker'
 
 
 
 
 
-const defaults = {
+export const defaults = {
 	tier: 1,
 }
 
-module.exports = (args = {}) => {
+export const render = (args = {}) => {
 	const {
 		channel,
 		channelid,

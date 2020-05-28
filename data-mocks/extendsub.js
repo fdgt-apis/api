@@ -1,16 +1,16 @@
 // Module imports
-const moment = require('moment')
+import moment from 'moment'
 
 
 
 
 
-const defaults = {
+export const defaults = {
 	months: 3,
 	tier: 1,
 }
 
-module.exports = (args = {}) => {
+export const render = (args = {}) => {
 	const {
 		channel,
 		channelid,

@@ -1,9 +1,9 @@
-const defaults = {
+export const defaults = {
 	off: false,
 	on: true,
 }
 
-module.exports = (args = {}) => {
+export const render = (args = {}) => {
 	const {
 		channel,
 		host,

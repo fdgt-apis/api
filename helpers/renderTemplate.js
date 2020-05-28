@@ -1,5 +1,5 @@
 // Module imports
-const { v4: uuid } = require('uuid')
+import { v4 as uuid } from 'uuid'
 
 
 
@@ -12,7 +12,7 @@ const { HOST } = process.env
 
 
 
-module.exports = options => {
+export default options => {
 	const messageID = uuid()
 	const {
 		args = {},

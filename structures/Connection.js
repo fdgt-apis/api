@@ -1,28 +1,28 @@
 // Module imports
-const { parse: parseIRCMessage } = require('irc-message')
-const { v4: uuid } = require('uuid')
-const EventEmitter = require('events')
+import { parse as parseIRCMessage } from 'irc-message'
+import { v4 as uuid } from 'uuid'
+import EventEmitter from 'events'
 
 
 
 
 
 // Local imports
-const Channel = require('../structures/Channel')
-const ChannelList = require('../structures/ChannelList')
-const log = require('../helpers/log')
-const handleCAPMessage = require('../helpers/handleCAPMessage')
-const handleJOINMessage = require('../helpers/handleJOINMessage')
-const handleNICKMessage = require('../helpers/handleNICKMessage')
-const handlePARTMessage = require('../helpers/handlePARTMessage')
-const handlePASSMessage = require('../helpers/handlePASSMessage')
-const handlePINGMessage = require('../helpers/handlePINGMessage')
-const handlePONGMessage = require('../helpers/handlePONGMessage')
-const handlePRIVMSGMessage = require('../helpers/handlePRIVMSGMessage')
-const handleUSERMessage = require('../helpers/handleUSERMessage')
-const handleQUITMessage = require('../helpers/handleQUITMessage')
-const User = require('../structures/User')
-const UserList = require('../structures/UserList')
+import Channel from '../structures/Channel'
+import ChannelList from '../structures/ChannelList'
+import log from '../helpers/log'
+import handleCAPMessage from '../helpers/handleCAPMessage'
+import handleJOINMessage from '../helpers/handleJOINMessage'
+import handleNICKMessage from '../helpers/handleNICKMessage'
+import handlePARTMessage from '../helpers/handlePARTMessage'
+import handlePASSMessage from '../helpers/handlePASSMessage'
+import handlePINGMessage from '../helpers/handlePINGMessage'
+import handlePONGMessage from '../helpers/handlePONGMessage'
+import handlePRIVMSGMessage from '../helpers/handlePRIVMSGMessage'
+import handleUSERMessage from '../helpers/handleUSERMessage'
+import handleQUITMessage from '../helpers/handleQUITMessage'
+import User from '../structures/User'
+import UserList from '../structures/UserList'
 
 
 
@@ -35,7 +35,7 @@ const { HOST } = process.env
 
 
 
-class Connection extends EventEmitter {
+export default class extends EventEmitter {
 	/***************************************************************************\
 		Local Properties
 	\***************************************************************************/
@@ -315,9 +315,3 @@ class Connection extends EventEmitter {
 		return 'irc'
 	}
 }
-
-
-
-
-
-module.exports = Connection

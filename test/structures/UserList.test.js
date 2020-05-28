@@ -1,16 +1,16 @@
 // Module imports
-const { expect } = require('chai')
-const { v4: uuid } = require('uuid')
-const faker = require('faker')
+import { v4 as uuid } from 'uuid'
+import { expect } from 'chai'
+import faker from 'faker'
 
 
 
 
 
 // Local imports
-const User = require('../../structures/User')
-const UserList = require('../../structures/UserList')
-const dedupeArray = require('../../helpers/dedupeArray')
+import User from '../../structures/User'
+import UserList from '../../structures/UserList'
+import dedupeArray from '../../helpers/dedupeArray'
 
 
 

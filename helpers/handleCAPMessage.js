@@ -1,12 +1,18 @@
+// Local imports
+import CAPABILITIES from '../data/CAPABILITIES'
+
+
+
+
+
 // Local constants
-const CAPABILITIES = require('../data/CAPABILITIES')
 const { HOST } = process.env
 
 
 
 
 
-module.exports = (message, connection) => {
+export default (message, connection) => {
 	const {
 		addCapabilities,
 		send,

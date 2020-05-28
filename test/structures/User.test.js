@@ -1,15 +1,15 @@
 // Module imports
-const { expect } = require('chai')
-const { v4: uuid } = require('uuid')
-const tinycolor = require('tinycolor2')
-const validateUUID = require('uuid-validate')
+import { v4 as uuid } from 'uuid'
+import { expect } from 'chai'
+import tinycolor from 'tinycolor2'
+import validateUUID from 'uuid-validate'
 
 
 
 
 
 // Local imports
-const User = require('../../structures/User')
+import User from '../../structures/User'
 
 
 

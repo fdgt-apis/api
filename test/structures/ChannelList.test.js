@@ -1,16 +1,16 @@
 // Module imports
-const { expect } = require('chai')
-const { v4: uuid } = require('uuid')
-const faker = require('faker')
+import { v4 as uuid } from 'uuid'
+import { expect } from 'chai'
+import faker from 'faker'
 
 
 
 
 
 // Local imports
-const Channel = require('../../structures/Channel')
-const ChannelList = require('../../structures/ChannelList')
-const dedupeArray = require('../../helpers/dedupeArray')
+import Channel from '../../structures/Channel'
+import ChannelList from '../../structures/ChannelList'
+import dedupeArray from '../../helpers/dedupeArray'
 
 
 

@@ -1,23 +1,23 @@
 // Module imports
-const {
+import {
 	spy,
 	useFakeTimers,
-} = require('sinon')
-const { expect } = require('chai')
-const { parse: parseIRCMessage } = require('irc-message')
-const { v4: uuid } = require('uuid')
-const EventEmitter = require('events')
-const faker = require('faker')
+} from 'sinon'
+import { parse as parseIRCMessage } from 'irc-message'
+import { v4 as uuid } from 'uuid'
+import { expect } from 'chai'
+import EventEmitter from 'events'
+import faker from 'faker'
 
 
 
 
 
 // Local imports
-const CAPABILITIES = require('../../data/CAPABILITIES')
-const Channel = require('../../structures/Channel')
-const Connection = require('../../structures/Connection')
-const User = require('../../structures/User')
+import CAPABILITIES from '../../data/CAPABILITIES'
+import Channel from '../../structures/Channel'
+import Connection from '../../structures/Connection'
+import User from '../../structures/User'
 
 
 

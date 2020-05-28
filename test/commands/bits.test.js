@@ -1,23 +1,23 @@
 // Module imports
-const {
+import {
 	spy,
 	useFakeTimers,
-} = require('sinon')
-const { expect } = require('chai')
-const { parse: parseIRCMessage } = require('irc-message')
-const { v4: uuid } = require('uuid')
-const EventEmitter = require('events')
-const faker = require('faker')
+} from 'sinon'
+import { expect } from 'chai'
+import { parse as parseIRCMessage } from 'irc-message'
+import { v4 as uuid } from 'uuid'
+import EventEmitter from 'events'
+import faker from 'faker'
 
 
 
 
 
 // Local imports
-const CAPABILITIES = require('../../data/CAPABILITIES')
-const Channel = require('../../structures/Channel')
-const Connection = require('../../structures/Connection')
-const User = require('../../structures/User')
+import CAPABILITIES from '../../data/CAPABILITIES'
+import Channel from '../../structures/Channel'
+import Connection from '../../structures/Connection'
+import User from '../../structures/User'
 
 
 
@@ -40,7 +40,7 @@ const wsSocket = class extends EventEmitter {
 
 
 
-describe.only('bits events', function() {
+describe('bits events', function() {
 	const clock = useFakeTimers()
 	const fdgtUser = new User({ username: 'fdgt' })
 
@@ -73,7 +73,7 @@ describe.only('bits events', function() {
 	it('should simulate a `bits` event', () => {
 		socket.emit('message', `PRIVMSG #${testChannelName} bits`)
 
-		const rawMessage = connection.send.getCall(0).firstArg
+		const rawMessage = connection.send.getCall(0)?.firstArg
 		const { tags } = parseIRCMessage(rawMessage)
 
 		expect(tags.bits).to.exist
@@ -89,7 +89,6 @@ describe.only('bits events', function() {
 			tags,
 		} = parseIRCMessage(rawMessage)
 
-		console.log(forwardedMessage)
 		expect(forwardedMessage).to.equal(message)
 	})
 

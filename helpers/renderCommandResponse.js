@@ -1,12 +1,12 @@
 // Local imports
-const getMock = require('../helpers/getMock')
-const renderMessage = require('../helpers/renderMessage')
+import getMock from '../helpers/getMock'
+import renderMessage from '../helpers/renderMessage'
 
 
 
 
 
-module.exports = options => {
+export default options => {
 	const {
 		args,
 		channel,

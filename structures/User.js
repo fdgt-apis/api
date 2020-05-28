@@ -1,12 +1,12 @@
 // Module imports
-const { v4: uuid } = require('uuid')
-const tinycolor = require('tinycolor2')
+import { v4 as uuid } from 'uuid'
+import tinycolor from 'tinycolor2'
 
 
 
 
 
-class User {
+export default class {
 	/***************************************************************************\
 		Local Properties
 	\***************************************************************************/
@@ -43,9 +43,3 @@ class User {
 		return this.options.username.toLowerCase()
 	}
 }
-
-
-
-
-
-module.exports = User

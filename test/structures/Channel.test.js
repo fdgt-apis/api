@@ -1,18 +1,18 @@
 // Module imports
-const { spy } = require('sinon')
-const { parse: parseIRCMessage } = require('irc-message')
-const { expect } = require('chai')
-const EventEmitter = require('events')
-const validateUUID = require('uuid-validate')
+import { parse as parseIRCMessage } from 'irc-message'
+import { spy } from 'sinon'
+import { expect } from 'chai'
+import EventEmitter from 'events'
+import validateUUID from 'uuid-validate'
 
 
 
 
 
 // Local imports
-const Channel = require('../../structures/Channel')
-const Connection = require('../../structures/Connection')
-const User = require('../../structures/User')
+import Channel from '../../structures/Channel'
+import Connection from '../../structures/Connection'
+import User from '../../structures/User'
 
 
 

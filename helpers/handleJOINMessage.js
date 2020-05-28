@@ -1,6 +1,6 @@
 // Local imports
-const Channel = require('../structures/Channel')
-const User = require('../structures/User')
+import Channel from '../structures/Channel'
+import User from '../structures/User'
 
 
 
@@ -13,7 +13,7 @@ const { HOST } = process.env
 
 
 
-module.exports = (message, connection) => {
+export default (message, connection) => {
 	const {
 		channels,
 		getChannel,

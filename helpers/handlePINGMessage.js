@@ -1,3 +1,3 @@
-module.exports = (message, connection) => {
+export default (message, connection) => {
 	connection.sendPong()
 }

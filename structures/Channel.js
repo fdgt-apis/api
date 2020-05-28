@@ -1,14 +1,14 @@
 // Module imports
-const { v4: uuid } = require('uuid')
+import { v4 as uuid } from 'uuid'
 
 
 
 
 
 // Local imports
-const renderMessage = require('../helpers/renderMessage')
-const serializeTwitchObject = require('../helpers/serializeTwitchObject')
-const UserList = require('./UserList')
+import renderMessage from '../helpers/renderMessage'
+import serializeTwitchObject from '../helpers/serializeTwitchObject'
+import UserList from './UserList'
 
 
 
@@ -21,7 +21,7 @@ const { HOST } = process.env
 
 
 
-class Channel extends UserList {
+export default class extends UserList {
 	/***************************************************************************\
 		Local Properties
 	\***************************************************************************/
@@ -124,9 +124,3 @@ class Channel extends UserList {
 		return this.options.name
 	}
 }
-
-
-
-
-
-module.exports = Channel

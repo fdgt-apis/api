@@ -1,12 +1,12 @@
 // Local imports
-const renderTemplate = require('../helpers/renderTemplate')
-const serializeTwitchObject = require('../helpers/serializeTwitchObject')
+import renderTemplate from '../helpers/renderTemplate'
+import serializeTwitchObject from '../helpers/serializeTwitchObject'
 
 
 
 
 
-module.exports = options => {
+export default options => {
 	const {
 		args,
 		channel,

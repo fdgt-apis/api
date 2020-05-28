@@ -1,14 +1,14 @@
 // Module imports
-const { spy } = require('sinon')
-const { expect } = require('chai')
-const { v4: uuid } = require('uuid')
+import { v4 as uuid } from 'uuid'
+import { spy } from 'sinon'
+import { expect } from 'chai'
 
 
 
 
 
 // Local imports
-const Collection = require('../../structures/Collection')
+import Collection from '../../structures/Collection'
 
 
 
