@@ -13,21 +13,22 @@ module.exports = (message, connection) => {
 		sendMOTD,
 		sendUnknownCommand,
 	} = connection
-	const [subcommand, args] = message.params
+	const [subcommand, ...args] = message.params
 
 	switch (subcommand) {
 		case 'END':
+			connection.capabilitiesFinished = true
 			connection.emit('acknowledge')
 			break
 
 		case 'LIST':
 		case 'LS':
-			send(`:${HOST} CAP * LS ${CAPABILITIES.join(' ')}`)
+			send(`:${HOST} CAP * ${subcommand} ${CAPABILITIES.join(' ')}`)
 			break
 
 		case 'REQ':
-			addCapabilities(args.split(' '))
-			send(`:${HOST} CAP * ACK ${connection.capabilities.join(' ')}`)
+			addCapabilities(args)
+			send(`:${HOST} CAP * ACK ${connection.capabilities.filter(capability => CAPABILITIES.includes(capability)).join(' ')}`)
 			break
 
 		default:
