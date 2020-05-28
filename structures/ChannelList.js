@@ -10,7 +10,7 @@ module.exports = class extends Collection {
 		Public Methods
 	\***************************************************************************/
 
-	findByName = name => this.findByKey('name', name.replace(/^#/u, ''))
+	findByName = name => this.findByKey('name', name.replace(/^#/, '').toLowerCase())
 
 
 
