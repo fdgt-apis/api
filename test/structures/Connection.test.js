@@ -25,6 +25,7 @@ const User = require('../../structures/User')
 
 // Local constants
 const testChannelName = 'TestChannel'
+const testOauthToken = 'oauth:1234567890'
 const testUsername = 'Bob'
 const ircSocket = class extends EventEmitter {
 	end = () => {}
@@ -81,7 +82,7 @@ describe('Connection', function() {
 			})
 		})
 
-		describe('messages', () => {
+		describe('commands', () => {
 			it('should send an unknown command for unrecognized events', () => {
 				socket.emit('message', `:${testUsername}!${testUsername}@${testUsername}.tmi.twitch.tv PRIVMSG #${testChannelName.toLowerCase()} :foo`)
 				const [[message]] = socket.send.args
@@ -98,22 +99,191 @@ describe('Connection', function() {
 				expect(socket.send.calledOnce).to.be.true
 			})
 
-			xdescribe('CAP commands', () => {})
+			describe('CAP', () => {
+				['LIST', 'LS'].forEach(subcommand => {
+					describe(`${subcommand} subcommand`, () => {
+						it('should list all available capabilities', () => {
+							socket.emit('message', `CAP ${subcommand} 302`)
 
-			it('should send an unknown command for unrecognized events', () => {
-				socket.emit('message', `:${testUsername}!${testUsername}@${testUsername}.tmi.twitch.tv PRIVMSG #${testChannelName.toLowerCase()} :foo`)
-				const [[message]] = socket.send.args
-				const {
-					command,
-					params: [
-						channelName,
-						eventName,
-					],
-				} = parseIRCMessage(message)
-				expect(command).to.be.string('PRIVMSG')
-				expect(channelName).to.be.string(`#${testChannelName.toLowerCase()}`)
-				expect(eventName).to.be.string('foo')
-				expect(socket.send.calledOnce).to.be.true
+							const [[rawMessage]] = socket.send.args
+							const {
+								params: [
+									client,
+									responseSubcommand,
+									...capabilities
+								],
+							} = parseIRCMessage(rawMessage)
+
+							expect(client).to.be.string('*')
+							expect(responseSubcommand).to.be.string(subcommand)
+							expect(capabilities).to.have.members(CAPABILITIES)
+						})
+					})
+				})
+
+				describe('END subcommand', () => {
+					it('should send the MOTD if the user\'s NICK and PASS have already been set', () => {
+						socket.emit('message', `PASS ${testOauthToken}`)
+						socket.emit('message', `NICK ${testUsername}`)
+						socket.emit('message', 'CAP END')
+
+						expect(connection.sendMOTD.calledOnce).to.be.true
+					})
+				})
+
+				describe('REQ subcommand', () => {
+					it('should acknowledge capabilities', () => {
+						socket.emit('message', `CAP REQ ${CAPABILITIES.join(' ')}`)
+
+						const [[rawMessage]] = socket.send.args
+						const {
+							params: [
+								client,
+								responseSubcommand,
+								...requestedCapabilities
+							],
+						} = parseIRCMessage(rawMessage)
+
+						expect(responseSubcommand).to.be.string('ACK')
+						expect(requestedCapabilities).to.have.members(CAPABILITIES)
+					})
+
+					it('should ignore unrecognized capabilities', () => {
+						socket.emit('message', `CAP REQ ${CAPABILITIES.join(' ')} foobar`)
+
+						const [[rawMessage]] = socket.send.args
+						const {
+							params: [
+								client,
+								responseSubcommand,
+								...requestedCapabilities
+							],
+						} = parseIRCMessage(rawMessage)
+
+						expect(responseSubcommand).to.be.string('ACK')
+						expect(requestedCapabilities).to.have.members(CAPABILITIES)
+						expect(requestedCapabilities).to.not.have.members(['foobar'])
+					})
+				})
+			})
+
+			describe('JOIN', () => {
+				beforeEach(() => {
+					socket.emit('message', `NICK ${testUsername}`)
+					socket.emit('message', `PASS ${testOauthToken}`)
+					socket.emit('message', `CAP REQ ${CAPABILITIES.join(' ')}`)
+					socket.emit('message', 'CAP END')
+					socket.emit('message', `JOIN #${testChannelName}`)
+				})
+
+				it('should add user to the channel', () => {
+					const channel = connection.channels.findByName(testChannelName)
+					const user = connection.users.findByUsername(testUsername.toLowerCase())
+
+					expect(channel.findByUsername(testUsername.toLowerCase())).to.equal(user)
+				})
+
+				it('should respond with a JOIN message', () => {
+					const messages = socket.send.getCalls().map(({ args }) => parseIRCMessage(args[0]))
+					const messageSent = messages.some(({ command }) => (command === 'JOIN'))
+
+					expect(messageSent).to.be.true
+				})
+
+				it('should respond with a NAMREPLY message', () => {
+					const messages = socket.send.getCalls().map(({ args }) => parseIRCMessage(args[0]))
+					const messageSent = messages.some(({ command }) => (command === '353'))
+
+					expect(messageSent).to.be.true
+				})
+
+				it('should respond with an ENDOFNAMES message', () => {
+					const messages = socket.send.getCalls().map(({ args }) => parseIRCMessage(args[0]))
+					const messageSent = messages.some(({ command }) => (command === '366'))
+
+					expect(messageSent).to.be.true
+				})
+			})
+
+			describe('NICK', () => {
+				it('should set the username on the connection', () => {
+					socket.emit('message', `NICK ${testUsername}`)
+					expect(connection.username).to.be.string(testUsername)
+				})
+
+				it('should send the MOTD if capabilities have been requested and the token has been set', () => {
+					socket.emit('message', `CAP REQ ${CAPABILITIES.join(' ')}`)
+					socket.emit('message', 'CAP END')
+					socket.emit('message', `PASS ${testUsername}`)
+					socket.emit('message', `NICK ${testUsername}`)
+
+					expect(connection.sendMOTD.calledOnce).to.be.true
+				})
+			})
+
+			describe('PART', () => {
+				beforeEach(() => {
+					socket.emit('message', `NICK ${testUsername}`)
+					socket.emit('message', `PASS ${testOauthToken}`)
+					socket.emit('message', `CAP REQ ${CAPABILITIES.join(' ')}`)
+					socket.emit('message', 'CAP END')
+					socket.emit('message', `JOIN #${testChannelName}`)
+				})
+
+				it('should remove user from the channel', () => {
+					const channel = connection.channels.findByName(testChannelName.toLowerCase())
+					const user = connection.users.findByUsername(testUsername.toLowerCase())
+
+					socket.emit('message', `PART #${testChannelName}`)
+
+					expect(channel.findByUsername(testUsername.toLowerCase())).to.not.exist
+				})
+
+				it('should respond with a PART message', () => {
+					socket.emit('message', `PART #${testChannelName}`)
+
+					const messages = socket.send.getCalls().map(({ args }) => parseIRCMessage(args[0]))
+					const messageSent = messages.some(({ command }) => (command === 'PART'))
+
+					expect(messageSent).to.be.true
+				})
+			})
+
+			describe('PASS', () => {
+				it('should set the token on the connection', () => {
+					socket.emit('message', `PASS ${testOauthToken}`)
+					expect(connection.token).to.be.string(testOauthToken)
+				})
+
+				it('should send the MOTD if capabilities have been requested and the username has been set', () => {
+					socket.emit('message', `CAP REQ ${CAPABILITIES.join(' ')}`)
+					socket.emit('message', 'CAP END')
+					socket.emit('message', `NICK ${testUsername}`)
+					socket.emit('message', `PASS ${testUsername}`)
+
+					expect(connection.sendMOTD.calledOnce).to.be.true
+				})
+			})
+
+			describe('PING', () => {
+				it('should send a PONG message', () => {
+					socket.emit('message', 'PING')
+					expect(connection.send.calledOnceWithExactly('PONG')).to.be.true
+				})
+			})
+
+			xdescribe('PONG', () => {
+				it('should clear the ping timeout', () => {})
+			})
+
+			// Handled by FDGTCommands.test.js
+			xdescribe('PRIVMSG', () => {})
+
+			describe('QUIT', () => {
+				it('should close the connection', () => {
+					socket.emit('message', 'QUIT')
+					expect(connection.close.calledOnce).to.be.true
+				})
 			})
 		})
 
