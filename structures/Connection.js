@@ -44,6 +44,8 @@ class Connection extends EventEmitter {
 
 	channels = new ChannelList
 
+	capabilitiesFinished = false
+
 	id = uuid()
 
 	isAcknowledged = false
@@ -67,8 +69,11 @@ class Connection extends EventEmitter {
 	\***************************************************************************/
 
 	#acknowledge = () => {
-		this.isAcknowledged = true
-		this.sendMOTD()
+		if (this.username && this.token && this.capabilitiesFinished) {
+			this.off('acknowledge', this.#acknowledge)
+			this.isAcknowledged = true
+			this.sendMOTD()
+		}
 	}
 
 	#handleMessages = rawMessages => {
@@ -213,7 +218,7 @@ class Connection extends EventEmitter {
 
 		log('New client connected', { id: this.id }, 'info')
 
-		this.once('acknowledge', this.#acknowledge)
+		this.on('acknowledge', this.#acknowledge)
 
 		this.#initializeConnectionCloseHandler()
 		this.#initializeMessageHandler()
