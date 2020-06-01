@@ -7,7 +7,7 @@ import Logger from 'ians-logger'
 
 // Local constants
 const { DEBUG } = process.env
-const logger = Logger.createLoggerFromName('fdgt')
+const logger = Logger.createLoggerFromName('@fdgt/api')
 
 
 

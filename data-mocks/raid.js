@@ -14,8 +14,14 @@ export const defaults = {
  *
  * @alias `raid`
  *
- * @param {number} viewercount=10 The number of viewers that joined the raid.
+ * @param {string} channel - The name of the channel the message will be sent to.
+ * @param {string} channelid - The ID of the channel the message will be sent to.
+ * @param {string} color - The color of the user's name in chat.
+ * @param {string} messageid - The ID of the message.
+ * @param {string} timestamp - The millisecond timestamp when the message was sent.
+ * @param {string} userid - The ID of the user sending the message.
  * @param {string} username The channel the raid is coming from.
+ * @param {number} viewercount=10 The number of viewers that joined the raid.
  *
  * @example <caption>Fires a `raid` event</caption>
  * raid

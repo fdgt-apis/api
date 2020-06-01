@@ -9,9 +9,16 @@ export const defaults = {
  *
  * @alias `resubscription`
  *
+ * @param {string} channel - The name of the channel the message will be sent to.
+ * @param {string} channelid - The ID of the channel the message will be sent to.
+ * @param {string} color - The color of the user's name in chat.
+ * @param {string} messageid - The ID of the message.
  * @param {number} months=3 The number of months the user has been subscribed to the channel.
  * @param {boolean} prime=false Whether this is a Prime subscription.
  * @param {number} tier=1 - The tier of the subscription being extended.
+ * @param {string} timestamp - The millisecond timestamp when the message was sent.
+ * @param {string} userid - The ID of the user sending the message.
+ * @param {string} username - The username of the user sending the message.
  *
  * @example <caption>Fires a `resubscription` event</caption>
  * resubscription
