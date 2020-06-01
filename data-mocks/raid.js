@@ -9,6 +9,20 @@ export const defaults = {
 	viewercount: 10,
 }
 
+/**
+ * `raid` events are fired when a channel is raided by another stream.
+ *
+ * @alias `raid`
+ *
+ * @param {number} viewercount=10 The number of viewers that joined the raid.
+ * @param {string} username The channel the raid is coming from.
+ *
+ * @example <caption>Fires a `raid` event</caption>
+ * raid
+ *
+ * @example <caption>Simulates a `raid` from Dr. Disrespect with 10,000 viewers</caption>
+ * raid --username drdisrespectlive --viewercount 10000
+ */
 export const render = (args = {}) => {
 	const {
 		channel,

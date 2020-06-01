@@ -10,6 +10,23 @@ export const defaults = {
 	tier: 1,
 }
 
+/**
+ * `extendsub` events are fired when a user extends their existing non-gifted subscription to a Twitch channel.
+ *
+ * @alias `extendsub`
+ *
+ * @param {number} months=3 - The number of months the subscription is being extended.
+ * @param {number} tier=1 - The tier of the subscription being extended.
+ *
+ * @example <caption>Fires an `extendsub` event</caption>
+ * 'extendsub'
+ *
+ * @example <caption>Fires an `extendsub` event to extend the user's subscription by 6 months</caption>
+ * extendsub --months 6
+ *
+ * @example <caption>Fires an `extendsub` event for a Tier 3 subscription</caption>
+ * extendsub --tier 3
+ */
 export const render = (args = {}) => {
 	const {
 		channel,

@@ -2,6 +2,19 @@ export const defaults = {
 	tier: 1,
 }
 
+/**
+ * `primepaidupgrade` events are fired when a user upgrades from a Prime subscription to a paid subscription.
+ *
+ * @alias `primepaidupgrade`
+ *
+ * @param {number} tier=1 - The tier of the subscription being upgraded to.
+ *
+ * @example <caption>Fires a `primepaidupgrade` event</caption>
+ * primepaidupgrade
+ *
+ * @example <caption>Fires a `primepaidupgrade` event with the user upgrading to Tier 3</caption>
+ * primepaidupgrade --tier 3
+ */
 export const render = (args = {}) => {
 	const {
 		channel,

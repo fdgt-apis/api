@@ -9,6 +9,21 @@ export const defaults = {
 	tier: 1,
 }
 
+/**
+ * `subgift` events are fired when a user gifts a subscription to another user in the channel.
+ *
+ * @alias `subgift`
+ *
+ * @param {number} tier=1 - The tier of the subscription being extended.
+ * @param {string} userid2 - The ID of the user that is gifting the sub.
+ * @param {string} username2 - The username of the user that is gifting the sub.
+ *
+ * @example <caption>Fires a `subgift` event</caption>
+ * subgift
+ *
+ * @example <caption>Simulates a Tier 3 `subgift` event from glEnd2</caption>
+ * subgift --tier 3 --username glEnd2
+ */
 export const render = (args = {}) => {
 	const {
 		channel,

@@ -3,6 +3,23 @@ export const defaults = {
 	tier: 1,
 }
 
+/**
+ * `subscription` events are fired when a user subscribes to a channel for the first time.
+ *
+ * @alias `subscription`
+ *
+ * @param {boolean} prime=false Whether this is a Prime subscription.
+ * @param {number} tier=1 - The tier of the subscription being extended.
+ *
+ * @example <caption>Fires a `subscription` event</caption>
+ * subscription
+ *
+ * @example <caption>Simulates a Prime `subscription` event</caption>
+ * subscription --prime
+ *
+ * @example <caption>Simulates a Tier 3 `subscription` event</caption>
+ * subscription --tier 3
+ */
 export const render = (args = {}) => {
 	const {
 		channel,

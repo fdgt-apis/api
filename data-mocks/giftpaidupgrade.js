@@ -9,6 +9,20 @@ export const defaults = {
 	months: 3,
 }
 
+/**
+ * `giftpaidupgrade` events are fired when a user upgrades their subscription from one that was previously gifted to them.
+ *
+ * @alias `giftpaidupgrade`
+ *
+ * @param {number} months=3 - The number of months the subscription has been active.
+ * @param {string} username2 - The username of the user that originally gifted the sub.
+ *
+ * @example <caption>Fires an `giftpaidupgrade` event</caption>
+ * giftpaidupgrade
+ *
+ * @example <caption>Fires an `giftpaidupgrade` event for a user that's been gifted subs for the past 12 months</caption>
+ * giftpaidupgrade --months 3
+ */
 export const render = (args = {}) => {
 	const {
 		channel,

@@ -2,6 +2,20 @@ export const defaults = {
 	giftcount: 5,
 }
 
+/**
+ * `submysterygift` events are fired when a user gives mystery subscription gifts.
+ *
+ * @alias `submysterygift`
+ *
+ * @param {number} giftcount=5 - The tier of the subscription being extended.
+ * @param {number} totalgiftcount=5 The total number of gifts the user has given in the channel.
+ *
+ * @example <caption>Fires a `submysterygift` event</caption>
+ * submysterygift
+ *
+ * @example <caption>Simulates zebiniasis giving 20 mystery sub gifts</caption>
+ * submysterygift --giftcount 20 --username zebiniasis
+ */
 export const render = (args = {}) => {
 	const {
 		channel,

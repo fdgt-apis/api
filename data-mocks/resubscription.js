@@ -4,6 +4,24 @@ export const defaults = {
 	tier: 1,
 }
 
+/**
+ * `resubscription` events are fired when a when a user continues their existing, non-gifted subscription.
+ *
+ * @alias `resubscription`
+ *
+ * @param {number} months=3 The number of months the user has been subscribed to the channel.
+ * @param {boolean} prime=false Whether this is a Prime subscription.
+ * @param {number} tier=1 - The tier of the subscription being extended.
+ *
+ * @example <caption>Fires a `resubscription` event</caption>
+ * resubscription
+ *
+ * @example <caption>Simulates a Prime `resubscription` event</caption>
+ * resubscription --prime
+ *
+ * @example <caption>Simulates a Tier 3 `resubscription` event</caption>
+ * resubscription --tier 3
+ */
 export const render = (args = {}) => {
 	const {
 		channel,
