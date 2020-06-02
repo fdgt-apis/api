@@ -5,7 +5,7 @@ export const defaults = {
 /**
  * `bits` events are fired when a user sends a message to a Twitch channel that contains [`bits`](https://help.twitch.tv/s/article/guide-to-cheering-with-bits).
  *
- * @alias `bits`message
+ * @alias `bits`
  *
  * @param {number} bitscount=100 The number of bits to attach to the message.
  * @param {string} channel - The name of the channel the message will be sent to.
