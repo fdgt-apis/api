@@ -8,9 +8,9 @@ import faker from 'faker'
 
 
 // Local imports
-import User from '../../structures/User'
-import UserList from '../../structures/UserList'
-import dedupeArray from '../../helpers/dedupeArray'
+import User from '../../src/structures/User'
+import UserList from '../../src/structures/UserList'
+import dedupeArray from '../../src/helpers/dedupeArray'
 
 
 

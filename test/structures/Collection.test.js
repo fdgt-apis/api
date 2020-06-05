@@ -8,7 +8,7 @@ import { expect } from 'chai'
 
 
 // Local imports
-import Collection from '../../structures/Collection'
+import Collection from '../../src/structures/Collection'
 
 
 
