@@ -36,4 +36,4 @@ jobs:
       env:
         DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
       with:
-        args: "-avzr --delete deploy@fdgt.dev:/var/www/fdgt/"
+        args: "-avzr --delete deploy@${{secrets.DEPLOY_HOST}}:/var/www/fdgt/"
