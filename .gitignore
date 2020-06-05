@@ -1,6 +1,6 @@
 .DS_Store
 .env
-.env.build
 yarn-error.log
 .now/
+dist/
 node_modules/
