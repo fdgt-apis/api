@@ -10,11 +10,13 @@
 		"fdgt": "./index.js"
 	},
 	"scripts": {
-		"dev": "DEBUG=true nodemon --exec babel-node index.js",
-		"start": "node index.js",
+		"build": "babel src --out-dir dist",
+		"dev": "DEBUG=true nodemon --exec babel-node src/index.js",
+		"start": "node dist/index.js",
 		"test": "mocha --recursive --require dotenv/config --require @babel/register"
 	},
 	"dependencies": {
+		"@babel/cli": "^7.10.1",
 		"dotenv": "^8.2.0",
 		"faker": "^4.1.0",
 		"ians-logger": "^0.1.1",
@@ -26,7 +28,7 @@
 		"ws": "^7.2.5"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.10.1",
+		"@babel/core": "^7.10.2",
 		"@babel/node": "^7.10.1",
 		"@babel/plugin-proposal-class-properties": "^7.10.1",
 		"@babel/preset-env": "^7.10.1",
