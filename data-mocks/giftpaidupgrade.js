@@ -24,10 +24,10 @@ export const defaults = {
  * @param {string} username - The username of the user sending the message.
  * @param {string} username2 - The username of the user that originally gifted the sub.
  *
- * @example <caption>Fires an `giftpaidupgrade` event</caption>
+ * @example @lang off <caption>Fires an `giftpaidupgrade` event</caption>
  * giftpaidupgrade
  *
- * @example <caption>Fires an `giftpaidupgrade` event for a user that's been gifted subs for the past 12 months</caption>
+ * @example @lang off <caption>Fires an `giftpaidupgrade` event for a user that's been gifted subs for the past 12 months</caption>
  * giftpaidupgrade --months 3
  */
 export const render = (args = {}) => {

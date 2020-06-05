@@ -20,13 +20,13 @@ export const defaults = {
  * @param {string} userid - The ID of the user sending the message.
  * @param {string} username - The username of the user sending the message.
  *
- * @example <caption>Fires a `resubscription` event</caption>
+ * @example @lang off <caption>Fires a `resubscription` event</caption>
  * resubscription
  *
- * @example <caption>Simulates a Prime `resubscription` event</caption>
+ * @example @lang off <caption>Simulates a Prime `resubscription` event</caption>
  * resubscription --prime
  *
- * @example <caption>Simulates a Tier 3 `resubscription` event</caption>
+ * @example @lang off <caption>Simulates a Tier 3 `resubscription` event</caption>
  * resubscription --tier 3
  */
 export const render = (args = {}) => {

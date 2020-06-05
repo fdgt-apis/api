@@ -23,10 +23,10 @@ export const defaults = {
  * @param {string} username The channel the raid is coming from.
  * @param {number} viewercount=10 The number of viewers that joined the raid.
  *
- * @example <caption>Fires a `raid` event</caption>
+ * @example @lang off <caption>Fires a `raid` event</caption>
  * raid
  *
- * @example <caption>Simulates a `raid` from Dr. Disrespect with 10,000 viewers</caption>
+ * @example @lang off <caption>Simulates a `raid` from Dr. Disrespect with 10,000 viewers</caption>
  * raid --username drdisrespectlive --viewercount 10000
  */
 export const render = (args = {}) => {

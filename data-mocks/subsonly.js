@@ -14,10 +14,10 @@ export const defaults = {
  * @param {string} channel - The name of the channel (no `#`) that will be set to emote-only mode.
  * @param {boolean} off=false - Whether emote-only mode is being enabled or disabled.
  *
- * @example <caption>Fires an `subsonly` event, enabling slow mode on the channel.</caption>
+ * @example @lang off <caption>Fires an `subsonly` event, enabling slow mode on the channel.</caption>
  * subsonly
  *
- * @example <caption>Fires an `subsonly` event, disabling slow mode on the channel.</caption>
+ * @example @lang off <caption>Fires an `subsonly` event, disabling slow mode on the channel.</caption>
  * subsonly --off
  */
 export const render = (args = {}) => {

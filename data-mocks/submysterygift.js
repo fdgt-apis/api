@@ -17,10 +17,10 @@ export const defaults = {
  * @param {string} userid - The ID of the user sending the message.
  * @param {string} username - The username of the user sending the message.
  *
- * @example <caption>Fires a `submysterygift` event</caption>
+ * @example @lang off <caption>Fires a `submysterygift` event</caption>
  * submysterygift
  *
- * @example <caption>Simulates zebiniasis giving 20 mystery sub gifts</caption>
+ * @example @lang off <caption>Simulates zebiniasis giving 20 mystery sub gifts</caption>
  * submysterygift --giftcount 20 --username zebiniasis
  */
 export const render = (args = {}) => {

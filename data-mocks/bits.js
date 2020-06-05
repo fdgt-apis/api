@@ -17,10 +17,10 @@ export const defaults = {
  * @param {string} userid - The ID of the user sending the message.
  * @param {string} username - The username of the user sending the message.
  *
- * @example <caption>Fires a `bits` event with no message</caption>
+ * @example @lang off <caption>Fires a `bits` event with no message</caption>
  * bits
  *
- * @example <caption>Fires a `bits` event with a custom amount of bits and the message "Woohoo!"</caption>
+ * @example @lang off <caption>Fires a `bits` event with a custom amount of bits and the message "Woohoo!"</caption>
  * bits --bitscount 999999 Woohoo!
  */
 export const render = (args = {}) => {

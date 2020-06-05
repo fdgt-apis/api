@@ -25,10 +25,10 @@ export const defaults = {
  * @param {string} userid - The ID of the user sending the message.
  * @param {string} username - The username of the user sending the message.
  *
- * @example <caption>Fires a `subgift` event</caption>
+ * @example @lang off <caption>Fires a `subgift` event</caption>
  * subgift
  *
- * @example <caption>Simulates a Tier 3 `subgift` event from glEnd2</caption>
+ * @example @lang off <caption>Simulates a Tier 3 `subgift` event from glEnd2</caption>
  * subgift --tier 3 --username glEnd2
  */
 export const render = (args = {}) => {

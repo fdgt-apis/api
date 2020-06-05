@@ -25,13 +25,13 @@ export const defaults = {
  * @param {string} username - The username of the user sending the message.
  * @param {number} tier=1 - The tier of the subscription being extended.
  *
- * @example <caption>Fires an `extendsub` event</caption>
+ * @example @lang off <caption>Fires an `extendsub` event</caption>
  * 'extendsub'
  *
- * @example <caption>Fires an `extendsub` event to extend the user's subscription by 6 months</caption>
+ * @example @lang off <caption>Fires an `extendsub` event to extend the user's subscription by 6 months</caption>
  * extendsub --months 6
  *
- * @example <caption>Fires an `extendsub` event for a Tier 3 subscription</caption>
+ * @example @lang off <caption>Fires an `extendsub` event for a Tier 3 subscription</caption>
  * extendsub --tier 3
  */
 export const render = (args = {}) => {

@@ -18,13 +18,13 @@ export const defaults = {
  * @param {string} userid - The ID of the user sending the message.
  * @param {string} username - The username of the user sending the message.
  *
- * @example <caption>Fires a `subscription` event</caption>
+ * @example @lang off <caption>Fires a `subscription` event</caption>
  * subscription
  *
- * @example <caption>Simulates a Prime `subscription` event</caption>
+ * @example @lang off <caption>Simulates a Prime `subscription` event</caption>
  * subscription --prime
  *
- * @example <caption>Simulates a Tier 3 `subscription` event</caption>
+ * @example @lang off <caption>Simulates a Tier 3 `subscription` event</caption>
  * subscription --tier 3
  */
 export const render = (args = {}) => {
