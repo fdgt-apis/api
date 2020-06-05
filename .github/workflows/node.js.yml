@@ -1,6 +1,3 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Node.js CI
 
 on:
@@ -25,18 +22,18 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies 
+    - name: Install dependencies
       run: yarn install
-      
+
     - name: Run the tests
       run: yarn test
-      
+
     - name: Build the app
       run: yarn build
-      
+
     - name: rsync deployments
       uses: contention/rsync-deployments@v1.0.0
-      env: 
+      env:
         DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
-      with: 
-        args: "-avzr --delete --exclude /.git/ --exclude /coverage/ --exclude /src/ --exclude /test/ --exclude .all-contributorsrc --exclude .babelrc --exclude .editorconfig --exclude .gitignore --exclude README.md deploy@fdgt.dev:/var/www/fdgt/"
+      with:
+        args: "-avzr --delete deploy@fdgt.dev:/var/www/fdgt/"
