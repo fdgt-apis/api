@@ -1,13 +1,13 @@
 {
 	"name": "@fdgt/api",
-	"main": "index.js",
+	"main": "dist/index.js",
 	"version": "0.0.1",
 	"license": "MIT",
 	"engines": {
 		"node": "14.x"
 	},
 	"bin": {
-		"fdgt": "./index.js"
+		"fdgt": "./dist/index.js"
 	},
 	"scripts": {
 		"build": "babel src --out-dir dist",
