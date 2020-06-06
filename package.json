@@ -3,6 +3,10 @@
 	"main": "dist/index.js",
 	"version": "0.0.1",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:fdgt-apis/api.git"
+	},
 	"engines": {
 		"node": "14.x"
 	},
@@ -36,6 +40,7 @@
 		"chai": "^4.2.0",
 		"mocha": "^7.2.0",
 		"nodemon": "^2.0.3",
+		"pm2": "^4.4.0",
 		"sinon": "^9.0.2",
 		"uuid-validate": "^0.0.3"
 	}

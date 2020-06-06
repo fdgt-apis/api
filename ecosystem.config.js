@@ -1,16 +1,16 @@
+const packageData = require('./package.json')
+
+const repo = packageData.repository.url
+
 module.exports = {
-	apps: [{
-		name: 'irc.fdgt.dev',
-		script: './dist/index.js'
-	}],
 	deploy: {
 		production: {
-			user: 'deploy',
 			host: [process.env.DEPLOY_HOST],
-			ref: 'origin/master',
-			repo: 'git@github.com:fdgt-apis/api.git',
 			path: '/var/www/fdgt',
-			'post-deploy': 'yarn install && yarn build',
-		 },
+			'post-deploy': 'source ~/.zshrc; yarn install; yarn build;',
+			ref: 'origin/master',
+			repo,
+			user: 'deploy',
+		},
 	},
 }
