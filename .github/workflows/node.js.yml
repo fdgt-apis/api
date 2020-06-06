@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -25,15 +24,12 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
-    - name: Run the tests
+    - name: Test
       run: yarn test
 
-    - name: Build the app
+    - name: Build
       run: yarn build
 
-    - name: rsync deployments
-      uses: contention/rsync-deployments@v1.0.0
+    - name: Deploy
       env:
-        DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
-      with:
-        args: "-avzr --delete deploy@${{secrets.DEPLOY_HOST}}:/var/www/fdgt/"
+        DEPLOY_HOST: ${{secrets.DEPLOY_HOST}}
