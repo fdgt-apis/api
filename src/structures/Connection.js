@@ -216,7 +216,10 @@ export default class extends EventEmitter {
 
 		this.options = options
 
-		log('New client connected', { id: this.id }, 'info')
+		log('New client connected', {
+			id: this.id,
+			type: this.type,
+		}, 'info')
 
 		this.on('acknowledge', this.#acknowledge)
 
