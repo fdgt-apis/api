@@ -15,9 +15,9 @@
 	},
 	"scripts": {
 		"build": "babel src --out-dir dist",
-		"dev": "DEBUG=true nodemon --exec babel-node src/index.js",
+		"dev": "NODE_ENV=development DEBUG=true nodemon --exec babel-node src/index.js",
 		"start": "node dist/index.js",
-		"test": "mocha --recursive --require dotenv/config --require @babel/register"
+		"test": "NODE_ENV=test mocha --recursive --require dotenv/config --require @babel/register"
 	},
 	"dependencies": {
 		"@babel/cli": "^7.10.1",

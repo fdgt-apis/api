@@ -1,13 +1,8 @@
-name: Deploy
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+name: Test
+on: push
 
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,16 +27,5 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
-    - name: Build
-      run: yarn build
-
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        key: ${{ secrets.DEPLOY_KEY }}
-        known_hosts: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
-
-    - name: Deploy
-      run: npx pm2 deploy production
-      env:
-        DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+    - name: Test
+      run: yarn test

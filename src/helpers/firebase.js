@@ -7,6 +7,13 @@ import * as firebaseAdmin from 'firebase-admin'
 
 
 
+// Local constants
+const { NODE_ENV } = process.env
+
+
+
+
+
 // Local variable
 let app = null
 
@@ -14,7 +21,7 @@ let app = null
 
 
 
-if (!app) {
+if ((NODE_ENV !== 'test') && !app) {
   app = firebaseAdmin.initializeApp({
 		credential: firebaseAdmin.credential.cert({
 			auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
@@ -37,5 +44,5 @@ if (!app) {
 
 
 export const firebase = app
-export const firestore = app.firestore()
+export const firestore = app?.firestore()
 export { firebaseAdmin }
