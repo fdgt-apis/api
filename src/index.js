@@ -41,7 +41,6 @@ const handleConnection = socket => {
 	})
 }
 
-
 wsServer.on('connection', handleConnection)
 
 const netServer = net.createServer(handleConnection)
