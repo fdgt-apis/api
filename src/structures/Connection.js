@@ -85,7 +85,10 @@ export default class extends EventEmitter {
 		messages.forEach(message => {
 			let handler = null
 
-			log('Message from client', message, 'info')
+			log('Message from client', {
+				connectionID: this.id,
+				message,
+			}, 'info')
 
 			switch (message.command) {
 				case 'CAP':
@@ -129,7 +132,9 @@ export default class extends EventEmitter {
 					break
 
 				default:
-					log(`No handler for ${message.command} messages`, {}, 'error')
+					log(`No handler for ${message.command} messages`, {
+						connectionID: this.id,
+					}, 'error')
 					this.sendUnknownCommand(message.command)
 			}
 
@@ -166,14 +171,18 @@ export default class extends EventEmitter {
 			const { id } = this
 
 			this.pongTimeoutID = setTimeout(() => {
-				log('Client didn\'t PONG in time - terminating connection', { id }, 'error')
+				log('Client didn\'t PONG in time - terminating connection', {
+					connectionID: this.id,
+				}, 'error')
 
 				clearInterval(this.pingIntervalID)
 
 				this.close()
 			}, 5000)
 
-			log('Pinging client', { id }, 'info')
+			log('Pinging client', {
+				connectionID: this.id,
+			}, 'info')
 
 			this.send('PING')
 		}, 30000)
@@ -217,7 +226,7 @@ export default class extends EventEmitter {
 		this.options = options
 
 		log('New client connected', {
-			id: this.id,
+			connectionID: this.id,
 			type: this.type,
 		}, 'info')
 
@@ -262,7 +271,10 @@ export default class extends EventEmitter {
 
 		try {
 			messages.forEach(message => {
-				log(`Sending message to client: ${message}`)
+				log(`Sending message to client`, {
+					connectionID: this.id,
+					message,
+				})
 				if (this.#isWebsocket()) {
 					this.socket.send(message)
 				} else {
@@ -270,7 +282,9 @@ export default class extends EventEmitter {
 				}
 			})
 		} catch (error) {
-			log('Failed to send response', {}, 'error')
+			log('Failed to send response', {
+				connectionID: this.id,
+			}, 'error')
 		}
 	}
 
