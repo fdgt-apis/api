@@ -7,9 +7,6 @@
 		"type": "git",
 		"url": "git@github.com:fdgt-apis/api.git"
 	},
-	"engines": {
-		"node": "14.x"
-	},
 	"bin": {
 		"fdgt": "./dist/index.js"
 	},
