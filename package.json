@@ -23,7 +23,7 @@
 		"firebase-admin": "^8.12.1",
 		"ians-logger": "^0.1.1",
 		"irc-message": "^3.0.2",
-		"moment": "^2.25.3",
+		"moment": "^2.27.0",
 		"mri": "^1.1.5",
 		"tinycolor2": "^1.4.1",
 		"uuid": "^8.0.0",
