@@ -17,7 +17,7 @@
 		"test": "NODE_ENV=test mocha --recursive --parallel --require dotenv/config --require @babel/register"
 	},
 	"dependencies": {
-		"@babel/cli": "^7.10.1",
+		"@babel/cli": "^7.10.3",
 		"dotenv": "^8.2.0",
 		"faker": "^4.1.0",
 		"firebase-admin": "^8.12.1",
