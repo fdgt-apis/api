@@ -6,6 +6,7 @@ import faker from 'faker'
 
 
 export const defaults = {
+	months: 1,
 	tier: 1,
 }
 
@@ -18,6 +19,7 @@ export const defaults = {
  * @param {string} channelid - The ID of the channel the message will be sent to.
  * @param {string} color - The color of the user's name in chat.
  * @param {string} messageid - The ID of the message.
+ * @param {number} months - The length of the gift sub (for multi-month subs only).
  * @param {number} tier=1 - The tier of the subscription being extended.
  * @param {string} timestamp - The millisecond timestamp when the message was sent.
  * @param {string} userid2 - The ID of the user that is gifting the sub.
@@ -38,6 +40,7 @@ export const render = (args = {}) => {
 		color,
 		host,
 		messageid,
+		months,
 		tier,
 		timestamp,
 		userid,
@@ -49,7 +52,7 @@ export const render = (args = {}) => {
 		...args,
 	}
 
-	return {
+	const response = {
 		'badge-info': ['subscriber/0'],
 		badges: [
 			'subscriber/0',
@@ -77,4 +80,10 @@ export const render = (args = {}) => {
 		'user-type': null,
 		message: `${host} USERNOTICE #${channel}`,
 	}
+
+	if (months > 1) {
+		response['msg-params-gift-months'] = months
+	}
+
+	return response
 }

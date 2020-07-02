@@ -121,6 +121,6 @@ describe('subgift events', function() {
 		const rawMessage = connection.send.getCall(0).firstArg
 		const { tags } = parseIRCMessage(rawMessage)
 
-		expect(tags['msg-params-gift-months']).to.equal(testMultiMonthSubLength)
+		expect(tags['msg-params-gift-months']).to.equal(`${testMultiMonthSubLength}`)
 	})
 })
