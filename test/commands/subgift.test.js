@@ -25,6 +25,7 @@ import User from '../../src/structures/User'
 
 // Local constants
 const testChannelName = 'TestChannel'
+const testMultiMonthSubLength = 3
 const testOauthToken = 'oauth:1234567890'
 const testUsername = 'Bob'
 const ircSocket = class extends EventEmitter {
@@ -112,5 +113,14 @@ describe('subgift events', function() {
 		const { params: [channelName] } = parseIRCMessage(rawMessage)
 
 		expect(channelName).to.equal(`#${testChannelName}`)
+	})
+
+	it('should handle multi-month gift subs', () => {
+		socket.emit('message', `PRIVMSG #${testChannelName} subgift --months ${testMultiMonthSubLength}`)
+
+		const rawMessage = connection.send.getCall(0).firstArg
+		const { tags } = parseIRCMessage(rawMessage)
+
+		expect(tags['msg-params-gift-months']).to.equal(testMultiMonthSubLength)
 	})
 })
