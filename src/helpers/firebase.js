@@ -14,7 +14,7 @@ const { NODE_ENV } = process.env
 
 
 
-// Local variable
+// Local variables
 let app = null
 
 

@@ -1,5 +1,5 @@
 // Local imports
-import Collection from './Collection'
+import Collection from 'structures/Collection'
 
 
 

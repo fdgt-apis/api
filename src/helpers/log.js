@@ -9,7 +9,7 @@ import Logger from 'ians-logger'
 import {
 	firebaseAdmin,
 	firestore,
-} from '../helpers/firebase'
+} from 'helpers/firebase'
 
 
 

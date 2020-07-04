@@ -1,6 +1,6 @@
 // Local imports
-import getMock from '../helpers/getMock'
-import renderMessage from '../helpers/renderMessage'
+import getMock from 'helpers/getMock'
+import renderMessage from 'helpers/renderMessage'
 
 
 

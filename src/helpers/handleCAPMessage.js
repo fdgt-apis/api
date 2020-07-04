@@ -1,5 +1,5 @@
 // Local imports
-import CAPABILITIES from '../data/CAPABILITIES'
+import CAPABILITIES from 'data/CAPABILITIES'
 
 
 

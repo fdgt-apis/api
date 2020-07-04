@@ -8,9 +8,9 @@ import faker from 'faker'
 
 
 // Local imports
-import Channel from '../../src/structures/Channel'
-import ChannelList from '../../src/structures/ChannelList'
-import dedupeArray from '../../src/helpers/dedupeArray'
+import Channel from 'structures/Channel'
+import ChannelList from 'structures/ChannelList'
+import dedupeArray from 'helpers/dedupeArray'
 
 
 

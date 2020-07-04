@@ -14,10 +14,10 @@ import faker from 'faker'
 
 
 // Local imports
-import CAPABILITIES from '../../src/data/CAPABILITIES'
-import Channel from '../../src/structures/Channel'
-import Connection from '../../src/structures/Connection'
-import User from '../../src/structures/User'
+import CAPABILITIES from 'data/CAPABILITIES'
+import Channel from 'structures/Channel'
+import Connection from 'structures/Connection'
+import User from 'structures/User'
 
 
 

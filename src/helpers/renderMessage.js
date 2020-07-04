@@ -1,6 +1,6 @@
 // Local imports
-import renderTemplate from '../helpers/renderTemplate'
-import serializeTwitchObject from '../helpers/serializeTwitchObject'
+import renderTemplate from 'helpers/renderTemplate'
+import serializeTwitchObject from 'helpers/serializeTwitchObject'
 
 
 

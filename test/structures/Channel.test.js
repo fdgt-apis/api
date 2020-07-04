@@ -10,9 +10,9 @@ import validateUUID from 'uuid-validate'
 
 
 // Local imports
-import Channel from '../../src/structures/Channel'
-import Connection from '../../src/structures/Connection'
-import User from '../../src/structures/User'
+import Channel from 'structures/Channel'
+import Connection from 'structures/Connection'
+import User from 'structures/User'
 
 
 

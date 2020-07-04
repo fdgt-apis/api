@@ -9,7 +9,7 @@ import validateUUID from 'uuid-validate'
 
 
 // Local imports
-import User from '../../src/structures/User'
+import User from 'structures/User'
 
 
 
