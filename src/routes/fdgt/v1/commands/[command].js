@@ -16,7 +16,9 @@ import Route from 'structures/Route'
 
 
 // Local constants
+const isDev = process.env.NODE_ENV !== 'production'
 const readFile = promisify(fs.readFile)
+const sourceDirectory = path.resolve(process.cwd(), (isDev ? 'src' : 'dist'))
 
 
 
@@ -27,9 +29,9 @@ export const route = new Route({
 		const { command } = context.params
 
 		try {
-			const commandPath = path.resolve(__dirname, '..', '..', '..', '..', 'data-mocks', `${command}.js`)
-			const jsdocHelpersPath = path.resolve(__dirname, '..', '..', '..', '..', 'helpers', 'jsdocHelpers')
-			const jsdocPartialsPath = path.resolve(__dirname, '..', '..', '..', '..', 'helpers', 'jsdocPartials')
+			const commandPath = path.resolve(sourceDirectory, 'data-mocks', `${command}.js`)
+			const jsdocHelpersPath = path.resolve(sourceDirectory, 'helpers', 'jsdocHelpers')
+			const jsdocPartialsPath = path.resolve(sourceDirectory, 'helpers', 'jsdocPartials')
 
 			const doc = await jsdoc2md.render({
 				files: commandPath,
