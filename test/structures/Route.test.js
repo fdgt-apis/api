@@ -6,7 +6,7 @@ import { expect } from 'chai'
 
 
 // Local imports
-import Route from '../../src/structures/Route'
+import Route from 'structures/Route'
 
 
 

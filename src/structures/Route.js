@@ -1,5 +1,5 @@
 // Local imports
-import router from './Router'
+import router from 'structures/Router'
 
 
 

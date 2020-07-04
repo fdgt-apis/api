@@ -10,10 +10,10 @@ import noTrailingSlash from 'koa-no-trailing-slash'
 
 
 // Local imports
-import * as routes from '../routes'
-import bodyBuilder from '../helpers/bodyBuilder'
-import statusCodeGenerator from '../helpers/statusCodeGenerator'
-import router from './Router'
+import * as routes from 'routes'
+import bodyBuilder from 'helpers/bodyBuilder'
+import statusCodeGenerator from 'helpers/statusCodeGenerator'
+import router from 'structures/Router'
 
 
 

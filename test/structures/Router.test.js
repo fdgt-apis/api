@@ -7,7 +7,7 @@ import KoaRouter from 'koa-router'
 
 
 // Local imports
-import Router from '../../src/structures/Router'
+import Router from 'structures/Router'
 
 
 

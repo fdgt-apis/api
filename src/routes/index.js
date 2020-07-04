@@ -1,2 +1,2 @@
-import './fdgt/v1/commands'
-import './fdgt/v1/commands/[command]'
+import 'routes/fdgt/v1/commands'
+import 'routes/fdgt/v1/commands/[command]'

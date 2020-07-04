@@ -1,6 +1,6 @@
 // Local imports
-import Channel from '../structures/Channel'
-import User from '../structures/User'
+import Channel from 'structures/Channel'
+import User from 'structures/User'
 
 
 

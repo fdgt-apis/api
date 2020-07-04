@@ -10,7 +10,7 @@ import path from 'path'
 
 
 // Local imports
-import Route from '../../../../structures/Route'
+import Route from 'structures/Route'
 
 
 

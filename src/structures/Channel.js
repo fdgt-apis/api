@@ -6,9 +6,9 @@ import { v4 as uuid } from 'uuid'
 
 
 // Local imports
-import renderMessage from '../helpers/renderMessage'
-import serializeTwitchObject from '../helpers/serializeTwitchObject'
-import UserList from './UserList'
+import renderMessage from 'helpers/renderMessage'
+import serializeTwitchObject from 'helpers/serializeTwitchObject'
+import UserList from 'structures/UserList'
 
 
 

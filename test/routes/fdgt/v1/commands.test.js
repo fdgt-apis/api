@@ -12,7 +12,7 @@ import path from 'path'
 
 
 // Local imports
-import API from '../../../../src/structures/API'
+import API from 'structures/API'
 
 
 

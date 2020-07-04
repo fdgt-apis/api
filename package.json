@@ -19,6 +19,7 @@
 	"dependencies": {
 		"@babel/cli": "^7.10.4",
 		"@koa/cors": "^3.1.0",
+		"babel-plugin-module-resolver": "^4.0.0",
 		"dotenv": "^8.2.0",
 		"faker": "^4.1.0",
 		"firebase-admin": "^8.13.0",

@@ -6,8 +6,8 @@ import mri from 'mri'
 
 
 // Local imports
-import renderCommandResponse from '../helpers/renderCommandResponse'
-import User from '../structures/User'
+import renderCommandResponse from 'helpers/renderCommandResponse'
+import User from 'structures/User'
 
 
 

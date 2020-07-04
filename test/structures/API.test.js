@@ -7,7 +7,7 @@ import Koa from 'koa'
 
 
 // Local imports
-import API from '../../src/structures/API'
+import API from 'structures/API'
 
 
 

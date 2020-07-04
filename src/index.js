@@ -13,10 +13,10 @@ import WebSocket from 'ws'
 
 
 // Local imports
-import API from './structures/API'
-import Connection from './structures/Connection'
-import log from './helpers/log'
-import User from './structures/User'
+import API from 'structures/API'
+import Connection from 'structures/Connection'
+import log from 'helpers/log'
+import User from 'structures/User'
 
 
 
