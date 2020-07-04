@@ -1,6 +1,5 @@
 // Module imports
 import { promisify } from 'util'
-import frontmatter from 'frontmatter'
 import fs from 'fs'
 import jsdoc2md from 'jsdoc-to-markdown'
 import path from 'path'
@@ -45,15 +44,7 @@ export const route = new Route({
 				],
 			})
 
-			const {
-				data,
-				content,
-			} = frontmatter(doc)
-
-			context.data = {
-				...data,
-				content,
-			}
+			context.data = doc
 		} catch (error) {
 			context.errors.push(error.message)
 		}

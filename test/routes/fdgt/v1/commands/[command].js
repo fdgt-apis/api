@@ -75,24 +75,27 @@ describe(url, () => {
 				expect(response).to.be.json
 			})
 
-			describe('frontmatter', () => {
-				it('should return a title', async () => {
-					const { body } = await requester.get(commandURL)
 
-					expect(body.data).to.have.own.property('title', docData.data.title)
+			describe('frontmatter', () => {
+				it('should have a title', async () => {
+					const { body } = await requester.get(commandURL)
+					const parsedFrontmatter = frontmatter(body.data)
+
+					expect(parsedFrontmatter.data.title).to.equal(docData.data.title)
 				})
 
-				it('should return a description', async () => {
+				it('should have a description', async () => {
 					const { body } = await requester.get(commandURL)
+					const parsedFrontmatter = frontmatter(body.data)
 
-					expect(body.data).to.have.own.property('description', docData.data.description)
+					expect(parsedFrontmatter.data.description).to.equal(docData.data.description)
 				})
 			})
 
 			it('should return docs', async () => {
 				const { body } = await requester.get(commandURL)
 
-				expect(body.data).to.have.own.property('content', docData.content)
+				expect(body.data).to.equal(doc)
 			})
 		})
 	})
