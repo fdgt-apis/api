@@ -23,51 +23,25 @@ import router from './Router'
 const {
 	WEB_PORT = 3000,
 } = process.env
+const app = new Koa()
 
 
 
 
 
-export default class {
-	/***************************************************************************\
-		Local Properties
-	\***************************************************************************/
+// Attach middlewares
+app.use(noTrailingSlash())
+app.use(compress())
+app.use(cors())
+app.use(body())
+app.use(statusCodeGenerator())
+app.use(bodyBuilder())
 
-	app = new Koa()
-
-
-
-
-
-	/***************************************************************************\
-		Private Methods
-	\***************************************************************************/
-
-	#initialize = () => {
-		this.app.use(noTrailingSlash())
-		this.app.use(compress())
-		this.app.use(cors())
-		this.app.use(body())
-		this.app.use(statusCodeGenerator())
-		this.app.use(bodyBuilder())
-
-		this.app.use(router.routes())
-		this.app.use(router.allowedMethods())
-	}
+app.use(router.routes())
+app.use(router.allowedMethods())
 
 
 
 
 
-	/***************************************************************************\
-		Public Methods
-	\***************************************************************************/
-
-	constructor (options = {}) {
-		this.options = options
-
-		this.#initialize()
-	}
-
-	listen = port => this.app.listen(port)
-}
+export default app

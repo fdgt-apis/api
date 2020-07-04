@@ -30,7 +30,6 @@ const {
 } = process.env
 const { HOST } = process.env
 const fdgtUser = new User({ username: 'fdgt' })
-const restServer = new API
 const wsServer = new WebSocket.Server({ port: WS_PORT })
 
 
@@ -49,7 +48,7 @@ wsServer.on('connection', handleConnection)
 const netServer = net.createServer(handleConnection)
 
 netServer.listen(IRC_PORT)
-restServer.listen(WEB_PORT)
+API.listen(WEB_PORT)
 
 log('Server started.')
 log(`Listening for Web connections on port ${WEB_PORT}.`)
