@@ -22,6 +22,14 @@ export default class {
 			route,
 		} = allOptions
 
+		if (!route) {
+			throw new Error('route is required')
+		}
+
+		if (!handler) {
+			throw new Error('handler is required')
+		}
+
 		let methods = allOptions.methods
 
 		if (!Array.isArray(methods)) {
