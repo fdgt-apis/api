@@ -11,7 +11,7 @@
 		"fdgt": "./dist/index.js"
 	},
 	"scripts": {
-		"build": "babel src --out-dir dist",
+		"build": "babel src --out-dir dist --copy-files",
 		"dev": "NODE_ENV=development DEBUG=true nodemon --exec babel-node src/index.js",
 		"start": "node dist/index.js",
 		"test": "NODE_ENV=test mocha"
