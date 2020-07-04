@@ -27,7 +27,9 @@ const url = '/fdgt/v1/commands/:command'
 
 
 
-describe(url, () => {
+describe(url, function () {
+	this.slow(400)
+
 	const commandsPath = path.resolve(process.cwd(), 'src', 'data-mocks')
 	const commandFilenames = fs.readdirSync(commandsPath)
 	const commands = commandFilenames.map(filename => filename.replace(/\.js$/, ''))
