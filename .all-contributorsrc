@@ -18,11 +18,21 @@
         "infra",
         "maintenance"
       ]
+    },
+    {
+      "login": "d-fischer",
+      "name": "Daniel Fischer",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5854687?v=4",
+      "profile": "https://github.com/d-fischer",
+      "contributions": [
+        "doc",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "projectName": "fdgt",
-  "projectOwner": "trezy-studios",
+  "projectName": "api",
+  "projectOwner": "fdgt-apis",
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true
