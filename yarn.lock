@@ -3863,10 +3863,10 @@ koa-compose@^4.1.0:
   resolved "https://registry.yarnpkg.com/koa-compose/-/koa-compose-4.1.0.tgz#507306b9371901db41121c812e923d0d67d3e877"
   integrity sha512-8ODW8TrDuMYvXRwra/Kh7/rJo9BtOfPc6qO8eAfC80CnCvSjSl0bkRM24X6/XBBEyj0v1nRUQ1LyOy3dbqOWXw==
 
-koa-compress@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/koa-compress/-/koa-compress-4.0.1.tgz#7a7ed52ce7c3e0cbe918e99e1eaaeba87ec11d48"
-  integrity sha512-It4WYfsBb9HegnFgcBhiRbPeh1LDjXhRM4+xi2jMp8ujwaVAdqhFzHpbDWuTxbLxuBwStn+Bwdwn2zDZxeNChg==
+koa-compress@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/koa-compress/-/koa-compress-5.0.0.tgz#7b25bd66c98c013c89a303ae72934d6d15d644b5"
+  integrity sha512-hzvlkocbzPPTmxJdYRbdAZOmHL0ga3brQWqDT7Gwc8lJiTNsFUm2ba0D6SzWyZGKno+1hgGTPHStw2faWVcH8A==
   dependencies:
     bytes "^3.0.0"
     compressible "^2.0.0"
@@ -6272,10 +6272,10 @@ ws@^6.0.0:
   dependencies:
     async-limiter "~1.0.0"
 
-ws@^7.0.0, ws@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.0.tgz#4b2f7f219b3d3737bc1a2fbf145d825b94d38ffd"
-  integrity sha512-iFtXzngZVXPGgpTlP1rBqsUK82p9tKqsWRPg5L56egiljujJT3vGAYnHANvFxBieXrTFavhzhxW52jnaWV+w2w==
+ws@^7.0.0, ws@^7.3.1:
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.1.tgz#d0547bf67f7ce4f12a72dfe31262c68d7dc551c8"
+  integrity sha512-D3RuNkynyHmEJIpD2qrgVkc9DQ23OrN/moAwZX4L8DfvszsJxpjQuUq3LMx6HoYji9fbIOBY18XWBsAux1ZZUA==
 
 ws@~7.2.0:
   version "7.2.5"
