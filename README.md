@@ -1,7 +1,7 @@
 # fdgt
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=trezy-studios/fdgt)](https://dependabot.com)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 `fdgt` is a mock API for the Twitch Messaging Interface (`tmi`). Via `fdgt`, you can connect and test your Twitch bots and other tools with simulated events *without* having to connect to the real API!
@@ -606,9 +606,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-	<tr>
-		<td align="center"><a href="http://trezy.com"><img src="https://avatars2.githubusercontent.com/u/442980?v=4" width="100px;" alt=""/><br /><sub><b>Trezy</b></sub></a><br /><a href="https://github.com/trezy-studios/fdgt/commits?author=trezy" title="Code">💻</a> <a href="#business-trezy" title="Business development">💼</a> <a href="https://github.com/trezy-studios/fdgt/commits?author=trezy" title="Documentation">📖</a> <a href="#example-trezy" title="Examples">💡</a> <a href="#infra-trezy" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-trezy" title="Maintenance">🚧</a></td>
-	</tr>
+  <tr>
+    <td align="center"><a href="http://trezy.com"><img src="https://avatars2.githubusercontent.com/u/442980?v=4" width="100px;" alt=""/><br /><sub><b>Trezy</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/commits?author=trezy" title="Code">💻</a> <a href="#business-trezy" title="Business development">💼</a> <a href="https://github.com/fdgt-apis/api/commits?author=trezy" title="Documentation">📖</a> <a href="#example-trezy" title="Examples">💡</a> <a href="#infra-trezy" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-trezy" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/d-fischer"><img src="https://avatars3.githubusercontent.com/u/5854687?v=4" width="100px;" alt=""/><br /><sub><b>Daniel Fischer</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/commits?author=d-fischer" title="Documentation">📖</a> <a href="https://github.com/fdgt-apis/api/pulls?q=is%3Apr+reviewed-by%3Ad-fischer" title="Reviewed Pull Requests">👀</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
