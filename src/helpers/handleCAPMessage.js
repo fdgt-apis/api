@@ -20,7 +20,7 @@ export default (message, connection) => {
 		sendUnknownCommand,
 	} = connection
 	const [subcommand, args] = message.params
-	const splitArgs = args.split(' ')
+	const splitArgs = args?.split(' ')
 
 	switch (subcommand) {
 		case 'END':
