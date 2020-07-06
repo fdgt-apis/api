@@ -19,7 +19,8 @@ export default (message, connection) => {
 		sendMOTD,
 		sendUnknownCommand,
 	} = connection
-	const [subcommand, ...args] = message.params
+	const [subcommand, args] = message.params
+	const splitArgs = args.split(' ')
 
 	switch (subcommand) {
 		case 'END':
@@ -33,7 +34,7 @@ export default (message, connection) => {
 			break
 
 		case 'REQ':
-			addCapabilities(args)
+			addCapabilities(splitArgs)
 			send(`:${HOST} CAP * ACK ${connection.capabilities.filter(capability => CAPABILITIES.includes(capability)).join(' ')}`)
 			break
 
