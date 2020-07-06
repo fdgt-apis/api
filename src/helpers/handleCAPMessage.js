@@ -35,6 +35,8 @@ export default (message, connection) => {
 
 		case 'REQ':
 			addCapabilities(splitArgs)
+			connection.capabilitiesFinished = true
+			connection.emit('acknowledge')
 			send(`:${HOST} CAP * ACK ${connection.capabilities.filter(capability => CAPABILITIES.includes(capability)).join(' ')}`)
 			break
 
