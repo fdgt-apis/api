@@ -24,7 +24,11 @@ export default () => async (context, next) => {
         version: '1.0',
       },
       meta: context.data.meta || {},
-    }
+		}
+
+		if (context.included) {
+			body.included = context.included
+		}
 
     if (Array.isArray(body.data)) {
       body.meta.count = body.data.length
