@@ -2,7 +2,7 @@
 	"name": "@fdgt/api",
 	"main": "dist/index.js",
 	"version": "1.0.2",
-	"license": "MIT",
+	"license": "bsd-3-clause",
 	"repository": {
 		"type": "git",
 		"url": "git@github.com:fdgt-apis/api.git"
