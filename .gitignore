@@ -2,5 +2,6 @@
 .env
 yarn-error.log
 .now/
+.nyc_output/
 dist/
 node_modules/

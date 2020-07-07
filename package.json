@@ -12,14 +12,13 @@
 	},
 	"scripts": {
 		"build": "babel src --out-dir dist --copy-files",
+		"coverage": "nyc yarn test; nyc report --reporter=text-lcov | coveralls",
 		"dev": "NODE_ENV=development DEBUG=true nodemon --exec babel-node src/index.js",
 		"start": "node dist/index.js",
 		"test": "NODE_ENV=test mocha"
 	},
 	"dependencies": {
-		"@babel/cli": "^7.10.4",
 		"@koa/cors": "^3.1.0",
-		"babel-plugin-module-resolver": "^4.0.0",
 		"dotenv": "^8.2.0",
 		"faker": "^4.1.0",
 		"firebase-admin": "^8.13.0",
@@ -39,16 +38,20 @@
 		"ws": "^7.3.1"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.10.4",
 		"@babel/core": "^7.10.4",
 		"@babel/node": "^7.10.4",
 		"@babel/plugin-proposal-class-properties": "^7.10.4",
 		"@babel/preset-env": "^7.10.4",
 		"@babel/register": "^7.10.4",
+		"babel-plugin-module-resolver": "^4.0.0",
 		"chai": "^4.2.0",
 		"chai-http": "^4.3.0",
+		"coveralls": "^3.1.0",
 		"frontmatter": "^0.0.3",
 		"mocha": "^8.0.1",
 		"nodemon": "^2.0.4",
+		"nyc": "^15.1.0",
 		"pm2": "^4.4.0",
 		"sinon": "^9.0.2",
 		"uuid-validate": "^0.0.3"
