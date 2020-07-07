@@ -1,7 +1,7 @@
 {
 	"name": "@fdgt/api",
 	"main": "dist/index.js",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"license": "bsd-3-clause",
 	"repository": {
 		"type": "git",
@@ -53,6 +53,8 @@
 		"nyc": "^15.1.0",
 		"pm2": "^4.4.0",
 		"sinon": "^9.0.2",
+		"test-listen": "^1.1.0",
+		"tmi.js": "^1.5.0",
 		"uuid-validate": "^0.0.3"
 	}
 }
