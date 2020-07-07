@@ -11,7 +11,9 @@
   <a href="https://codeclimate.com/github/fdgt-apis/api"><img alt="Code Smells" src="https://img.shields.io/codeclimate/issues/fdgt-apis/api?label=code%20smells&style=flat-square"></a>
   <a href="https://codeclimate.com/github/fdgt-apis/api"><img alt="Tech Debt" src="https://img.shields.io/codeclimate/tech-debt/fdgt-apis/api?style=flat-square"></a>
 	<br>
-	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section --><a href="#contributors-"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square"></a><!-- ALL-CONTRIBUTORS-BADGE:END -->
+	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://github.com/fdgt-apis/api/issues"><img alt="Open Github Issues" src="https://img.shields.io/github/issues/fdgt-apis/api.svg?style=flat-square"></a>
 </p>
 
@@ -57,6 +59,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://trezy.com"><img src="https://avatars2.githubusercontent.com/u/442980?v=4" width="100px;" alt=""/><br /><sub><b>Trezy</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/commits?author=trezy" title="Code">💻</a> <a href="#business-trezy" title="Business development">💼</a> <a href="https://github.com/fdgt-apis/api/commits?author=trezy" title="Documentation">📖</a> <a href="#example-trezy" title="Examples">💡</a> <a href="#infra-trezy" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-trezy" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://github.com/d-fischer"><img src="https://avatars3.githubusercontent.com/u/5854687?v=4" width="100px;" alt=""/><br /><sub><b>Daniel Fischer</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/commits?author=d-fischer" title="Documentation">📖</a> <a href="https://github.com/fdgt-apis/api/pulls?q=is%3Apr+reviewed-by%3Ad-fischer" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/Trico-Everfire"><img src="https://avatars3.githubusercontent.com/u/55441008?v=4" width="100px;" alt=""/><br /><sub><b>Trico Everfire</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/issues?q=author%3ATrico-Everfire" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
