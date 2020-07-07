@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="fdgt" src="https://github.com/fdgt-apis/mote/raw/main/logo.png" width="500">
+  <img alt="fdgt" src="https://github.com/fdgt-apis/mote/raw/main/logo.svg" width="500">
 </p>
 
 <p align="center">
@@ -14,6 +14,8 @@
 	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section --><a href="#contributors-"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square"></a><!-- ALL-CONTRIBUTORS-BADGE:END -->
   <img alt="Open Github Issues" src="https://img.shields.io/github/issues/fdgt-apis/api.svg?style=flat-square">
 </p>
+
+<hr>
 
 `fdgt` is a mock API for the Twitch Messaging Interface. Via `fdgt`, you can connect and test your Twitch bots and other tools with simulated events *without* having to connect to the real API!
 
