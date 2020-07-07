@@ -30,7 +30,15 @@ jobs:
     - name: Test
       run: yarn test
 
-    - name: Coverage
+    - name: Send coverage to Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Send coverage to Code Climate
+      uses: paambaati/codeclimate-action@v2.6.0
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TEST_REPORTER_ID }}
+      with:
+        coverageCommand: echo ''
+        coverageLocations: ${{ github.workspace }}/coverage/lcov.info:lcov
