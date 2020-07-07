@@ -12,10 +12,9 @@
 	},
 	"scripts": {
 		"build": "babel src --out-dir dist --copy-files",
-		"coverage": "nyc yarn test; nyc report --reporter=text-lcov | coveralls",
+		"test": "NODE_ENV=test nyc --reporter=lcovonly --reporter=text-summary mocha",
 		"dev": "NODE_ENV=development DEBUG=true nodemon --exec babel-node src/index.js",
-		"start": "node dist/index.js",
-		"test": "NODE_ENV=test mocha"
+		"start": "node dist/index.js"
 	},
 	"dependencies": {
 		"@koa/cors": "^3.1.0",

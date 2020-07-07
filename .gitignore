@@ -1,7 +1,9 @@
 .DS_Store
 .env
 yarn-error.log
+
 .now/
 .nyc_output/
+coverage/
 dist/
 node_modules/
