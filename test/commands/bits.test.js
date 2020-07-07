@@ -71,7 +71,7 @@ describe('bits events', function() {
 	})
 
 	it('should simulate a `bits` event', () => {
-		socket.emit('message', `PRIVMSG #${testChannelName} bits`)
+		socket.emit('message', `PRIVMSG #${testChannelName} :bits`)
 
 		const rawMessage = connection.send.getCall(0)?.firstArg
 		const { tags } = parseIRCMessage(rawMessage)
@@ -81,7 +81,7 @@ describe('bits events', function() {
 
 	it('should forward the message', () => {
 		const message = faker.lorem.sentence()
-		socket.emit('message', `PRIVMSG #${testChannelName} bits ${message}`)
+		socket.emit('message', `PRIVMSG #${testChannelName} :bits ${message}`)
 
 		const rawMessage = connection.send.getCall(0).firstArg
 		const {
@@ -93,7 +93,7 @@ describe('bits events', function() {
 	})
 
 	it('should send the correct amount of bits', () => {
-		socket.emit('message', `PRIVMSG #${testChannelName} bits --bitscount 99999`)
+		socket.emit('message', `PRIVMSG #${testChannelName} :bits --bitscount 99999`)
 
 		const rawMessage = connection.send.getCall(0).firstArg
 		const { tags } = parseIRCMessage(rawMessage)

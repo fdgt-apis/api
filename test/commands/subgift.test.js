@@ -72,7 +72,7 @@ describe('subgift events', function() {
 	})
 
 	it('should simulate a `subgift` event', () => {
-		socket.emit('message', `PRIVMSG #${testChannelName} subgift`)
+		socket.emit('message', `PRIVMSG #${testChannelName} :subgift`)
 
 		const rawMessage = connection.send.getCall(0)?.firstArg
 		const {
@@ -87,7 +87,7 @@ describe('subgift events', function() {
 	})
 
 	it('should set the sender\'s username', () => {
-		socket.emit('message', `PRIVMSG #${testChannelName} subgift --username ${testUsername}`)
+		socket.emit('message', `PRIVMSG #${testChannelName} :subgift --username ${testUsername}`)
 
 		const rawMessage = connection.send.getCall(0).firstArg
 		const { tags } = parseIRCMessage(rawMessage)
@@ -97,7 +97,7 @@ describe('subgift events', function() {
 	})
 
 	it('should set the recipient\'s username', () => {
-		socket.emit('message', `PRIVMSG #${testChannelName} subgift --username2 ${testUsername}`)
+		socket.emit('message', `PRIVMSG #${testChannelName} :subgift --username2 ${testUsername}`)
 
 		const rawMessage = connection.send.getCall(0).firstArg
 		const { tags } = parseIRCMessage(rawMessage)
@@ -107,7 +107,7 @@ describe('subgift events', function() {
 	})
 
 	it('should set the recipient\'s username', () => {
-		socket.emit('message', `PRIVMSG #foobar subgift --channel ${testChannelName}`)
+		socket.emit('message', `PRIVMSG #foobar :subgift --channel ${testChannelName}`)
 
 		const rawMessage = connection.send.getCall(0).firstArg
 		const { params: [channelName] } = parseIRCMessage(rawMessage)
@@ -116,7 +116,7 @@ describe('subgift events', function() {
 	})
 
 	it('should handle multi-month gift subs', () => {
-		socket.emit('message', `PRIVMSG #${testChannelName} subgift --months ${testMultiMonthSubLength}`)
+		socket.emit('message', `PRIVMSG #${testChannelName} :subgift --months ${testMultiMonthSubLength}`)
 
 		const rawMessage = connection.send.getCall(0).firstArg
 		const { tags } = parseIRCMessage(rawMessage)
