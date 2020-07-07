@@ -27,7 +27,14 @@ export default (messageData, connection) => {
 		send,
 		username,
 	} = connection
-	const [channelName, ...message] = messageData.params
+	const [channelName, message] = messageData.params
+
+	const argv = message
+		.replace(/"(.*?)"|'(.*?)'/g, (match, singleQuotes, doubleQuotes) => {
+			return (singleQuotes || doubleQuotes).replace(/\s/g, '\\s')
+		})
+		.split(' ')
+		.map(item => item.replace(/\\s/g, ' '))
 
 	const channel = getChannel(channelName)
 	const {
@@ -36,7 +43,7 @@ export default (messageData, connection) => {
 			...messageBody
 		],
 		...args
-	} = mri(message)
+	} = mri(argv)
 
 	args.message = messageBody.join(' ')
 
