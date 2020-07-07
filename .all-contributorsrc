@@ -28,6 +28,15 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "Trico-Everfire",
+      "name": "Trico Everfire",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/55441008?v=4",
+      "profile": "https://github.com/Trico-Everfire",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
