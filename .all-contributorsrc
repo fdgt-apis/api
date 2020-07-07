@@ -3,6 +3,7 @@
     "README.md"
   ],
   "imageSize": 100,
+	"badgeTemplate": "<a href=\"#contributors-\"><img alt=\"All Contributors\" src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square\"></a>",
   "commit": false,
   "contributors": [
     {

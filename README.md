@@ -11,10 +11,10 @@
   <a href="https://codeclimate.com/github/fdgt-apis/api"><img alt="Code Smells" src="https://img.shields.io/codeclimate/issues/fdgt-apis/api?label=code%20smells&style=flat-square"></a>
   <a href="https://codeclimate.com/github/fdgt-apis/api"><img alt="Tech Debt" src="https://img.shields.io/codeclimate/tech-debt/fdgt-apis/api?style=flat-square"></a>
 	<br>
-	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://github.com/fdgt-apis/api/issues"><img alt="Open Github Issues" src="https://img.shields.io/github/issues/fdgt-apis/api.svg?style=flat-square"></a>
+	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+	<a href="#contributors-"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square"></a>
+	<!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
 <hr>
