@@ -3,16 +3,16 @@
 </p>
 
 <p align="center">
-  <img alt="Test Workflow" src="https://img.shields.io/github/workflow/status/fdgt-apis/api/Test?label=tests&style=flat-square">
-  <img alt="Coverage" src="https://img.shields.io/codeclimate/coverage/fdgt-apis/api?style=flat-square">
-  <img alt="Dependencies" src="https://img.shields.io/david/fdgt-apis/api.svg?style=flat-square">
+  <a href="https://github.com/fdgt-apis/api/actions"><img alt="Test Workflow" src="https://img.shields.io/github/workflow/status/fdgt-apis/api/Test?label=tests&style=flat-square"></a>
+  <a href="https://codeclimate.com/github/fdgt-apis/api"><img alt="Coverage" src="https://img.shields.io/codeclimate/coverage/fdgt-apis/api?style=flat-square"></a>
+  <a href="https://david-dm.org/fdgt-apis/api"><img alt="Dependencies" src="https://img.shields.io/david/fdgt-apis/api.svg?style=flat-square"></a>
 	<br>
-  <img alt="Maintainability" src="https://img.shields.io/codeclimate/maintainability/fdgt-apis/api?style=flat-square">
-  <img alt="Code Smells" src="https://img.shields.io/codeclimate/issues/fdgt-apis/api?label=code%20smells&style=flat-square">
-  <img alt="Tech Debt" src="https://img.shields.io/codeclimate/tech-debt/fdgt-apis/api?style=flat-square">
+  <a href="https://codeclimate.com/github/fdgt-apis/api"><img alt="Maintainability" src="https://img.shields.io/codeclimate/maintainability/fdgt-apis/api?style=flat-square"></a>
+  <a href="https://codeclimate.com/github/fdgt-apis/api"><img alt="Code Smells" src="https://img.shields.io/codeclimate/issues/fdgt-apis/api?label=code%20smells&style=flat-square"></a>
+  <a href="https://codeclimate.com/github/fdgt-apis/api"><img alt="Tech Debt" src="https://img.shields.io/codeclimate/tech-debt/fdgt-apis/api?style=flat-square"></a>
 	<br>
 	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section --><a href="#contributors-"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square"></a><!-- ALL-CONTRIBUTORS-BADGE:END -->
-  <img alt="Open Github Issues" src="https://img.shields.io/github/issues/fdgt-apis/api.svg?style=flat-square">
+  <a href="https://github.com/fdgt-apis/api/issues"><img alt="Open Github Issues" src="https://img.shields.io/github/issues/fdgt-apis/api.svg?style=flat-square"></a>
 </p>
 
 <hr>
