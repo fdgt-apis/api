@@ -40,7 +40,7 @@ export const route = new Route({
 			await Promise.all(contributors.map(async contributor => {
 				const profile = await fetch(`https://api.github.com/users/${contributor.login}`, {
 					headers: {
-						Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
+						Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`
 					},
 				})
 				const profileJSON = await profile.json()

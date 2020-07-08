@@ -74,7 +74,7 @@ export const route = new Route({
 					}`.replace(/\t/g, ''),
 				}),
 				headers: {
-					Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
+					Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`
 				},
 				method: 'post',
 			}).then(response => response.json())
