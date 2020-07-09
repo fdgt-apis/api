@@ -21,7 +21,7 @@ export default (message, connection) => {
 	} = connection
 	const [subcommand, ...args] = message.params
 
-	switch (subcommand) {
+	switch (subcommand.toUpperCase()) {
 		case 'END':
 			connection.capabilitiesFinished = true
 			connection.emit('acknowledge')
@@ -29,7 +29,7 @@ export default (message, connection) => {
 
 		case 'LIST':
 		case 'LS':
-			send(`:${HOST} CAP * ${subcommand} ${CAPABILITIES.join(' ')}`)
+			send(`:${HOST} CAP * ${subcommand.toUpperCase()} ${CAPABILITIES.join(' ')}`)
 			break
 
 		case 'REQ':
@@ -40,6 +40,6 @@ export default (message, connection) => {
 			break
 
 		default:
-			sendUnknownCommand(`CAP ${subcommand}`)
+			sendUnknownCommand(`CAP ${subcommand.toUpperCase()}`)
 	}
 }
