@@ -3,7 +3,7 @@
     "README.md"
   ],
   "imageSize": 100,
-	"badgeTemplate": "<a href=\"#contributors-\"><img alt=\"All Contributors\" src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square\"></a>",
+  "badgeTemplate": "<a href=\"#contributors-\"><img alt=\"All Contributors\" src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square\"></a>",
   "commit": false,
   "contributors": [
     {
@@ -35,6 +35,15 @@
       "name": "Trico Everfire",
       "avatar_url": "https://avatars3.githubusercontent.com/u/55441008?v=4",
       "profile": "https://github.com/Trico-Everfire",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "iProdigy",
+      "name": "Sidd",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8106344?v=4",
+      "profile": "https://github.com/iProdigy",
       "contributions": [
         "bug"
       ]
