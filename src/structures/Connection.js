@@ -90,7 +90,7 @@ export default class extends EventEmitter {
 				message,
 			}, 'info')
 
-			switch (message.command) {
+			switch (message.command.toUpperCase()) {
 				case 'CAP':
 					handler = handleCAPMessage
 					break
