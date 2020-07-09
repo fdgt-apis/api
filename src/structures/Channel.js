@@ -34,6 +34,8 @@ export default class extends UserList {
 
 	isConnected = false
 
+	slowMode = false
+
 	subsOnly = false
 
 
