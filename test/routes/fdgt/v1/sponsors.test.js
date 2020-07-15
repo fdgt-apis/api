@@ -83,7 +83,6 @@ describe(url, function () {
 	it('should complete successfully', async () => {
 		const response = await requester.get(url)
 
-		console.log(response)
 		expect(response).to.have.status(200)
 		expect(response).to.be.json
 	})
