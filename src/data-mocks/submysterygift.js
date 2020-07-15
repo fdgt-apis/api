@@ -1,5 +1,6 @@
 export const defaults = {
 	giftcount: 5,
+	tier: 1,
 }
 
 /**
