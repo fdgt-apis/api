@@ -29,8 +29,6 @@ jobs:
 
     - name: Test
       run: yarn test
-      env:
-        GITHUB_ACCESS_TOKEN: ${{ secrets.FDGT_GITHUB_ACCESS_TOKEN }}
 
     - name: Send coverage to Coveralls
       uses: coverallsapp/github-action@master
