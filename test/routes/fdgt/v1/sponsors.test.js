@@ -30,7 +30,7 @@ describe(url, function () {
 	let requester = null
 
 	beforeEach(() => {
-		const scope = nock('https://api.github.com')
+		nock('https://api.github.com')
 			.post('/graphql')
 			.reply(200, {
 				data: {

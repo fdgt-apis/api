@@ -6,6 +6,7 @@ import {
 import { promisify } from 'util'
 import fs from 'fs'
 import Koa from 'koa'
+import nock from 'nock'
 import path from 'path'
 
 
@@ -34,6 +35,21 @@ describe(url, function () {
 	const allContributorsFile = fs.readFileSync(allContributorsPath, 'utf8')
 	const allContributors = JSON.parse(allContributorsFile)
 	let requester = null
+	let scope = null
+
+	before(() => {
+		scope = nock('https://api.github.com')
+			.persist()
+			.get(/\/users\/([\w-]+)\/?/)
+			.reply(200, (uri, requestBody) => {
+				const login = uri.replace(/\/users\/([\w-]+)\/?/, '$1')
+				return { twitter_username: login }
+			})
+	})
+
+	after(() => {
+		scope.persist(false)
+	})
 
 	beforeEach(() => {
 		requester = request(API.callback()).keepOpen()
