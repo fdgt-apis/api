@@ -46,7 +46,9 @@
       "profile": "https://github.com/iProdigy",
       "contributions": [
         "bug",
-        "review"
+        "review",
+        "doc",
+        "example"
       ]
     }
   ],

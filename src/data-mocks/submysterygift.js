@@ -6,7 +6,8 @@ const { HOST } = process.env
 
 
 export const defaults = {
-	count: 5,
+	giftcount: 5,
+	tier: 1,
 }
 
 /**

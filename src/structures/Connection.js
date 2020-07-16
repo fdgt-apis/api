@@ -184,7 +184,7 @@ export default class extends EventEmitter {
 				connectionID: this.id,
 			}, 'info')
 
-			this.send('PING')
+			this.send(`PING :${HOST}`)
 		}, 30000)
 	}
 
