@@ -5,6 +5,13 @@ import faker from 'faker'
 
 
 
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	viewercount: 10,
 }
@@ -34,7 +41,6 @@ export const render = (args = {}) => {
 		channel,
 		channelid,
 		color,
-		host,
 		messageid,
 		timestamp,
 		userid,
@@ -66,6 +72,6 @@ export const render = (args = {}) => {
 		'tmi-sent-ts': timestamp,
 		'user-id': userid,
 		'user-type': null,
-		message: `${host} USERNOTICE #${channel}`,
+		message: `${HOST} USERNOTICE #${channel}`,
 	}
 }

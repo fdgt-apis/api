@@ -1,5 +1,12 @@
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
-	giftcount: 5,
+	count: 5,
 }
 
 /**
@@ -10,10 +17,10 @@ export const defaults = {
  * @param {string} channel - The name of the channel the message will be sent to.
  * @param {string} channelid - The ID of the channel the message will be sent to.
  * @param {string} color - The color of the user's name in chat.
- * @param {number} giftcount=5 - The tier of the subscription being extended.
+ * @param {number} count=5 - The tier of the subscription being extended.
  * @param {string} messageid - The ID of the message.
  * @param {string} timestamp - The millisecond timestamp when the message was sent.
- * @param {number} totalgiftcount=5 The total number of gifts the user has given in the channel.
+ * @param {number} totalcount=5 The total number of gifts the user has given in the channel.
  * @param {string} userid - The ID of the user sending the message.
  * @param {string} username - The username of the user sending the message.
  *
@@ -21,19 +28,18 @@ export const defaults = {
  * submysterygift
  *
  * @example @lang off <caption>Simulates zebiniasis giving 20 mystery sub gifts</caption>
- * submysterygift --giftcount 20 --username zebiniasis
+ * submysterygift --count 20 --username zebiniasis
  */
 export const render = (args = {}) => {
 	const {
 		channel,
 		channelid,
 		color,
-		giftcount,
-		host,
+		count,
 		messageid,
 		tier,
 		timestamp,
-		totalgiftcount,
+		totalcount,
 		userid,
 		username,
 	} = {
@@ -55,16 +61,16 @@ export const render = (args = {}) => {
 		login: username,
 		mod: 0,
 		'msg-id': 'submysterygift',
-		'msg-param-mass-gift-count': giftcount,
-		'msg-param-sender-count': totalgiftcount || giftcount,
+		'msg-param-mass-gift-count': count,
+		'msg-param-sender-count': totalcount || count,
 		'msg-param-sub-plan-name': `Tier ${tier}`,
 		'msg-param-sub-plan': 1000 * tier,
 		'room-id': channelid,
 		subscriber: 1,
-		'system-msg': `${username} is gifting ${giftcount} Tier ${tier} Subs to the community! They've gifted a total of ${totalgiftcount || giftcount} in the channel!`,
+		'system-msg': `${username} is gifting ${count} Tier ${tier} Subs to the community! They've gifted a total of ${totalcount || count} in the channel!`,
 		'tmi-sent-ts': timestamp,
 		'user-id': userid,
 		'user-type': null,
-		message: `${host} USERNOTICE #${channel}`,
+		message: `${HOST} USERNOTICE #${channel}`,
 	}
 }

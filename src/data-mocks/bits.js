@@ -1,3 +1,10 @@
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	bitscount: 100,
 }
@@ -29,7 +36,6 @@ export const render = (args = {}) => {
 		color,
 		channel,
 		channelid,
-		host,
 		message,
 		messageid,
 		timestamp,
@@ -56,6 +62,6 @@ export const render = (args = {}) => {
 		turbo: 0,
 		'user-id': userid,
 		'user-type': null,
-		message: `${username}!${username}@${username}.${host} PRIVMSG #${channel} :${message}`,
+		message: `${username}!${username}@${username}.${HOST} PRIVMSG #${channel} :${message}`,
 	}
 }

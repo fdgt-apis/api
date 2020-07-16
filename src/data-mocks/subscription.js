@@ -1,3 +1,10 @@
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	prime: false,
 	tier: 1,
@@ -32,7 +39,6 @@ export const render = (args = {}) => {
 		channel,
 		channelid,
 		color,
-		host,
 		messageid,
 		prime,
 		tier,
@@ -75,6 +81,6 @@ export const render = (args = {}) => {
 		'tmi-sent-ts': timestamp,
 		'user-id': userid,
 		'user-type': null,
-		message: `${host} USERNOTICE #${channel}`,
+		message: `${HOST} USERNOTICE #${channel}`,
 	}
 }

@@ -1,3 +1,10 @@
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	off: false,
 }
@@ -23,7 +30,6 @@ export const defaults = {
 export const render = (args = {}) => {
 	const {
 		channel,
-		host,
 		off,
 	} = {
 		...defaults,
@@ -33,7 +39,7 @@ export const render = (args = {}) => {
 	channel.slowMode = !off
 
 	return {
-		message: `${host} NOTICE #${channel} :This room is ${off ? 'no longer' : 'now'} in slow mode.${off ? '' : ' You can send messages every 30 seconds.'}`,
+		message: `${HOST} NOTICE #${channel} :This room is ${off ? 'no longer' : 'now'} in slow mode.${off ? '' : ' You can send messages every 30 seconds.'}`,
 		'msg-id': `slow_${off ? 'off' : 'on'}`,
 	}
 }

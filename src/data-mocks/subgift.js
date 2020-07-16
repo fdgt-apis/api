@@ -5,6 +5,13 @@ import faker from 'faker'
 
 
 
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	months: 1,
 	tier: 1,
@@ -78,7 +85,7 @@ export const render = (args = {}) => {
 		'tmi-sent-ts': timestamp,
 		'user-id': userid,
 		'user-type': null,
-		message: `${host} USERNOTICE #${channel}`,
+		message: `${HOST} USERNOTICE #${channel}`,
 	}
 
 	if (months > 1) {

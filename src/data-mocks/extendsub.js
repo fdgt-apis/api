@@ -5,6 +5,13 @@ import moment from 'moment'
 
 
 
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	months: 3,
 	tier: 1,
@@ -39,7 +46,6 @@ export const render = (args = {}) => {
 		channel,
 		channelid,
 		color,
-		host,
 		messageid,
 		months,
 		tier,
@@ -76,6 +82,6 @@ export const render = (args = {}) => {
 		'tmi-sent-ts': timestamp,
 		'user-id': userid,
 		'user-type': null,
-		message: `${host} USERNOTICE #${channel}`,
+		message: `${HOST} USERNOTICE #${channel}`,
 	}
 }

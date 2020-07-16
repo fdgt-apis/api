@@ -1,3 +1,10 @@
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	tier: 1,
 }
@@ -27,7 +34,6 @@ export const render = (args = {}) => {
 		channel,
 		channelid,
 		color,
-		host,
 		messageid,
 		tier,
 		timestamp,
@@ -57,6 +63,6 @@ export const render = (args = {}) => {
 		'user-id': userid,
 		'user-type': null,
 		'system-msg': `${username} converted from a Twitch Prime sub to a Tier ${tier} sub!`,
-		message: `${host} USERNOTICE #${channel}`,
+		message: `${HOST} USERNOTICE #${channel}`,
 	}
 }
