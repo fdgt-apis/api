@@ -13,6 +13,7 @@ const { HOST } = process.env
 
 
 export const defaults = {
+	count: 1,
 	months: 1,
 	tier: 1,
 }
@@ -25,6 +26,7 @@ export const defaults = {
  * @param {string} channel - The name of the channel the message will be sent to.
  * @param {string} channelid - The ID of the channel the message will be sent to.
  * @param {string} color - The color of the user's name in chat.
+ * @param {string} count - The total number of gifts the user has given in the channel.
  * @param {string} messageid - The ID of the message.
  * @param {number} months - The length of the gift sub (for multi-month subs only).
  * @param {number} tier=1 - The tier of the subscription being extended.
@@ -45,7 +47,7 @@ export const render = (args = {}) => {
 		channel,
 		channelid,
 		color,
-		host,
+		count,
 		messageid,
 		months,
 		tier,
@@ -63,9 +65,9 @@ export const render = (args = {}) => {
 		'badge-info': ['subscriber/0'],
 		badges: [
 			'subscriber/0',
-			'sub-gifter/1'
+			'sub-gifter/1',
 		],
-		color: color,
+		color,
 		'display-name': username,
 		emotes: null,
 		flags: null,
@@ -77,11 +79,11 @@ export const render = (args = {}) => {
 		'msg-param-recipient-display-name': username2,
 		'msg-param-recipient-id': userid2,
 		'msg-param-recipient-user-name': username2,
-		'msg-param-sender-count': '1',
+		'msg-param-sender-count': count,
 		'msg-param-sub-plan-name': `Tier ${tier}`,
 		'msg-param-sub-plan': 1000 * tier,
 		'room-id': channelid,
-		'system-msg': `${username} gifted a Tier ${tier} sub to ${username2}! They have given 1 Gift Sub in the channel!`,
+		'system-msg': `${username} gifted a Tier ${tier} sub to ${username2}! They have given ${count} Gift Sub${count > 1 ? 's' : ''} in the channel!`,
 		'tmi-sent-ts': timestamp,
 		'user-id': userid,
 		'user-type': null,
