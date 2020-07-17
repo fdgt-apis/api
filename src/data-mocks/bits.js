@@ -1,3 +1,10 @@
+// Local imports
+import { CHEERMOTE_PREFIXES } from 'data/CHEERMOTE_PREFIXES'
+
+
+
+
+
 // Local constants
 const { HOST } = process.env
 
@@ -46,10 +53,33 @@ export const render = (args = {}) => {
 		...args,
 	}
 
+	const emotes = []
+
+	let processedMessage = message
+	let totalBits = 0
+
+	if (message) {
+		const cheermotes = [...message.matchAll(new RegExp(`(?:${CHEERMOTE_PREFIXES.join('|')})(\\d+)`, 'giu'))]
+
+		totalBits = cheermotes.reduce((accumulator, cheermote) => {
+			return accumulator + parseInt(cheermote[1], 10)
+		}, 0)
+	}
+
+	if (totalBits === 0) {
+		totalBits = bitscount
+
+		if (processedMessage) {
+			processedMessage += ' '
+		}
+
+		processedMessage += `cheer${totalBits}`
+	}
+
 	return {
 		'badge-info': [],
 		badges: [],
-		bits: bitscount,
+		bits: totalBits,
 		color,
 		'display-name': username,
 		emotes: null,
@@ -62,6 +92,6 @@ export const render = (args = {}) => {
 		turbo: 0,
 		'user-id': userid,
 		'user-type': null,
-		message: `${username}!${username}@${username}.${HOST} PRIVMSG #${channel} :${message}`,
+		message: `${username}!${username}@${username}.${HOST} PRIVMSG #${channel} :${processedMessage}`,
 	}
 }
