@@ -15,6 +15,7 @@ const { HOST } = process.env
 export const defaults = {
 	count: 1,
 	months: 1,
+	tenure: 1,
 	tier: 1,
 }
 
@@ -26,13 +27,14 @@ export const defaults = {
  * @param {string} channel - The name of the channel the message will be sent to.
  * @param {string} channelid - The ID of the channel the message will be sent to.
  * @param {string} color - The color of the user's name in chat.
- * @param {string} count - The total number of gifts the user has given in the channel.
+ * @param {string} count=1 - The total number of gifts the user has given in the channel.
  * @param {string} messageid - The ID of the message.
- * @param {number} months - The length of the gift sub (for multi-month subs only).
+ * @param {number} months=1 - The length of the gift sub (for multi-month subs only).
+ * @param {number} tenure=1 - The total number of months the recipient has been subscribed.
  * @param {number} tier=1 - The tier of the subscription being extended.
  * @param {string} timestamp - The millisecond timestamp when the message was sent.
- * @param {string} userid2 - The ID of the user that is gifting the sub.
- * @param {string} username2 - The username of the user that is gifting the sub.
+ * @param {string} userid2 - The ID of the user that is receiving the sub.
+ * @param {string} username2 - The username of the user that is receiving the sub.
  * @param {string} userid - The ID of the user sending the message.
  * @param {string} username - The username of the user sending the message.
  *
@@ -50,6 +52,7 @@ export const render = (args = {}) => {
 		count,
 		messageid,
 		months,
+		tenure,
 		tier,
 		timestamp,
 		userid,
@@ -75,7 +78,7 @@ export const render = (args = {}) => {
 		login: username,
 		mod: 0,
 		'msg-id': 'subgift',
-		'msg-param-months': 1,
+		'msg-param-months': Math.max(tenure, 1),
 		'msg-param-recipient-display-name': username2,
 		'msg-param-recipient-id': userid2,
 		'msg-param-recipient-user-name': username2,
