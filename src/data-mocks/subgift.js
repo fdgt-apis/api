@@ -75,7 +75,7 @@ export const render = (args = {}) => {
 		login: username,
 		mod: 0,
 		'msg-id': 'subgift',
-		'msg-param-months': 0,
+		'msg-param-months': 1,
 		'msg-param-recipient-display-name': username2,
 		'msg-param-recipient-id': userid2,
 		'msg-param-recipient-user-name': username2,
