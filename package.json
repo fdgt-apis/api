@@ -31,7 +31,7 @@
 		"koa-no-trailing-slash": "^2.1.0",
 		"koa-router": "^9.1.0",
 		"moment": "^2.27.0",
-		"mri": "^1.1.5",
+		"mri": "^1.1.6",
 		"node-fetch": "^2.6.0",
 		"tinycolor2": "^1.4.1",
 		"uuid": "^8.2.0",
