@@ -28,7 +28,6 @@ const {
 	WEB_PORT = 3000,
 	WS_PORT = 3001,
 } = process.env
-const { HOST } = process.env
 const fdgtUser = new User({ username: 'fdgt' })
 const wsServer = new WebSocket.Server({ port: WS_PORT })
 
