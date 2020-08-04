@@ -10,6 +10,7 @@ export default options => {
 	const {
 		args,
 		channel,
+		connection,
 		template,
 		user,
 	} = options
@@ -18,6 +19,7 @@ export default options => {
 		const renderedTemplate = renderTemplate({
 			args,
 			channel,
+			connection,
 			template,
 			user,
 		})

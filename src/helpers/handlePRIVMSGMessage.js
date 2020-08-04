@@ -57,6 +57,7 @@ export default (messageData, connection) => {
 		args,
 		channel,
 		command,
+		connection,
 		user,
 	})
 
