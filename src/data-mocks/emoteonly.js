@@ -29,17 +29,20 @@ export const defaults = {
  */
 export const render = (args = {}) => {
 	const {
-		channel,
+		channel: channelName,
+		connection,
 		off,
 	} = {
 		...defaults,
 		...args,
 	}
 
+	const channel = connection.channels.findByName(channelName)
+
 	channel.emoteOnly = !off
 
 	return {
-		message: `${HOST} NOTICE #${channel} :This room is ${off ? 'no longer' : 'now'} in emote-only mode.`,
+		message: `${HOST} NOTICE #${channelName} :This room is ${off ? 'no longer' : 'now'} in emote-only mode.`,
 		'msg-id': `emote_only_${off ? 'off' : 'on'}`,
 	}
 }
