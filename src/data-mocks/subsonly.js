@@ -29,17 +29,20 @@ export const defaults = {
  */
 export const render = (args = {}) => {
 	const {
-		channel,
+		channel: channelName,
+		connection,
 		off,
 	} = {
 		...defaults,
 		...args,
 	}
 
+	const channel = connection.channels.findByName(channelName)
+
 	channel.subsOnly = !off
 
 	return {
-		message: `${HOST} NOTICE #${channel} :This room is ${off ? 'no longer' : 'now'} in subscribers-only mode.`,
+		message: `${HOST} NOTICE #${channelName} :This room is ${off ? 'no longer' : 'now'} in subscribers-only mode.`,
 		'msg-id': `subs_${off ? 'off' : 'on'}`,
 	}
 }

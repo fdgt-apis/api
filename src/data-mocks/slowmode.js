@@ -29,17 +29,20 @@ export const defaults = {
  */
 export const render = (args = {}) => {
 	const {
-		channel,
+		channel: channelName,
+		connection,
 		off,
 	} = {
 		...defaults,
 		...args,
 	}
 
+	const channel = connection.channels.findByName(channelName)
+
 	channel.slowMode = !off
 
 	return {
-		message: `${HOST} NOTICE #${channel} :This room is ${off ? 'no longer' : 'now'} in slow mode.${off ? '' : ' You can send messages every 30 seconds.'}`,
+		message: `${HOST} NOTICE #${channelName} :This room is ${off ? 'no longer' : 'now'} in slow mode.${off ? '' : ' You can send messages every 30 seconds.'}`,
 		'msg-id': `slow_${off ? 'off' : 'on'}`,
 	}
 }

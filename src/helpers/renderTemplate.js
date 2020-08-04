@@ -17,6 +17,7 @@ export default options => {
 	const {
 		args = {},
 		channel,
+		connection,
 		template,
 		user,
 	} = options
@@ -24,6 +25,7 @@ export default options => {
 		channel: channel?.name,
 		channelid: channel?.id,
 		color: user?.color,
+		connection,
 		host: HOST,
 		id: messageID,
 		messageid: messageID,
