@@ -251,11 +251,14 @@ export default class extends EventEmitter {
 		return channel
 	}
 
-	getUser = (username, create = true) => {
+	getUser = username => {
 		let user = this.users.findByUsername(username)
 
-		if (!user && create) {
-			user = new User({ username })
+		if (!user) {
+			user = new User({
+				connection: this,
+				username,
+			})
 			this.users.add(user)
 		}
 

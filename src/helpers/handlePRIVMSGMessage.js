@@ -25,7 +25,6 @@ export default (messageData, connection) => {
 		getChannel,
 		getUser,
 		send,
-		username,
 	} = connection
 	const [channelName, message] = messageData.params
 
@@ -47,10 +46,15 @@ export default (messageData, connection) => {
 
 	args.message = messageBody.join(' ')
 
+	const username = args.username || connection.username
+
 	let user = getUser(username)
 
-	if (args.username) {
-		user = new User({ username: args.username })
+	if (!user) {
+		user = new User({
+			connection,
+			username,
+		})
 	}
 
 	const response = renderCommandResponse({

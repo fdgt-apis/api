@@ -106,6 +106,22 @@ export default class extends UserList {
 		}))
 	}
 
+	sendROOMSTATE = () => {
+		this.connection.send(renderMessage({
+			channel: this,
+			template: () => ({
+				'emote-only': Number(this.emoteOnly),
+				'followers-only': Number(this.followersOnly),
+				r9k: 0,
+				rituals: 0,
+				'room-id': this.id,
+				slow: Number(this.slowMode),
+				'subs-only': Number(this.subsOnly),
+				message: `${HOST} ROOMSTATE #${this.name}`,
+			}),
+		}))
+	}
+
 
 
 
