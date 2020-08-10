@@ -21,8 +21,6 @@ export const defaults = {
  *
  * @alias `giftpaidupgrade`
  *
- * @param {string} channel - The name of the channel the message will be sent to.
- * @param {string} channelid - The ID of the channel the message will be sent to.
  * @param {string} color - The color of the user's name in chat.
  * @param {string} messageid - The ID of the message.
  * @param {number} months=3 - The number of months the subscription has been active.

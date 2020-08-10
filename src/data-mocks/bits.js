@@ -22,8 +22,6 @@ export const defaults = {
  * @alias `bits`
  *
  * @param {number} bitscount=100 The number of bits to attach to the message.
- * @param {string} channel - The name of the channel the message will be sent to.
- * @param {string} channelid - The ID of the channel the message will be sent to.
  * @param {string} color - The color of the user's name in chat.
  * @param {string} message The body of the message.
  * @param {string} messageid - The ID of the message.

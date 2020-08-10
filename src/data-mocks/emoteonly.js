@@ -18,7 +18,6 @@ export const defaults = {
  *
  * @alias `emoteonly`
  *
- * @param {string} channel - The name of the channel (no `#`) that will be set to emote-only mode.
  * @param {boolean} off=false - Whether emote-only mode is being enabled or disabled.
  *
  * @example @lang off <caption>Fires an `emoteonly` event, enabling emote-only mode on the channel.</caption>

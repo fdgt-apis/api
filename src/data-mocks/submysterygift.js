@@ -15,8 +15,6 @@ export const defaults = {
  *
  * @alias `submysterygift`
  *
- * @param {string} channel - The name of the channel the message will be sent to.
- * @param {string} channelid - The ID of the channel the message will be sent to.
  * @param {string} color - The color of the user's name in chat.
  * @param {number} count=5 - The number of gifts the user is currently giving in the channel.
  * @param {string} messageid - The ID of the message.
