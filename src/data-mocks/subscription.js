@@ -1,3 +1,10 @@
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	prime: false,
 	tier: 1,
@@ -8,8 +15,6 @@ export const defaults = {
  *
  * @alias `subscription`
  *
- * @param {string} channel - The name of the channel the message will be sent to.
- * @param {string} channelid - The ID of the channel the message will be sent to.
  * @param {string} color - The color of the user's name in chat.
  * @param {string} messageid - The ID of the message.
  * @param {boolean} prime=false Whether this is a Prime subscription.
@@ -32,7 +37,6 @@ export const render = (args = {}) => {
 		channel,
 		channelid,
 		color,
-		host,
 		messageid,
 		prime,
 		tier,
@@ -75,6 +79,6 @@ export const render = (args = {}) => {
 		'tmi-sent-ts': timestamp,
 		'user-id': userid,
 		'user-type': null,
-		message: `${host} USERNOTICE #${channel}`,
+		message: `${HOST} USERNOTICE #${channel}`,
 	}
 }

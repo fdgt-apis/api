@@ -1,3 +1,10 @@
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	off: false,
 }
@@ -11,7 +18,6 @@ export const defaults = {
  *
  * @alias `subsonly`
  *
- * @param {string} channel - The name of the channel (no `#`) that will be set to emote-only mode.
  * @param {boolean} off=false - Whether emote-only mode is being enabled or disabled.
  *
  * @example @lang off <caption>Fires an `subsonly` event, enabling slow mode on the channel.</caption>
@@ -22,18 +28,20 @@ export const defaults = {
  */
 export const render = (args = {}) => {
 	const {
-		channel,
-		host,
+		channel: channelName,
+		connection,
 		off,
 	} = {
 		...defaults,
 		...args,
 	}
 
+	const channel = connection.channels.findByName(channelName)
+
 	channel.subsOnly = !off
 
 	return {
-		message: `${host} NOTICE #${channel} :This room is ${off ? 'no longer' : 'now'} in subscribers-only mode.`,
+		message: `${HOST} NOTICE #${channelName} :This room is ${off ? 'no longer' : 'now'} in subscribers-only mode.`,
 		'msg-id': `subs_${off ? 'off' : 'on'}`,
 	}
 }

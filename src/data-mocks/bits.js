@@ -1,3 +1,17 @@
+// Local imports
+import { CHEERMOTE_PREFIXES } from 'data/CHEERMOTE_PREFIXES'
+
+
+
+
+
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	bitscount: 100,
 }
@@ -8,8 +22,6 @@ export const defaults = {
  * @alias `bits`
  *
  * @param {number} bitscount=100 The number of bits to attach to the message.
- * @param {string} channel - The name of the channel the message will be sent to.
- * @param {string} channelid - The ID of the channel the message will be sent to.
  * @param {string} color - The color of the user's name in chat.
  * @param {string} message The body of the message.
  * @param {string} messageid - The ID of the message.
@@ -29,7 +41,6 @@ export const render = (args = {}) => {
 		color,
 		channel,
 		channelid,
-		host,
 		message,
 		messageid,
 		timestamp,
@@ -40,10 +51,33 @@ export const render = (args = {}) => {
 		...args,
 	}
 
+	const emotes = []
+
+	let processedMessage = message
+	let totalBits = 0
+
+	if (message) {
+		const cheermotes = [...message.matchAll(new RegExp(`(?:${CHEERMOTE_PREFIXES.join('|')})(\\d+)`, 'giu'))]
+
+		totalBits = cheermotes.reduce((accumulator, cheermote) => {
+			return accumulator + parseInt(cheermote[1], 10)
+		}, 0)
+	}
+
+	if (totalBits === 0) {
+		totalBits = bitscount
+
+		if (processedMessage) {
+			processedMessage += ' '
+		}
+
+		processedMessage += `cheer${totalBits}`
+	}
+
 	return {
 		'badge-info': [],
 		badges: [],
-		bits: bitscount,
+		bits: totalBits,
 		color,
 		'display-name': username,
 		emotes: null,
@@ -56,6 +90,6 @@ export const render = (args = {}) => {
 		turbo: 0,
 		'user-id': userid,
 		'user-type': null,
-		message: `${username}!${username}@${username}.${host} PRIVMSG #${channel} :${message}`,
+		message: `${username}!${username}@${username}.${HOST} PRIVMSG #${channel} :${processedMessage}`,
 	}
 }

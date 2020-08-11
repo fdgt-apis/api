@@ -184,7 +184,7 @@ export default class extends EventEmitter {
 				connectionID: this.id,
 			}, 'info')
 
-			this.send('PING')
+			this.send(`PING :${HOST}`)
 		}, 30000)
 	}
 
@@ -251,11 +251,14 @@ export default class extends EventEmitter {
 		return channel
 	}
 
-	getUser = (username, create = true) => {
+	getUser = username => {
 		let user = this.users.findByUsername(username)
 
-		if (!user && create) {
-			user = new User({ username })
+		if (!user) {
+			user = new User({
+				connection: this,
+				username,
+			})
 			this.users.add(user)
 		}
 

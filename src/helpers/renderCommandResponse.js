@@ -11,6 +11,7 @@ export default options => {
 		args,
 		channel,
 		command,
+		connection,
 		user,
 	} = options
 
@@ -19,6 +20,7 @@ export default options => {
 			args,
 			channel,
 			command,
+			connection,
 			template: getMock({ command }),
 			user,
 		})

@@ -1,3 +1,10 @@
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	off: false,
 }
@@ -11,7 +18,6 @@ export const defaults = {
  *
  * @alias `emoteonly`
  *
- * @param {string} channel - The name of the channel (no `#`) that will be set to emote-only mode.
  * @param {boolean} off=false - Whether emote-only mode is being enabled or disabled.
  *
  * @example @lang off <caption>Fires an `emoteonly` event, enabling emote-only mode on the channel.</caption>
@@ -22,18 +28,20 @@ export const defaults = {
  */
 export const render = (args = {}) => {
 	const {
-		channel,
-		host,
+		channel: channelName,
+		connection,
 		off,
 	} = {
 		...defaults,
 		...args,
 	}
 
+	const channel = connection.channels.findByName(channelName)
+
 	channel.emoteOnly = !off
 
 	return {
-		message: `${host} NOTICE #${channel} :This room is ${off ? 'no longer' : 'now'} in emote-only mode.`,
+		message: `${HOST} NOTICE #${channelName} :This room is ${off ? 'no longer' : 'now'} in emote-only mode.`,
 		'msg-id': `emote_only_${off ? 'off' : 'on'}`,
 	}
 }

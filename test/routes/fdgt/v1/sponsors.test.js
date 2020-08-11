@@ -4,6 +4,7 @@ import {
 	request,
 } from 'chai'
 import Koa from 'koa'
+import nock from 'nock'
 
 
 
@@ -29,6 +30,49 @@ describe(url, function () {
 	let requester = null
 
 	beforeEach(() => {
+		nock('https://api.github.com')
+			.post('/graphql')
+			.reply(200, {
+				data: {
+					user: {
+						sponsorsListing: {
+							tiers: {
+								nodes: [
+									{
+										description: 'Beep',
+										id: '0',
+										monthlyPriceInDollars: 7,
+										name: 'Non-publicized Tier',
+									},
+									{
+										description: 'Boop',
+										id: '1',
+										monthlyPriceInDollars: 7,
+										name: 'Publicized Tier',
+									},
+								],
+							},
+						},
+						sponsorshipsAsMaintainer: {
+							nodes: [
+								{
+									createdAt: '2020-07-02T18:05:27Z',
+									privacyLevel: 'PUBLIC',
+									sponsorEntity: {
+										id: '0',
+									},
+									tier: {
+										description: 'Beep',
+										id: '0',
+										monthlyPriceInDollars: 7,
+										name: 'Non-publicized Tier',
+									},
+								},
+							],
+						},
+					},
+				},
+			})
 		requester = request(API.callback()).keepOpen()
 	})
 

@@ -1,3 +1,10 @@
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	off: false,
 }
@@ -11,7 +18,6 @@ export const defaults = {
  *
  * @alias `slowmode`
  *
- * @param {string} channel - The name of the channel (no `#`) that will be set to emote-only mode.
  * @param {boolean} off=false - Whether emote-only mode is being enabled or disabled.
  *
  * @example @lang off <caption>Fires an `slowmode` event, enabling slow mode on the channel.</caption>
@@ -22,18 +28,20 @@ export const defaults = {
  */
 export const render = (args = {}) => {
 	const {
-		channel,
-		host,
+		channel: channelName,
+		connection,
 		off,
 	} = {
 		...defaults,
 		...args,
 	}
 
+	const channel = connection.channels.findByName(channelName)
+
 	channel.slowMode = !off
 
 	return {
-		message: `${host} NOTICE #${channel} :This room is ${off ? 'no longer' : 'now'} in slow mode.${off ? '' : ' You can send messages every 30 seconds.'}`,
+		message: `${HOST} NOTICE #${channelName} :This room is ${off ? 'no longer' : 'now'} in slow mode.${off ? '' : ' You can send messages every 30 seconds.'}`,
 		'msg-id': `slow_${off ? 'off' : 'on'}`,
 	}
 }

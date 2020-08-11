@@ -5,6 +5,13 @@ import faker from 'faker'
 
 
 
+// Local constants
+const { HOST } = process.env
+
+
+
+
+
 export const defaults = {
 	months: 3,
 }
@@ -14,8 +21,6 @@ export const defaults = {
  *
  * @alias `giftpaidupgrade`
  *
- * @param {string} channel - The name of the channel the message will be sent to.
- * @param {string} channelid - The ID of the channel the message will be sent to.
  * @param {string} color - The color of the user's name in chat.
  * @param {string} messageid - The ID of the message.
  * @param {number} months=3 - The number of months the subscription has been active.
@@ -35,7 +40,6 @@ export const render = (args = {}) => {
 		channel,
 		channelid,
 		color,
-		host,
 		messageid,
 		months,
 		timestamp,
@@ -66,6 +70,6 @@ export const render = (args = {}) => {
 		'tmi-sent-ts': timestamp,
 		'user-id': userid,
 		'user-type': null,
-		message: `${host} USERNOTICE #${channel}`,
+		message: `${HOST} USERNOTICE #${channel}`,
 	}
 }
