@@ -48,7 +48,9 @@
         "bug",
         "review",
         "doc",
-        "example"
+        "example",
+        "code",
+        "test"
       ]
     }
   ],
