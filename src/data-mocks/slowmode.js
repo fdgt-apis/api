@@ -1,3 +1,10 @@
+// Local imports
+import incrementStat from 'helpers/incrementStat'
+
+
+
+
+
 // Local constants
 const { HOST } = process.env
 
@@ -39,6 +46,8 @@ export const render = (args = {}) => {
 	const channel = connection.channels.findByName(channelName)
 
 	channel.slowMode = !off
+
+	incrementStat('event/slowmode')
 
 	return {
 		message: `${HOST} NOTICE #${channelName} :This room is ${off ? 'no longer' : 'now'} in slow mode.${off ? '' : ' You can send messages every 30 seconds.'}`,

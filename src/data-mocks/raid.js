@@ -5,6 +5,13 @@ import faker from 'faker'
 
 
 
+// Local imports
+import incrementStat from 'helpers/incrementStat'
+
+
+
+
+
 // Local constants
 const { HOST } = process.env
 
@@ -48,6 +55,8 @@ export const render = (args = {}) => {
 		...defaults,
 		...args,
 	}
+
+	incrementStat('events/raid')
 
 	return {
 		'badge-info': [],

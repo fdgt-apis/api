@@ -21,6 +21,7 @@ import handlePONGMessage from 'helpers/handlePONGMessage'
 import handlePRIVMSGMessage from 'helpers/handlePRIVMSGMessage'
 import handleUSERMessage from 'helpers/handleUSERMessage'
 import handleQUITMessage from 'helpers/handleQUITMessage'
+import incrementStat from 'helpers/incrementStat'
 import User from 'structures/User'
 import UserList from 'structures/UserList'
 
@@ -81,6 +82,8 @@ export default class extends EventEmitter {
 			.replace(/\r\n$/, '')
 			.split('\r\n')
 			.map(item => parseIRCMessage(item))
+
+		incrementStat('messagesReceived', messages.length)
 
 		messages.forEach(message => {
 			let handler = null
@@ -230,6 +233,8 @@ export default class extends EventEmitter {
 			type: this.type,
 		}, 'info')
 
+		incrementStat('connections')
+
 		this.on('acknowledge', this.#acknowledge)
 
 		this.#initializeConnectionCloseHandler()
@@ -273,6 +278,7 @@ export default class extends EventEmitter {
 		}
 
 		try {
+			incrementStat('messagesSent', messages.length)
 			messages.forEach(message => {
 				log(`Sending message to client`, {
 					connectionID: this.id,

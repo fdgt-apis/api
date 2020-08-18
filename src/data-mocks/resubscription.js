@@ -1,3 +1,11 @@
+// Local imports
+import { DOLLARBUCK_CORRELATIONS } from 'data/DOLLARBUCK_CORRELATIONS'
+import incrementStat from 'helpers/incrementStat'
+
+
+
+
+
 // Local constants
 const { HOST } = process.env
 
@@ -53,6 +61,9 @@ export const render = (args = {}) => {
 
 	const plan = prime ? 'Prime' : (1000 * tier)
 	const planName = prime ? 'Prime' : `Tier ${tier}`
+
+	incrementStat('event/resub')
+	incrementStat('dollarbucksSaved', DOLLARBUCK_CORRELATIONS['subscription'][tier])
 
 	return {
 		'badge-info': [

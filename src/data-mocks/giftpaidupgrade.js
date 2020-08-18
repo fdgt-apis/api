@@ -5,6 +5,14 @@ import faker from 'faker'
 
 
 
+// Local imports
+import { DOLLARBUCK_CORRELATIONS } from 'data/DOLLARBUCK_CORRELATIONS'
+import incrementStat from 'helpers/incrementStat'
+
+
+
+
+
 // Local constants
 const { HOST } = process.env
 
@@ -50,6 +58,9 @@ export const render = (args = {}) => {
 		...defaults,
 		...args,
 	}
+
+	incrementStat('events/giftpaidupgrade')
+	incrementStat('dollarbucksSaved', DOLLARBUCK_CORRELATIONS['subscription'][tier])
 
 	return {
 		'badge-info': [`subscriber/${months}`],

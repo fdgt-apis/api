@@ -5,6 +5,14 @@ import moment from 'moment'
 
 
 
+// Local imports
+import { DOLLARBUCK_CORRELATIONS } from 'data/DOLLARBUCK_CORRELATIONS'
+import incrementStat from 'helpers/incrementStat'
+
+
+
+
+
 // Local constants
 const { HOST } = process.env
 
@@ -58,6 +66,9 @@ export const render = (args = {}) => {
 
 	const endmonth = timeAsMoment.add(months, 'months').month()
 	const endmonthname = timeAsMoment.format('MMMM')
+
+	incrementStat('events/extendsub')
+	incrementStat('dollarbucksSaved', DOLLARBUCK_CORRELATIONS['subscription'][tier])
 
 	return {
 		'badge-info': [`subscriber/${months}`],

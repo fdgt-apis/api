@@ -1,5 +1,7 @@
 // Local imports
 import { CHEERMOTE_PREFIXES } from 'data/CHEERMOTE_PREFIXES'
+import { DOLLARBUCK_CORRELATIONS } from 'data/DOLLARBUCK_CORRELATIONS'
+import incrementStat from 'helpers/incrementStat'
 
 
 
@@ -73,6 +75,10 @@ export const render = (args = {}) => {
 
 		processedMessage += `cheer${totalBits}`
 	}
+
+	incrementStat('events/bits')
+	incrementStat('totalBits', totalBits)
+	incrementStat('dollarbucksSaved', totalBits * DOLLARBUCK_CORRELATIONS['bit'])
 
 	return {
 		'badge-info': [],

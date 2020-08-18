@@ -1,5 +1,6 @@
 // Local imports
 import Channel from 'structures/Channel'
+import incrementStat from 'helpers/incrementStat'
 import User from 'structures/User'
 
 
@@ -28,6 +29,7 @@ export default (message, connection) => {
 	channelsToJoin.forEach(channelName => {
 		const channel = getChannel(channelName)
 		const user = getUser(username)
+		incrementStat('channelsJoined')
 
 		if (!channel.isConnected) {
 			channel.connect({ user })

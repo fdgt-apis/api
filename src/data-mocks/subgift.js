@@ -5,6 +5,14 @@ import faker from 'faker'
 
 
 
+// Local imports
+import { DOLLARBUCK_CORRELATIONS } from 'data/DOLLARBUCK_CORRELATIONS'
+import incrementStat from 'helpers/incrementStat'
+
+
+
+
+
 // Local constants
 const { HOST } = process.env
 
@@ -94,6 +102,10 @@ export const render = (args = {}) => {
 	if (months > 1) {
 		response['msg-params-gift-months'] = months
 	}
+
+	incrementStat('subs')
+	incrementStat('event/subgift')
+	incrementStat('dollarbucksSaved', DOLLARBUCK_CORRELATIONS['subscription'][tier])
 
 	return response
 }

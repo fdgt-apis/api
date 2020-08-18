@@ -1,3 +1,11 @@
+// Local imports
+import { DOLLARBUCK_CORRELATIONS } from 'data/DOLLARBUCK_CORRELATIONS'
+import incrementStat from 'helpers/incrementStat'
+
+
+
+
+
 // Local constants
 const { HOST } = process.env
 
@@ -45,6 +53,10 @@ export const render = (args = {}) => {
 		...defaults,
 		...args,
 	}
+
+	incrementStat('events/submysterygift')
+	incrementStat('subs', count)
+	incrementStat('dollarbucksSaved', DOLLARBUCK_CORRELATIONS['subscription'][tier] * count)
 
 	return {
 		'badge-info': ['subscriber/0'],

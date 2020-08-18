@@ -21,8 +21,8 @@ let app = null
 
 
 
-if ((NODE_ENV !== 'test') && !app) {
-  app = firebaseAdmin.initializeApp({
+if (NODE_ENV !== 'test') {
+	app = firebaseAdmin.apps[0] || firebaseAdmin.initializeApp({
 		credential: firebaseAdmin.credential.cert({
 			auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
 			auth_uri: process.env.FIREBASE_AUTH_URI,
@@ -35,7 +35,7 @@ if ((NODE_ENV !== 'test') && !app) {
 			token_uri: process.env.FIREBASE_TOKEN_URI,
 			type: process.env.FIREBASE_TYPE,
 		}),
-		databaseURL: 'https://fdgt-1172f.firebaseio.com',
+		databaseURL: process.env.FIREBASE_DATABASE_URL,
 	})
 }
 
@@ -45,4 +45,5 @@ if ((NODE_ENV !== 'test') && !app) {
 
 export const firebase = app
 export const firestore = app?.firestore()
+export const database = app?.database()
 export { firebaseAdmin }

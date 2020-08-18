@@ -10,6 +10,7 @@ import {
 	firebaseAdmin,
 	firestore,
 } from 'helpers/firebase'
+import incrementStat from 'helpers/incrementStat'
 
 
 
@@ -33,6 +34,7 @@ module.exports = (message, meta = {}, type = 'log') => {
 		type,
 		...meta,
 	})
+	incrementStat('logs')
 
 	if (DEBUG) {
 		logger[type](message)
