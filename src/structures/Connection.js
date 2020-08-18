@@ -41,6 +41,8 @@ export default class extends EventEmitter {
 		Local Properties
 	\***************************************************************************/
 
+	app = null
+
 	capabilities = []
 
 	channels = new ChannelList
@@ -77,6 +79,23 @@ export default class extends EventEmitter {
 		}
 	}
 
+	async #getApp () {
+		let appID = this.options.query.token
+
+		if (!appID) {
+			appID = this.options.query.Authorization?.replace(/^Bearer\s/, '')
+		}
+
+		const app = await firestore.collection('apps').doc(appID).get()
+
+		if (app) {
+			this.app = {
+				id: app.id,
+				...app.data(),
+			}
+		}
+	}
+
 	#handleMessages = rawMessages => {
 		const messages = rawMessages.toString()
 			.replace(/\r\n$/, '')
@@ -88,10 +107,7 @@ export default class extends EventEmitter {
 		messages.forEach(message => {
 			let handler = null
 
-			log('Message from client', {
-				connectionID: this.id,
-				message,
-			}, 'info')
+			this.#log('Message from client', { message }, 'info')
 
 			switch (message.command.toUpperCase()) {
 				case 'CAP':
@@ -135,9 +151,7 @@ export default class extends EventEmitter {
 					break
 
 				default:
-					log(`No handler for ${message.command} messages`, {
-						connectionID: this.id,
-					}, 'error')
+					this.#log(`No handler for ${message.command} messages`, {}, 'error')
 					this.sendUnknownCommand(message.command)
 			}
 
@@ -145,6 +159,14 @@ export default class extends EventEmitter {
 				handler(message, this)
 			}
 		})
+	}
+
+	async #initialize () {
+		await #getApp()
+
+		this.#initializeConnectionCloseHandler()
+		this.#initializeMessageHandler()
+		this.#initializePing()
 	}
 
 	#initializeConnectionCloseHandler = () => {
@@ -174,18 +196,14 @@ export default class extends EventEmitter {
 			const { id } = this
 
 			this.pongTimeoutID = setTimeout(() => {
-				log('Client didn\'t PONG in time - terminating connection', {
-					connectionID: this.id,
-				}, 'error')
+				this.#log('Client didn\'t PONG in time - terminating connection', {}, 'error')
 
 				clearInterval(this.pingIntervalID)
 
 				this.close()
 			}, 5000)
 
-			log('Pinging client', {
-				connectionID: this.id,
-			}, 'info')
+			this.#log('Pinging client', {}, 'info')
 
 			this.send(`PING :${HOST}`)
 		}, 30000)
@@ -194,6 +212,19 @@ export default class extends EventEmitter {
 	#isIRCSocket = () => (this.type === 'irc')
 
 	#isWebsocket = () => (this.type === 'websocket')
+
+	#log (message, meta, type) {
+		const compiledMeta = {
+			...(meta || {}),
+			connectionID: this.id,
+		}
+
+		if (this.app) {
+			compiledMeta.appID = this.app.id
+		}
+
+		log(message, compiledMeta, type)
+	}
 
 
 
@@ -228,18 +259,12 @@ export default class extends EventEmitter {
 
 		this.options = options
 
-		log('New client connected', {
-			connectionID: this.id,
-			type: this.type,
-		}, 'info')
-
+		this.#log('New client connected', { type: this.type }, 'info')
 		incrementStat('connections')
 
 		this.on('acknowledge', this.#acknowledge)
 
-		this.#initializeConnectionCloseHandler()
-		this.#initializeMessageHandler()
-		this.#initializePing()
+		this.#initialize()
 	}
 
 	getChannel = (channelName, create = true) => {
@@ -280,10 +305,8 @@ export default class extends EventEmitter {
 		try {
 			incrementStat('messagesSent', messages.length)
 			messages.forEach(message => {
-				log(`Sending message to client`, {
-					connectionID: this.id,
-					message,
-				})
+				this.#log(`Sending message to client`, { message })
+				incrementStat('messagesSent')
 				if (this.#isWebsocket()) {
 					this.socket.send(message)
 				} else {
@@ -291,22 +314,27 @@ export default class extends EventEmitter {
 				}
 			})
 		} catch (error) {
-			log('Failed to send response', {
-				connectionID: this.id,
-			}, 'error')
+			this.#log('Failed to send response', {}, 'error')
 		}
 	}
 
 	sendMOTD = () => {
-		this.send([
+		const motdMessages = [
 			`:${HOST} 001 ${this.username} :Welcome, GLHF!`, // WELCOME
 			`:${HOST} 002 ${this.username} :Your host is ${HOST}`, // YOURHOST
 			`:${HOST} 003 ${this.username} :This server is rather new`, // CREATED
 			`:${HOST} 004 ${this.username} :-`, // MYINFO
 			`:${HOST} 375 ${this.username} :-`, // MOTDSTART
 			`:${HOST} 372 ${this.username} :You are in a maze of twisty passages, all alike.`, // MOTD
+			`:${HOST} 372 ${this.username} :Your FDGT connection ID is ${this.id}.`, // MOTD
 			`:${HOST} 376 ${this.username} :>`, // MOTDEND
-		])
+		]
+
+		// if (this.app) {
+		// 	motdMessages.splice(7, 0, `:${HOST} 372 ${this.username} :You can view the logs for this connection at https://fdgt.dev/dashboard/app/${this.app.id}.`)
+		// }
+
+		this.send(motdMessages)
 	}
 
 	sendPong = () => {
