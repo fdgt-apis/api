@@ -27,14 +27,12 @@ const logger = Logger.createLoggerFromName('@fdgt/api')
 
 
 module.exports = (message, meta = {}, type = 'log') => {
-	if (NODE_ENV === 'production') {
-		firestore.collection('logs').add({
-			createdAt: firebaseAdmin.firestore.Timestamp.now(),
-			message,
-			meta,
-			type,
-		})
-	}
+	firestore.collection('logs').add({
+		createdAt: firebaseAdmin.firestore.Timestamp.now(),
+		message,
+		type,
+		...meta,
+	})
 
 	if (DEBUG) {
 		logger[type](message)
