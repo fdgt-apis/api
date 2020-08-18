@@ -8,6 +8,7 @@ import EventEmitter from 'events'
 
 
 // Local imports
+import { firestore } from 'helpers/firebase'
 import Channel from 'structures/Channel'
 import ChannelList from 'structures/ChannelList'
 import log from 'helpers/log'
@@ -79,6 +80,27 @@ export default class extends EventEmitter {
 		}
 	}
 
+	async #fixUnlabeledLogs () {
+		const logsCollection = firestore.collection('logs')
+		const now = new Date
+		const unlabeledLogIDs = []
+
+		const logsSnapshot = await logsCollection
+			.where('connectionID', '==', this.id)
+			.where('createdAt', '<', now)
+			.get()
+
+		logsSnapshot.forEach(doc => unlabeledLogIDs.push(doc.id))
+
+		try {
+			await Promise.all(unlabeledLogIDs.map(logID => {
+				return logsCollection.doc(logID).update({ appID: this.app.id })
+			}))
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	async #getApp () {
 		let appID = this.options.query.token
 
@@ -86,12 +108,20 @@ export default class extends EventEmitter {
 			appID = this.options.query.Authorization?.replace(/^Bearer\s/, '')
 		}
 
-		const app = await firestore.collection('apps').doc(appID).get()
+		if (appID) {
+			try {
+				const app = await firestore.collection('apps').doc(appID).get()
 
-		if (app) {
-			this.app = {
-				id: app.id,
-				...app.data(),
+				if (app) {
+					this.app = {
+						id: app.id,
+						...app.data(),
+					}
+
+					this.#fixUnlabeledLogs()
+				}
+			} catch (error) {
+				console.log(error)
 			}
 		}
 	}
@@ -161,8 +191,10 @@ export default class extends EventEmitter {
 		})
 	}
 
-	async #initialize () {
-		await #getApp()
+	#initialize () {
+		this.on('acknowledge', this.#acknowledge)
+
+		this.#getApp()
 
 		this.#initializeConnectionCloseHandler()
 		this.#initializeMessageHandler()
@@ -216,6 +248,7 @@ export default class extends EventEmitter {
 	#log (message, meta, type) {
 		const compiledMeta = {
 			...(meta || {}),
+			appID: null,
 			connectionID: this.id,
 		}
 
@@ -261,8 +294,6 @@ export default class extends EventEmitter {
 
 		this.#log('New client connected', { type: this.type }, 'info')
 		incrementStat('connections')
-
-		this.on('acknowledge', this.#acknowledge)
 
 		this.#initialize()
 	}
