@@ -137,7 +137,7 @@ export default class extends EventEmitter {
 		messages.forEach(message => {
 			let handler = null
 
-			this.#log('Message from client', { message }, 'info')
+			this.#log('Message from client', { message: message.raw }, 'info')
 
 			switch (message.command.toUpperCase()) {
 				case 'CAP':
