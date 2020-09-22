@@ -12,6 +12,7 @@ import validateUUID from 'uuid-validate'
 // Local imports
 import { createConnection } from '../test-helpers/createConnection'
 import Channel from 'structures/Channel'
+import Connection from 'structures/Connection'
 import User from 'structures/User'
 
 

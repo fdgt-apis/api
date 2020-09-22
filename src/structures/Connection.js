@@ -148,12 +148,12 @@ export default class extends EventEmitter {
 		})
 	}
 
-	async #initialize () {
+	#initialize () {
 		this.on('acknowledge', this.#acknowledge)
 
 		const appID = this.options.query.token || this.options.headers.Authorization?.replace(/^Bearer\s/, '')
-
-		this.app = await getApp(appID, this.id)
+		getApp(appID, this.id)
+			.then(app => this.app = app)
 
 		this.#initializeConnectionCloseHandler()
 		this.#initializeMessageHandler()
