@@ -1,6 +1,6 @@
 // Local imports
 import { DOLLARBUCK_CORRELATIONS } from 'data/DOLLARBUCK_CORRELATIONS'
-import incrementStat from 'helpers/incrementStat'
+import { incrementStat } from 'helpers/incrementStat'
 
 
 

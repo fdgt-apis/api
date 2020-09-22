@@ -9,6 +9,10 @@ import EventEmitter from 'events'
 
 // Local imports
 import { firestore } from 'helpers/firebase'
+import {
+	decrementStat,
+	incrementStat,
+} from 'helpers/incrementStat'
 import Channel from 'structures/Channel'
 import ChannelList from 'structures/ChannelList'
 import log from 'helpers/log'
@@ -22,7 +26,6 @@ import handlePONGMessage from 'helpers/handlePONGMessage'
 import handlePRIVMSGMessage from 'helpers/handlePRIVMSGMessage'
 import handleUSERMessage from 'helpers/handleUSERMessage'
 import handleQUITMessage from 'helpers/handleQUITMessage'
-import incrementStat from 'helpers/incrementStat'
 import User from 'structures/User'
 import UserList from 'structures/UserList'
 
@@ -284,6 +287,8 @@ export default class extends EventEmitter {
 			this.socket.end()
 		}
 
+		decrementStat('activeConnections')
+
 		this.emit('close')
 	}
 
@@ -294,6 +299,7 @@ export default class extends EventEmitter {
 
 		this.#log('New client connected', { type: this.type }, 'info')
 		incrementStat('connections')
+		incrementStat('activeConnections')
 
 		this.#initialize()
 	}

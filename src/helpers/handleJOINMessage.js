@@ -1,6 +1,6 @@
 // Local imports
+import { incrementStat } from 'helpers/incrementStat'
 import Channel from 'structures/Channel'
-import incrementStat from 'helpers/incrementStat'
 import User from 'structures/User'
 
 

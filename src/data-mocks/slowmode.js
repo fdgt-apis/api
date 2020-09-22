@@ -1,5 +1,5 @@
 // Local imports
-import incrementStat from 'helpers/incrementStat'
+import { incrementStat } from 'helpers/incrementStat'
 
 
 

@@ -10,7 +10,7 @@ import {
 	firebaseAdmin,
 	firestore,
 } from 'helpers/firebase'
-import incrementStat from 'helpers/incrementStat'
+import { incrementStat } from 'helpers/incrementStat'
 
 
 

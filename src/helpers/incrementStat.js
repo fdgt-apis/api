@@ -5,12 +5,16 @@ import { database } from 'helpers/firebase'
 
 
 
-module.exports = (counterName, increment = 1) => {
+const updateStat = (counterName, increment = 1) => {
 	try {
 		database.ref(`stats/${counterName}`).transaction(function (currentCount) {
 			return currentCount + parseInt(increment, 10)
 		})
 	} catch (error) {
-		console.log(`Failed to increment stat: ${counterName}`, error)
+		console.log(`Failed to update stat: ${counterName}`, error)
 	}
 }
+
+export const decrementStat = (counterName, increment = 1) => updateStat(counterName, increment * -1)
+
+export const incrementStat = (counterName, increment = 1) => updateStat(counterName, increment)

@@ -1,7 +1,7 @@
 // Local imports
 import { CHEERMOTE_PREFIXES } from 'data/CHEERMOTE_PREFIXES'
 import { DOLLARBUCK_CORRELATIONS } from 'data/DOLLARBUCK_CORRELATIONS'
-import incrementStat from 'helpers/incrementStat'
+import { incrementStat } from 'helpers/incrementStat'
 
 
 
