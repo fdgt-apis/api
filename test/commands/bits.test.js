@@ -14,10 +14,9 @@ import faker from 'faker'
 
 
 // Local imports
+import { createConnection } from '../test-helpers/createConnection'
 import CAPABILITIES from 'data/CAPABILITIES'
 import Channel from 'structures/Channel'
-import Connection from 'structures/Connection'
-import User from 'structures/User'
 
 
 
@@ -27,14 +26,6 @@ import User from 'structures/User'
 const testChannelName = 'TestChannel'
 const testOauthToken = 'oauth:1234567890'
 const testUsername = 'Bob'
-const ircSocket = class extends EventEmitter {
-	end = () => {}
-	write = () => {}
-}
-const wsSocket = class extends EventEmitter {
-	send = () => {}
-	terminate = () => {}
-}
 
 
 
@@ -42,17 +33,13 @@ const wsSocket = class extends EventEmitter {
 
 describe('bits events', function() {
 	const clock = useFakeTimers()
-	const fdgtUser = new User({ username: 'fdgt' })
 
 	let connection = null
 	let socket = null
 
 	beforeEach(() => {
-		socket = new wsSocket
-		connection = new Connection({
-			fdgtUser,
-			socket,
-		})
+		connection = createConnection()
+		socket = connection.socket
 
 		socket.emit('message', `NICK ${testUsername}`)
 		socket.emit('message', `PASS ${testOauthToken}`)

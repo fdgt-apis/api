@@ -10,8 +10,8 @@ import validateUUID from 'uuid-validate'
 
 
 // Local imports
+import { createConnection } from '../test-helpers/createConnection'
 import Channel from 'structures/Channel'
-import Connection from 'structures/Connection'
 import User from 'structures/User'
 
 
@@ -21,32 +21,20 @@ import User from 'structures/User'
 // Local constants
 const testErrorMessage = 'Error foo bar baz!'
 const testChannelName = 'TestChannel'
-const ircSocket = class extends EventEmitter {
-	end = () => {}
-	write = () => {}
-}
-const wsSocket = class extends EventEmitter {
-	send = () => {}
-	terminate = () => {}
-}
 
 
 
 
 
 describe('Channel', function() {
-	const fdgtUser = new User({ username: 'fdgt' })
 	const user = new User()
 	let connection = null
 	let channel = null
 	let socket = null
 
 	beforeEach(() => {
-		socket = new wsSocket
-		connection = new Connection({
-			fdgtUser,
-			socket,
-		})
+		connection = createConnection()
+		socket = connection.socket
 		channel = new Channel({
 			connection,
 			name: testChannelName,
