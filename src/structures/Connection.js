@@ -12,7 +12,7 @@ import { firestore } from 'helpers/firebase'
 import {
 	decrementStat,
 	incrementStat,
-} from 'helpers/incrementStat'
+} from 'helpers/updateStat'
 import Channel from 'structures/Channel'
 import ChannelList from 'structures/ChannelList'
 import log from 'helpers/log'
