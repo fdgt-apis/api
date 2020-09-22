@@ -47,7 +47,7 @@ export const render = (args = {}) => {
 
 	channel.subsOnly = !off
 
-	incrementStat('event/subsonly')
+	incrementStat('events/subsonly')
 
 	return {
 		message: `${HOST} NOTICE #${channelName} :This room is ${off ? 'no longer' : 'now'} in subscribers-only mode.`,

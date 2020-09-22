@@ -104,7 +104,7 @@ export const render = (args = {}) => {
 	}
 
 	incrementStat('subs')
-	incrementStat('event/subgift')
+	incrementStat('events/subgift')
 	incrementStat('dollarbucksSaved', DOLLARBUCK_CORRELATIONS['subscription'][tier])
 
 	return response

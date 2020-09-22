@@ -62,7 +62,7 @@ export const render = (args = {}) => {
 	const plan = prime ? 'Prime' : (1000 * tier)
 	const planName = prime ? 'Prime' : `Tier ${tier}`
 
-	incrementStat('event/resub')
+	incrementStat('events/resub')
 	incrementStat('dollarbucksSaved', DOLLARBUCK_CORRELATIONS['subscription'][tier])
 
 	return {

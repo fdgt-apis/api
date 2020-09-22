@@ -47,7 +47,7 @@ export const render = (args = {}) => {
 
 	channel.slowMode = !off
 
-	incrementStat('event/slowmode')
+	incrementStat('events/slowmode')
 
 	return {
 		message: `${HOST} NOTICE #${channelName} :This room is ${off ? 'no longer' : 'now'} in slow mode.${off ? '' : ' You can send messages every 30 seconds.'}`,
