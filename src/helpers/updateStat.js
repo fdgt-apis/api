@@ -5,13 +5,22 @@ import { database } from 'helpers/firebase'
 
 
 
+// Local constants
+const { NODE_ENV } = process.env
+
+
+
+
+
 const updateStat = (counterName, increment = 1) => {
-	try {
-		database.ref(`stats/${counterName}`).transaction(function (currentCount) {
-			return currentCount + parseInt(increment, 10)
-		})
-	} catch (error) {
-		console.log(`Failed to update stat: ${counterName}`, error)
+	if (NODE_ENV !== 'test') {
+		try {
+			database.ref(`stats/${counterName}`).transaction(function (currentCount) {
+				return currentCount + parseInt(increment, 10)
+			})
+		} catch (error) {
+			console.log(`Failed to update stat: ${counterName}`, error)
+		}
 	}
 }
 

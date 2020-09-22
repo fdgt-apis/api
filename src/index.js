@@ -44,10 +44,10 @@ const handleConnection = (socket, request) => {
 
 	const connection = new Connection({
 		fdgtUser,
-		query: {
+		headers: {
 			...request.headers,
-			...queryParamsObject,
 		},
+		query: queryParamsObject,
 		socket,
 	})
 }

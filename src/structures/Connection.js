@@ -8,11 +8,11 @@ import EventEmitter from 'events'
 
 
 // Local imports
-import { firestore } from 'helpers/firebase'
 import {
 	decrementStat,
 	incrementStat,
 } from 'helpers/updateStat'
+import { getApp } from 'helpers/apps'
 import Channel from 'structures/Channel'
 import ChannelList from 'structures/ChannelList'
 import log from 'helpers/log'
@@ -83,52 +83,6 @@ export default class extends EventEmitter {
 		}
 	}
 
-	async #fixUnlabeledLogs () {
-		const logsCollection = firestore.collection('logs')
-		const now = new Date
-		const unlabeledLogIDs = []
-
-		const logsSnapshot = await logsCollection
-			.where('connectionID', '==', this.id)
-			.where('createdAt', '<', now)
-			.get()
-
-		logsSnapshot.forEach(doc => unlabeledLogIDs.push(doc.id))
-
-		try {
-			await Promise.all(unlabeledLogIDs.map(logID => {
-				return logsCollection.doc(logID).update({ appID: this.app.id })
-			}))
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-	async #getApp () {
-		let appID = this.options.query.token
-
-		if (!appID) {
-			appID = this.options.query.Authorization?.replace(/^Bearer\s/, '')
-		}
-
-		if (appID) {
-			try {
-				const app = await firestore.collection('apps').doc(appID).get()
-
-				if (app) {
-					this.app = {
-						id: app.id,
-						...app.data(),
-					}
-
-					this.#fixUnlabeledLogs()
-				}
-			} catch (error) {
-				console.log(error)
-			}
-		}
-	}
-
 	#handleMessages = rawMessages => {
 		const messages = rawMessages.toString()
 			.replace(/\r\n$/, '')
@@ -194,10 +148,12 @@ export default class extends EventEmitter {
 		})
 	}
 
-	#initialize () {
+	async #initialize () {
 		this.on('acknowledge', this.#acknowledge)
 
-		this.#getApp()
+		const appID = this.options.query.token || this.options.headers.Authorization?.replace(/^Bearer\s/, '')
+
+		this.app = await getApp(appID, this.id)
 
 		this.#initializeConnectionCloseHandler()
 		this.#initializeMessageHandler()

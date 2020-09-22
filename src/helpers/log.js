@@ -28,19 +28,22 @@ const logger = Logger.createLoggerFromName('@fdgt/api')
 
 
 module.exports = (message, meta = {}, type = 'log') => {
-	firestore.collection('logs').add({
-		createdAt: firebaseAdmin.firestore.Timestamp.now(),
-		message,
-		type,
-		...meta,
-	})
-	incrementStat('logs')
-
-	if (DEBUG) {
-		logger[type](message)
-
-		Object.entries(meta).forEach(([key, value]) => {
-			console.log(`> ${key}:`, value)
+	if (NODE_ENV !== 'test') {
+		firestore.collection('logs').add({
+			createdAt: firebaseAdmin.firestore.Timestamp.now(),
+			message,
+			type,
+			...meta,
 		})
+
+		incrementStat('logs')
+
+		if (DEBUG) {
+			logger[type](message)
+
+			Object.entries(meta).forEach(([key, value]) => {
+				console.log(`> ${key}:`, value)
+			})
+		}
 	}
 }
