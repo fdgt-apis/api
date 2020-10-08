@@ -36,18 +36,22 @@ const wsServer = new WebSocket.Server({ port: WS_PORT })
 
 
 const handleConnection = (socket, request) => {
-	const queryParams = new URL(request.url, `http://${request.headers.host}`).searchParams
-	const queryParamsObject = [...queryParams.entries()].reduce(function (accumulator, [key, value]) {
-		accumulator[key] = value
-		return accumulator
-	}, {})
+	let headers = {}
+	let query = {}
+
+	if (request) {
+		const queryParams = new URL(request.url, `http://${request.headers.host}`).searchParams
+		query = [...queryParams.entries()].reduce(function (accumulator, [key, value]) {
+			accumulator[key] = value
+			return accumulator
+		}, {})
+		headers = { ...request.headers }
+	}
 
 	const connection = new Connection({
 		fdgtUser,
-		headers: {
-			...request.headers,
-		},
-		query: queryParamsObject,
+		headers,
+		query,
 		socket,
 	})
 }
