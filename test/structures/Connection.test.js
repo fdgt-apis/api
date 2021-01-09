@@ -260,6 +260,13 @@ describe('Connection', function() {
 				})
 			})
 
+			describe('PING with args', () => {
+				it('should send a PONG message', () => {
+					socket.emit('message', 'PING custom arg')
+					expect(connection.send.calledOnceWithExactly('PONG custom arg')).to.be.true
+				})
+			})
+
 			xdescribe('PONG', () => {
 				it('should clear the ping timeout', () => {})
 			})

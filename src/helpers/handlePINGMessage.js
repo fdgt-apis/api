@@ -1,3 +1,3 @@
 export default (message, connection) => {
-	connection.sendPong()
+	connection.sendPong(message.params.join(" "));
 }
