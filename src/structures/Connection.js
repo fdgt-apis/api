@@ -330,8 +330,12 @@ export default class extends EventEmitter {
 		this.send(motdMessages)
 	}
 
-	sendPong = () => {
-		this.send('PONG')
+	sendPong = (payload) => {
+		if (payload) {
+			this.send(`PONG ${payload}`)
+		} else {
+			this.send(`PONG`)
+		}
 	}
 
 	sendUnknownCommand = command => {
