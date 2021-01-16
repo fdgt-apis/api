@@ -18,7 +18,6 @@ import { render as subgiftMock } from 'data-mocks/subgift'
 import { render as submysterygiftMock } from 'data-mocks/submysterygift'
 import { render as subscriptionMock } from 'data-mocks/subscription'
 import { render as subsonlyMock } from 'data-mocks/subsonly'
-import { render as reconnectMock } from 'data-mocks/reconnect'
 
 
 
@@ -38,7 +37,6 @@ const mocks = {
 	submysterygift: submysterygiftMock,
 	subscription: subscriptionMock,
 	subsonly: subsonlyMock,
-	reconnect: reconnectMock,
 }
 
 

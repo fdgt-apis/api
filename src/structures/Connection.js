@@ -334,6 +334,11 @@ export default class extends EventEmitter {
 		this.send('PONG')
 	}
 
+	sendReconnect = () => {
+		incrementStat('reconnects')
+		this.send('RECONNECT')
+	}
+
 	sendUnknownCommand = command => {
 		this.send(`:${HOST} 421 ${this.username} ${command} :Unknown command`)
 	}

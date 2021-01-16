@@ -44,6 +44,10 @@ export default (messageData, connection) => {
 		...args
 	} = mri(argv)
 
+	if (command.toLowerCase().trim() === 'reconnect') {
+		return connection.sendReconnect('RECONNECT')
+	}
+
 	args.message = messageBody.join(' ')
 
 	const username = args.username || connection.username
