@@ -45,7 +45,7 @@ export default (messageData, connection) => {
 	} = mri(argv)
 
 	if (command.toLowerCase().trim() === 'reconnect') {
-		return connection.sendReconnect('RECONNECT')
+		return connection.sendReconnect()
 	}
 
 	args.message = messageBody.join(' ')
