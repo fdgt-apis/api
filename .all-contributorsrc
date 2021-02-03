@@ -83,6 +83,16 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "d-",
+      "name": "David Wood",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1255112?v=4",
+      "profile": "http://wood.ac",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
