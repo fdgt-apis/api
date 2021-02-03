@@ -27,7 +27,10 @@
       "profile": "https://github.com/d-fischer",
       "contributions": [
         "doc",
-        "review"
+        "review",
+        "code",
+        "test",
+        "maintenance"
       ]
     },
     {
