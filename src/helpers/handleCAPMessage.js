@@ -29,12 +29,12 @@ export default (message, connection) => {
 
 		case 'LIST':
 		case 'LS':
-			send(`:${HOST} CAP * ${subcommand.toUpperCase()} ${CAPABILITIES.join(' ')}`)
+			send(`:${HOST} CAP * ${subcommand.toUpperCase()} :${CAPABILITIES.join(' ')}`)
 			break
 
 		case 'REQ':
 			addCapabilities(args)
-			send(`:${HOST} CAP * ACK ${args?.filter(capability => CAPABILITIES.includes(capability)).join(' ')}`)
+			send(`:${HOST} CAP * ACK :${args?.filter(capability => CAPABILITIES.includes(capability)).join(' ')}`)
 			connection.capabilitiesFinished = true
 			connection.emit('acknowledge')
 			break
