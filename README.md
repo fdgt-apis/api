@@ -66,7 +66,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://pajlada.se/"><img src="https://avatars.githubusercontent.com/u/962989?v=4?s=100" width="100px;" alt=""/><br /><sub><b>pajlada</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/commits?author=pajlada" title="Code">💻</a> <a href="https://github.com/fdgt-apis/api/commits?author=pajlada" title="Documentation">📖</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="http://wood.ac"><img src="https://avatars.githubusercontent.com/u/1255112?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Wood</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/commits?author=d-" title="Code">💻</a> <a href="https://github.com/fdgt-apis/api/commits?author=d-" title="Tests">⚠️</a></td>
+    <td align="center"><a href="http://wood.ac"><img src="https://avatars.githubusercontent.com/u/1255112?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Wood</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/commits?author=d-" title="Code">💻</a> <a href="https://github.com/fdgt-apis/api/commits?author=d-" title="Tests">⚠️</a> <a href="#maintenance-d-" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
