@@ -76,7 +76,7 @@ export default class extends EventEmitter {
 	\***************************************************************************/
 
 	#acknowledge = () => {
-		if (this.username && this.token && this.capabilitiesFinished) {
+		if (this.username && this.capabilitiesFinished && (this.token || /^justinfan\d+$/.test(this.username))) {
 			this.off('acknowledge', this.#acknowledge)
 			this.isAcknowledged = true
 			this.sendMOTD()
