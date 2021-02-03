@@ -98,9 +98,11 @@ describe('Connection', function() {
 								params: [
 									client,
 									responseSubcommand,
-									...capabilities
+									capabilitiesList
 								],
 							} = parseIRCMessage(rawMessage)
+
+							const capabilities = capabilitiesList.split(' ')
 
 							expect(client).to.be.string('*')
 							expect(responseSubcommand).to.be.string(subcommand)
@@ -128,9 +130,11 @@ describe('Connection', function() {
 							params: [
 								client,
 								responseSubcommand,
-								...requestedCapabilities
+								requestedCapabilitiesList
 							],
 						} = parseIRCMessage(rawMessage)
+
+						const requestedCapabilities = requestedCapabilitiesList.split(' ')
 
 						expect(responseSubcommand).to.be.string('ACK')
 						expect(requestedCapabilities).to.have.members(CAPABILITIES)
@@ -144,9 +148,11 @@ describe('Connection', function() {
 							params: [
 								client,
 								responseSubcommand,
-								...requestedCapabilities
+								requestedCapabilitiesList
 							],
 						} = parseIRCMessage(rawMessage)
+
+						const requestedCapabilities = requestedCapabilitiesList.split(' ')
 
 						expect(responseSubcommand).to.be.string('ACK')
 						expect(requestedCapabilities).to.have.members(CAPABILITIES)
