@@ -91,7 +91,8 @@
       "profile": "http://wood.ac",
       "contributions": [
         "code",
-        "test"
+        "test",
+        "maintenance"
       ]
     }
   ],
