@@ -123,7 +123,7 @@ describe('Connection', function() {
 
 				describe('REQ subcommand', () => {
 					it('should acknowledge capabilities', () => {
-						socket.emit('message', `CAP REQ ${CAPABILITIES.join(' ')}`)
+						socket.emit('message', `CAP REQ :${CAPABILITIES.join(' ')}`)
 
 						const [[rawMessage]] = socket.send.args
 						const {
@@ -141,7 +141,7 @@ describe('Connection', function() {
 					})
 
 					it('should ignore unrecognized capabilities', () => {
-						socket.emit('message', `CAP REQ ${CAPABILITIES.join(' ')} foobar`)
+						socket.emit('message', `CAP REQ :${CAPABILITIES.join(' ')} foobar`)
 
 						const [[rawMessage]] = socket.send.args
 						const {
