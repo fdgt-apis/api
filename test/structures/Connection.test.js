@@ -122,7 +122,25 @@ describe('Connection', function() {
 				})
 
 				describe('REQ subcommand', () => {
-					it('should acknowledge capabilities', () => {
+					CAPABILITIES.forEach(capability => {
+						it(`should acknowledge '${capability}' capability`, () => {
+							socket.emit('message', `CAP REQ :${capability}`)
+
+							const [[rawMessage]] = socket.send.args
+							const {
+								params: [
+									client,
+									responseSubcommand,
+									...requestedCapabilities
+								],
+							} = parseIRCMessage(rawMessage)
+
+							expect(responseSubcommand).to.be.string('ACK')
+							expect(requestedCapabilities).to.have.members([capability])
+						})
+					})
+
+					it('should acknowledge all capabilities', () => {
 						socket.emit('message', `CAP REQ :${CAPABILITIES.join(' ')}`)
 
 						const [[rawMessage]] = socket.send.args
