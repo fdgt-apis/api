@@ -30,7 +30,7 @@
 		"koa-body": "^4.2.0",
 		"koa-compress": "^5.0.1",
 		"koa-no-trailing-slash": "^2.1.0",
-		"koa-router": "^9.4.0",
+		"koa-router": "^10.0.0",
 		"moment": "^2.29.1",
 		"mri": "^1.1.6",
 		"node-fetch": "^2.6.1",
