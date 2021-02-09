@@ -13,7 +13,7 @@
 	<br>
   <a href="https://github.com/fdgt-apis/api/issues"><img alt="Open Github Issues" src="https://img.shields.io/github/issues/fdgt-apis/api.svg?style=flat-square"></a>
 	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<a href="#contributors-"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square"></a>
+<a href="#contributors-"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square"></a>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
@@ -64,6 +64,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://www.philippheuer.me/"><img src="https://avatars0.githubusercontent.com/u/10275049?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Philipp Heuer</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/issues?q=author%3APhilippHeuer" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/bdashore3"><img src="https://avatars2.githubusercontent.com/u/8082010?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Brian Dashore</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/commits?author=bdashore3" title="Documentation">📖</a> <a href="#example-bdashore3" title="Examples">💡</a> <a href="#ideas-bdashore3" title="Ideas, Planning, & Feedback">🤔</a> <a href="#question-bdashore3" title="Answering Questions">💬</a></td>
     <td align="center"><a href="https://pajlada.se/"><img src="https://avatars.githubusercontent.com/u/962989?v=4?s=100" width="100px;" alt=""/><br /><sub><b>pajlada</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/commits?author=pajlada" title="Code">💻</a> <a href="https://github.com/fdgt-apis/api/commits?author=pajlada" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://itssimple.se"><img src="https://avatars.githubusercontent.com/u/11502257?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chris Gårdenberg</b></sub></a><br /><a href="https://github.com/fdgt-apis/api/commits?author=itssimple" title="Documentation">📖</a></td>
   </tr>
 </table>
 
