@@ -70,8 +70,8 @@ const handleConnection = (socket, request) => {
 
 	if (USE_TLS) {
 		let [cert, key] = await Promise.all([
-			fs.readFile(CERT_PATH),
-			fs.readFile(KEY_PATH),
+			fs.readFile(CERT_PATH, 'utf8'),
+			fs.readFile(KEY_PATH, 'utf8'),
 		])
 		const options = {
 			cert,
@@ -87,5 +87,9 @@ const handleConnection = (socket, request) => {
 	log('Server started.')
 	log(`Listening for Web connections on port ${WEB_PORT}.`)
 	log(`Listening for WebSocket connections on port ${WS_PORT}.`)
-	log(`Listening for IRC connections on port ${IRC_PORT}.`)
+	log(`Listening for IRC (non-TLS) connections on port ${IRC_PORT}.`)
+
+	if (USE_TLS) {
+		log(`Listening for IRC (TLS) connections on port ${IRC_TLS_PORT}.`)
+	}
 })()
