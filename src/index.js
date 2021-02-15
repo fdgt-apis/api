@@ -28,6 +28,7 @@ const {
 	CERT_PATH,
 	KEY_PATH,
 	IRC_PORT = 6667,
+	IRC_TLS_PORT = 6697,
 	USE_TLS = false,
 	WEB_PORT = 3000,
 	WS_PORT = 3001,
@@ -64,7 +65,8 @@ const handleConnection = (socket, request) => {
 
 	wsServer.on('connection', handleConnection)
 
-	let tcpServer = null
+	let tcpServer = net.createServer(handleConnection)
+	let tcpSSLServer = null
 
 	if (USE_TLS) {
 		let [cert, key] = await Promise.all([
@@ -75,9 +77,8 @@ const handleConnection = (socket, request) => {
 			cert,
 			key,
 		}
-		tcpServer = tls.createServer(options, handleConnection)
-	} else {
-		tcpServer = net.createServer(handleConnection)
+		tcpSSLServer = tls.createServer(options, handleConnection)
+		tcpSSLServer.listen(IRC_TLS_PORT)
 	}
 
 	tcpServer.listen(IRC_PORT)
