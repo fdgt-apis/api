@@ -47,7 +47,7 @@
 		"@babel/preset-env": "^7.11.5",
 		"@babel/register": "^7.11.5",
 		"babel-plugin-module-resolver": "^4.0.0",
-		"chai": "^4.2.0",
+		"chai": "^4.3.4",
 		"chai-http": "^4.3.0",
 		"coveralls": "^3.1.0",
 		"frontmatter": "^0.0.3",
