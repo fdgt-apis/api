@@ -25,7 +25,7 @@
 		"ians-logger": "^0.1.1",
 		"irc-message": "^3.0.2",
 		"jsdoc-api": "^6.0.0",
-		"jsdoc-to-markdown": "^6.0.1",
+		"jsdoc-to-markdown": "^7.0.1",
 		"koa": "^2.13.0",
 		"koa-body": "^4.2.0",
 		"koa-compress": "^5.0.1",
