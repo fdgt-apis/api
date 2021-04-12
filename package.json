@@ -19,7 +19,7 @@
 	"dependencies": {
 		"@koa/cors": "^3.1.0",
 		"dotenv": "^8.2.0",
-		"faker": "^5.1.0",
+		"faker": "^5.5.3",
 		"firebase-admin": "^9.2.0",
 		"fs-extra": "^9.0.1",
 		"ians-logger": "^0.1.1",
