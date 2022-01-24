@@ -20,7 +20,7 @@
 		"@koa/cors": "^3.1.0",
 		"dotenv": "^10.0.0",
 		"faker": "^5.1.0",
-		"firebase-admin": "^9.2.0",
+		"firebase-admin": "^10.0.2",
 		"fs-extra": "^10.0.0",
 		"ians-logger": "^0.1.1",
 		"irc-message": "^3.0.2",
