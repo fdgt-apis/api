@@ -31,7 +31,7 @@
 		"koa-compress": "^5.1.0",
 		"koa-no-trailing-slash": "^2.1.0",
 		"koa-router": "^9.4.0",
-		"moment": "^2.29.1",
+		"moment": "^2.29.4",
 		"mri": "^1.2.0",
 		"node-fetch": "^2.6.1",
 		"tinycolor2": "^1.4.2",
